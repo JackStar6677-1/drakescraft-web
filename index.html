@@ -52,7 +52,7 @@
                 <li><a href="#home" class="nav-link active">Inicio</a></li>
                 <li><a href="#about" class="nav-link">Sobre el Servidor</a></li>
                 <li><a href="#plugins" class="nav-link">Slimefun & Plugins</a></li>
-                <li><a href="#store" class="nav-link">Tienda</a></li>
+                <li><a href="store.html" class="nav-link">Tienda</a></li>
                 <li><a href="#community" class="nav-link">Comunidad</a></li>
                 <li><a href="rules.html" class="nav-link">Reglas</a></li>
                 <li><a href="#faq" class="nav-link">FAQ</a></li>
@@ -87,7 +87,7 @@
                 <button class="btn-primary" onclick="copyIp('mc.drakescraft.cl')">
                     <span class="btn-icon">🎮</span> Copiar IP
                 </button>
-                <a href="#store" class="btn-secondary">
+                <a href="store.html" class="btn-secondary">
                     <span class="btn-icon">💎</span> Ir a la Tienda
                 </a>
                 <a href="https://discord.gg/4kaCMHSYkR" target="_blank" class="btn-discord">
@@ -242,11 +242,14 @@
                 <ul
                     style="list-style: none; margin-bottom: 20px; color: #d1d5db; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px;">
                     <li style="display: flex; align-items: center; gap: 8px;"><span style="color: #ef4444;">•</span>
-                        <strong>CIT Resewn</strong> (Ítems custom)</li>
+                        <strong>CIT Resewn</strong> (Ítems custom)
+                    </li>
                     <li style="display: flex; align-items: center; gap: 8px;"><span style="color: #ef4444;">•</span>
-                        <strong>Animatica</strong> (Animaciones)</li>
+                        <strong>Animatica</strong> (Animaciones)
+                    </li>
                     <li style="display: flex; align-items: center; gap: 8px;"><span style="color: #ef4444;">•</span>
-                        <strong>OptiGUI</strong> (Menús)</li>
+                        <strong>OptiGUI</strong> (Menús)
+                    </li>
                     <li style="display: flex; align-items: center; gap: 8px;"><span style="color: #ef4444;">•</span>
                         Sodium, Lithium... (FPS)</li>
                 </ul>
@@ -304,274 +307,19 @@
         </div>
 
         <!-- Tienda -->
-        <section id="store" class="section">
-            <div class="container">
+        <!-- Store Teaser -->
+        <section id="store-teaser" class="section">
+            <div class="container" style="text-align: center;">
                 <h2 class="section-title">Tienda del <span class="text-gradient">Servidor</span></h2>
                 <div class="store-intro">
-                    <p>Los pagos se gestionan de forma segura con <strong>Tebex y PayPal</strong>.</p>
-                    <p>Aquí puedes revisar con detalle lo que incluye cada rango, kit y pack antes de comprar.</p>
+                    <p style="margin-bottom: 30px; font-size: 1.1rem; color: var(--text-muted);">
+                        Adquiere rangos, kits, dinero y protecciones VIP para mejorar tu experiencia.<br>
+                        Apoya al servidor para que sigamos creciendo.
+                    </p>
+                    <a href="store.html" class="btn-primary" style="font-size: 1.2rem; padding: 15px 40px;">
+                        <span class="btn-icon">💎</span> Ir a la Tienda Completa
+                    </a>
                 </div>
-
-                <!-- Store Tabs -->
-                <div class="store-tabs">
-                    <button class="tab-btn active" data-category="monthly">Rangos Mensuales</button>
-                    <button class="tab-btn" data-category="permanent">Rangos Permanentes</button>
-                    <button class="tab-btn" data-category="money">Dinero del Juego</button>
-                    <button class="tab-btn" data-category="kits">Kits Especiales</button>
-                    <button class="tab-btn" data-category="protection">Protecciones VIP</button>
-                </div>
-
-                <div class="store-grid">
-
-                    <!-- RANGOS MENSUALES -->
-                    <!-- Neón -->
-                    <div class="store-card category-monthly">
-                        <div class="card-header">
-                            <div class="rank-badge monthly">MENSUAL</div>
-                            <h3>NEÓN</h3>
-                            <div class="price">$4.99 USD</div>
-                        </div>
-                        <ul class="benefits-list">
-                            <li><strong>/fly</strong> activado (30 días)</li>
-                            <li>+1 /sethome</li>
-                            <li>+5% dinero en Jobs</li>
-                            <li>Acceso a /hat</li>
-                            <li>Prefijo [Neón]</li>
-                            <li>Prioridad baja en cola</li>
-                        </ul>
-                        <a href="https://drakescraft-v2.tebex.io/" target="_blank" class="btn-store">Comprar en
-                            Tebex</a>
-                    </div>
-
-                    <!-- Orbital -->
-                    <div class="store-card category-monthly featured">
-                        <div class="card-header">
-                            <div class="rank-badge monthly">MENSUAL</div>
-                            <h3>ORBITAL</h3>
-                            <div class="price">$9.99 USD</div>
-                        </div>
-                        <ul class="benefits-list">
-                            <li><strong>Todo lo de NEÓN</strong></li>
-                            <li>+3 /sethome</li>
-                            <li>+10% dinero en Jobs</li>
-                            <li>1 Llave Épica semanal</li>
-                            <li>Acceso a /workbench</li>
-                            <li>/nickname con colores</li>
-                            <li>Prefijo [Orbital]</li>
-                        </ul>
-                        <a href="https://drakescraft-v2.tebex.io/" target="_blank" class="btn-store">Comprar en
-                            Tebex</a>
-                    </div>
-
-                    <!-- Singularidad -->
-                    <div class="store-card category-monthly">
-                        <div class="card-header">
-                            <div class="rank-badge monthly">MENSUAL</div>
-                            <h3>SINGULARIDAD</h3>
-                            <div class="price">$14.99 USD</div>
-                        </div>
-                        <ul class="benefits-list">
-                            <li><strong>Todo lo de ORBITAL</strong></li>
-                            <li>+5 /sethome</li>
-                            <li>+20% dinero en Jobs</li>
-                            <li>1 Llave Legendaria semanal</li>
-                            <li>Warp VIP exclusivo</li>
-                            <li>Menor cooldown en RTP</li>
-                            <li>Prefijo [Singularidad]</li>
-                        </ul>
-                        <a href="https://tutienda.tebex.io/package/ID_SINGULARIDAD" target="_blank"
-                            class="btn-store">Comprar en Tebex</a>
-                    </div>
-
-                    <!-- RANGOS PERMANENTES -->
-                    <!-- Apolo -->
-                    <div class="store-card category-permanent" style="display: none;">
-                        <div class="card-header">
-                            <div class="rank-badge permanent">PERMANENTE</div>
-                            <h3>APOLO</h3>
-                            <div class="price">$14.99 USD</div>
-                        </div>
-                        <ul class="benefits-list">
-                            <li>+2 /sethome</li>
-                            <li>+5% dinero en Jobs</li>
-                            <li>Comandos: /hat, /back</li>
-                            <li>Efectos de partículas simples</li>
-                            <li>Prefijo [Apolo]</li>
-                            <li class="note">Nota: NO incluye /fly</li>
-                        </ul>
-                        <a href="https://drakescraft-v2.tebex.io/" target="_blank" class="btn-store">Comprar en
-                            Tebex</a>
-                    </div>
-
-                    <!-- Cronos -->
-                    <div class="store-card category-permanent" style="display: none;">
-                        <div class="card-header">
-                            <div class="rank-badge permanent">PERMANENTE</div>
-                            <h3>CRONOS</h3>
-                            <div class="price">$24.99 USD</div>
-                        </div>
-                        <ul class="benefits-list">
-                            <li><strong>Todo lo de APOLO</strong></li>
-                            <li>+5 /sethome</li>
-                            <li>+10% dinero en Jobs</li>
-                            <li>/enderchest portátil</li>
-                            <li>/repair (con cooldown)</li>
-                            <li>Acceso a /anvil</li>
-                            <li>Prefijo [Cronos]</li>
-                        </ul>
-                        <a href="https://drakescraft-v2.tebex.io/" target="_blank" class="btn-store">Comprar en
-                            Tebex</a>
-                    </div>
-
-                    <!-- Dragón Eterno -->
-                    <div class="store-card category-permanent featured" style="display: none;">
-                        <div class="card-header">
-                            <div class="rank-badge permanent">PERMANENTE</div>
-                            <h3>DRAGÓN ETERNO</h3>
-                            <div class="price">$39.99 USD</div>
-                        </div>
-                        <ul class="benefits-list">
-                            <li><strong>Todo lo de CRONOS</strong></li>
-                            <li>+8 /sethome</li>
-                            <li>+15% dinero en Jobs</li>
-                            <li>1 Llave Épica semanal</li>
-                            <li>Warp Sala VIP</li>
-                            <li>Armadura Cosmética (ItemsAdder)</li>
-                            <li>Prefijo [Dragón]</li>
-                        </ul>
-                        <a href="https://drakescraft-v2.tebex.io/" target="_blank" class="btn-store">Comprar en
-                            Tebex</a>
-                    </div>
-
-                    <!-- Deus Machina -->
-                    <div class="store-card category-permanent" style="display: none;">
-                        <div class="card-header">
-                            <div class="rank-badge permanent">PERMANENTE</div>
-                            <h3>DEUS MACHINA</h3>
-                            <div class="price">$59.99 USD</div>
-                        </div>
-                        <ul class="benefits-list">
-                            <li><strong>Todo lo de DRAGÓN</strong></li>
-                            <li>+10 /sethome</li>
-                            <li>+20% dinero en Jobs</li>
-                            <li>1 Llave Legendaria mensual</li>
-                            <li>Tags exclusivos TAB</li>
-                            <li>Efecto entrada especial</li>
-                            <li>Prefijo [Deus]</li>
-                        </ul>
-                        <a href="https://drakescraft-v2.tebex.io/" target="_blank" class="btn-store">Comprar en
-                            Tebex</a>
-                    </div>
-
-                    <!-- DINERO DEL JUEGO -->
-                    <div class="store-card category-money" style="display: none;">
-                        <h3>Créditos Cuánticos I</h3>
-                        <div class="price">$2.99 USD</div>
-                        <p class="money-amount">$250.000 In-game</p>
-                        <a href="https://drakescraft-v2.tebex.io/" target="_blank" class="btn-store">Comprar</a>
-                    </div>
-                    <div class="store-card category-money" style="display: none;">
-                        <h3>Créditos Cuánticos II</h3>
-                        <div class="price">$4.99 USD</div>
-                        <p class="money-amount">$750.000 In-game</p>
-                        <a href="https://drakescraft-v2.tebex.io/" target="_blank" class="btn-store">Comprar</a>
-                    </div>
-                    <div class="store-card category-money" style="display: none;">
-                        <h3>Créditos Galácticos I</h3>
-                        <div class="price">$9.99 USD</div>
-                        <p class="money-amount">$2.500.000 In-game</p>
-                        <a href="https://drakescraft-v2.tebex.io/" target="_blank" class="btn-store">Comprar</a>
-                    </div>
-                    <div class="store-card category-money" style="display: none;">
-                        <h3>Créditos Galácticos II</h3>
-                        <div class="price">$19.99 USD</div>
-                        <p class="money-amount">$7.500.000 In-game</p>
-                        <a href="https://drakescraft-v2.tebex.io/" target="_blank" class="btn-store">Comprar</a>
-                    </div>
-                    <div class="store-card category-money featured" style="display: none;">
-                        <div class="rank-badge money">MEJOR VALOR</div>
-                        <h3>Banco del Dragón</h3>
-                        <div class="price">$34.99 USD</div>
-                        <p class="money-amount">$15.000.000 In-game</p>
-                        <a href="https://drakescraft-v2.tebex.io/" target="_blank" class="btn-store">Comprar</a>
-                    </div>
-
-                    <!-- KITS ESPECIALES -->
-                    <div class="store-card category-kits" style="display: none;">
-                        <h3>Kit Técnico Cuántico</h3>
-                        <div class="price">$6.99 USD</div>
-                        <ul class="benefits-list small">
-                            <li>Materiales Slimefun Mid-game</li>
-                            <li>Herramientas Técnicas</li>
-                            <li>1-2 Llaves Técnicas</li>
-                        </ul>
-                        <a href="https://drakescraft-v2.tebex.io/" target="_blank" class="btn-store">Comprar</a>
-                    </div>
-                    <div class="store-card category-kits" style="display: none;">
-                        <h3>Kit Arquitecto</h3>
-                        <div class="price">$4.99 USD</div>
-                        <ul class="benefits-list small">
-                            <li>Bloques decorativos</li>
-                            <li>Iluminación extra</li>
-                            <li>Cabezas decorativas</li>
-                        </ul>
-                        <a href="https://drakescraft-v2.tebex.io/" target="_blank" class="btn-store">Comprar</a>
-                    </div>
-                    <div class="store-card category-kits" style="display: none;">
-                        <h3>Kit AgroTech</h3>
-                        <div class="price">$4.99 USD</div>
-                        <ul class="benefits-list small">
-                            <li>Semillas y cultivos</li>
-                            <li>Items Slimefun agricultura</li>
-                        </ul>
-                        <a href="https://drakescraft-v2.tebex.io/" target="_blank" class="btn-store">Comprar</a>
-                    </div>
-                    <div class="store-card category-kits" style="display: none;">
-                        <h3>Kit Dragón Supremo</h3>
-                        <div class="price">$14.99 USD</div>
-                        <ul class="benefits-list small">
-                            <li>Bundle: Minero + Farmer + Builder</li>
-                            <li>1 Llave Épica</li>
-                        </ul>
-                        <a href="https://drakescraft-v2.tebex.io/" target="_blank" class="btn-store">Comprar</a>
-                    </div>
-
-                    <!-- PROTECCIONES VIP -->
-                    <div class="store-card category-protection" style="display: none;">
-                        <h3>Núcleo Protector 100</h3>
-                        <div class="price">$24.99 USD</div>
-                        <ul class="benefits-list small">
-                            <li>Radio: 100 bloques</li>
-                            <li>Ideal para Bases Grandes</li>
-                            <li>Protección Total</li>
-                        </ul>
-                        <a href="https://drakescraft-v2.tebex.io/" target="_blank" class="btn-store">Comprar</a>
-                    </div>
-                    <div class="store-card category-protection" style="display: none;">
-                        <h3>Núcleo Protector 200</h3>
-                        <div class="price">$39.99 USD</div>
-                        <ul class="benefits-list small">
-                            <li>Radio: 200 bloques</li>
-                            <li>Para Ciudades/Megabases</li>
-                            <li>Protección Masiva</li>
-                        </ul>
-                        <a href="https://drakescraft-v2.tebex.io/" target="_blank" class="btn-store">Comprar</a>
-                    </div>
-                    <div class="store-card category-protection featured" style="display: none;">
-                        <div class="rank-badge money">ÉLITE</div>
-                        <h3>Dominio del Dragón</h3>
-                        <div class="price">$69.99 USD</div>
-                        <ul class="benefits-list small">
-                            <li>Radio: 400 bloques</li>
-                            <li>Territorio de Clan/Imperio</li>
-                            <li>Máxima Autoridad</li>
-                        </ul>
-                        <a href="https://drakescraft-v2.tebex.io/" target="_blank" class="btn-store">Comprar</a>
-                    </div>
-
-                </div>
-
-                <p class="store-note">* El dinero y kits se entregan automáticamente al conectar tras la compra.</p>
             </div>
         </section>
 
@@ -732,7 +480,7 @@
                 <div class="footer-links">
                     <a href="rules.html">Reglamento</a>
                     <a href="https://discord.gg/4kaCMHSYkR">Discord</a>
-                    <a href="#store">Tienda</a>
+                    <a href="store.html">Tienda</a>
                     <div class="footer-votes">
                         <span>Votar:</span>
                         <a href="https://minecraft-mp.com/server-s351633" target="_blank">Minecraft-MP</a>

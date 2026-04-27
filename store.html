@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tienda - DrakesCraft</title>
     <meta name="description"
-        content="Tienda oficial de DrakesCraft. Adquiere rangos, kits, dinero y protecciones para mejorar tu experiencia en el servidor.">
+        content="Tienda DrakesCraft: rangos VIP en temática griega; detalles y compras por Discord.">
     <link rel="icon" type="image/png" href="assets/logo-drakescraft.png">
 
     <!-- Fonts -->
@@ -49,7 +49,7 @@
     <header class="hero" style="min-height: 40vh; padding-top: 120px; align-items: flex-start;">
         <div class="container hero-content">
             <h1 class="hero-title" style="font-size: 3rem;">Tienda del Servidor</h1>
-            <p class="hero-subtitle">Mejora tu experiencia y apoya a la comunidad.</p>
+            <p class="hero-subtitle">Rangos y ofertas se irán definiendo con el tiempo; Discord es el canal oficial.</p>
         </div>
     </header>
 
@@ -72,432 +72,49 @@
             </div>
 
             <div class="store-intro">
-                <p style="font-size: 1.1em; margin-bottom: 15px;"><strong>⚠️ AVISO:</strong> Los pagos no son
-                    automáticos aún. Solo aceptamos <strong>PayPal Directo</strong> y <strong>MercadoPago</strong>.
-                </p>
-                <p>Para comprar ítems específicos, lo más recomendable es <strong>abrir un ticket en
-                        Discord</strong> indicando tu compra.</p>
+                <p style="font-size: 1.05em; margin-bottom: 1rem;">Los rangos VIP en el servidor son solo <strong>nombre
+                        y estética</strong> por ahora; lo que incluirá cada uno se definirá con el tiempo. Cualquier
+                    consulta o donación, <strong>por Discord y ticket</strong>.</p>
+                <p style="margin-bottom: 1.25rem;">Donaciones vía <strong>PayPal</strong> o <strong>MercadoPago</strong>
+                    (no automáticas; confirma en ticket si aplica).</p>
 
                 <div class="direct-payment-links"
-                    style="margin: 25px auto; padding: 20px; background: rgba(5, 8, 22, 0.6); border-radius: 12px; border: 1px solid rgba(139, 92, 246, 0.3); max-width: 600px;">
-                    <p style="margin-bottom: 15px; color: var(--secondary); font-weight: 600;">ENLACES DE PAGO
-                        DIRECTO / DONACIONES</p>
+                    style="margin: 0 auto 1.5rem; padding: 20px; background: rgba(5, 8, 22, 0.6); border-radius: 12px; border: 1px solid rgba(139, 92, 246, 0.3); max-width: 600px;">
+                    <p style="margin-bottom: 15px; color: var(--secondary); font-weight: 600;">Enlaces de pago</p>
                     <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-                        <a href="https://paypal.me/jackstar6677" target="_blank" class="btn-store"
-                            style="width: auto; background: #0070BA; color: white; border: none; min-width: 150px;">
-                            <span style="margin-right: 5px;">🅿️</span> PayPal
-                        </a>
-                        <a href="https://link.mercadopago.cl/drakescraft" target="_blank" class="btn-store"
-                            style="width: auto; background: #009EE3; color: white; border: none; min-width: 150px;">
-                            <span style="margin-right: 5px;">💳</span> MercadoPago
-                        </a>
+                        <a href="https://paypal.me/jackstar6677" target="_blank" rel="noopener noreferrer"
+                            class="btn-store"
+                            style="width: auto; background: #0070BA; color: white; border: none; min-width: 150px;">PayPal</a>
+                        <a href="https://link.mercadopago.cl/drakescraft" target="_blank" rel="noopener noreferrer"
+                            class="btn-store"
+                            style="width: auto; background: #009EE3; color: white; border: none; min-width: 150px;">MercadoPago</a>
                     </div>
                 </div>
+            </div>
 
-                <p
-                    style="font-size: 0.95em; line-height: 1.6; color: var(--text-muted); max-width: 800px; margin: 0 auto;">
-                    También aceptamos donaciones para mantener vivo el servidor. ❤️<br>
-                    Buscamos <strong>streamers, youtubers y gente de marketing</strong> que quiera promocionar
-                    DrakesCraft para ayudarnos a escalar a más modalidades.
+            <div class="store-ranks-section">
+                <h2>Rangos VIP <span class="text-gold">(referencia)</span></h2>
+                <p class="store-ranks-lead">Solo nombres previstos, de menor a mayor referencia en la escalera; sin
+                    precios ni perks en esta web hasta que el staff los publique de verdad.</p>
+                <div class="store-rank-grid" role="list">
+                    <div class="store-rank-tile" role="listitem">Hércules</div>
+                    <div class="store-rank-tile" role="listitem">Hestia</div>
+                    <div class="store-rank-tile" role="listitem">Hermes</div>
+                    <div class="store-rank-tile" role="listitem">Hefesto</div>
+                    <div class="store-rank-tile" role="listitem">Artemisa</div>
+                    <div class="store-rank-tile" role="listitem">Afrodita</div>
+                    <div class="store-rank-tile" role="listitem">Atenea</div>
+                    <div class="store-rank-tile" role="listitem">Penélope</div>
+                    <div class="store-rank-tile" role="listitem">Odiseo</div>
+                    <div class="store-rank-tile store-rank-tile--apex" role="listitem">Zeus</div>
+                </div>
+                <p class="store-ranks-lead" style="font-size: 0.88rem;">Si el orden final difiere, se actualizará aquí.
                 </p>
-                <p style="font-size: 0.9em; margin-top: 15px; font-style: italic; color: #ef4444;">
-                    * Los Pases de Temporada son válidos hasta el próximo reinicio (wipe) de la modalidad.
-                </p>
-            </div>
-
-            <!-- Store Tabs -->
-            <div class="store-tabs">
-                <button class="tab-btn active" data-category="monthly">Rangos Mensuales</button>
-                <button class="tab-btn" data-category="permanent">Pases de Temporada</button>
-                <button class="tab-btn" data-category="money">Dinero del Juego</button>
-                <button class="tab-btn" data-category="kits">Kits Especiales</button>
-                <button class="tab-btn" data-category="protection">Protecciones VIP</button>
-                <button class="tab-btn" data-category="casino">Casino Vegas</button>
-                <button class="tab-btn" data-category="commands">Comandos</button>
-            </div>
-
-            <div class="store-grid">
-
-                <!-- RANGOS MENSUALES -->
-                <!-- Neón -->
-                <div class="store-card category-monthly">
-                    <div class="card-header">
-                        <div class="rank-badge monthly">MENSUAL</div>
-                        <h3>NEÓN</h3>
-                        <div class="price">$4.99 USD / 4.550 CLP</div>
-                    </div>
-                    <ul class="benefits-list">
-                        <li><strong>5 Homes</strong></li>
-                        <li>Prefix: &8[&bNeón&8]</li>
-                        <li>Acceso a /feed</li>
-                        <li>Kits Básicos</li>
-                        <li>4 vaults personales</li>
-                    </ul>
-                    <a href="https://discord.gg/rR7FbfCt9Y" target="_blank" class="btn-store">Abrir Ticket en
-                        Discord</a>
-                </div>
-
-                <!-- Orbital -->
-                <div class="store-card category-monthly featured">
-                    <div class="card-header">
-                        <div class="rank-badge monthly">MENSUAL</div>
-                        <h3>ORBITAL</h3>
-                        <div class="price">$9.99 USD / 9.100 CLP</div>
-                    </div>
-                    <ul class="benefits-list">
-                        <li><strong>7 Homes</strong></li>
-                        <li>Prefix: &8[&9Orbital&8]</li>
-                        <li>Acceso a /heal</li>
-                        <li>Acceso a Zonas VIP</li>
-                        <li>5 vaults personales</li>
-                    </ul>
-                    <a href="https://discord.gg/rR7FbfCt9Y" target="_blank" class="btn-store">Abrir Ticket en
-                        Discord</a>
-                </div>
-
-                <!-- Cuásar -->
-                <div class="store-card category-monthly">
-                    <div class="card-header">
-                        <div class="rank-badge monthly">MENSUAL</div>
-                        <h3>CUÁSAR</h3>
-                        <div class="price">$12.99 USD / 12.000 CLP</div>
-                    </div>
-                    <ul class="benefits-list">
-                        <li><strong>8 Homes</strong></li>
-                        <li>Prefix: (Pendiente)</li>
-                        <li>Beneficios superiores a Orbital</li>
-                        <li>Paso previo al máximo</li>
-                        <li>Mayor límite de vaults</li>
-                    </ul>
-                    <a href="https://discord.gg/rR7FbfCt9Y" target="_blank" class="btn-store">Abrir Ticket en
-                        Discord</a>
-                </div>
-
-                <!-- Singularidad -->
-                <div class="store-card category-monthly">
-                    <div class="card-header">
-                        <div class="rank-badge monthly">MENSUAL</div>
-                        <h3>SINGULARIDAD</h3>
-                        <div class="price">$14.99 USD / 14.000 CLP</div>
-                    </div>
-                    <ul class="benefits-list">
-                        <li><strong>10 Homes</strong></li>
-                        <li>Prefix: &8[&dSingularidad&8]</li>
-                        <li><strong>/fly (Si aplica)</strong></li>
-                        <li>Reparaciones (/repair)</li>
-                        <li>Acceso Total</li>
-                        <li>1 Llave Legendaria semanal</li>
-                    </ul>
-                    <a href="https://discord.gg/rR7FbfCt9Y" target="_blank" class="btn-store">Abrir Ticket en
-                        Discord</a>
-                </div>
-
-                <!-- RANGOS PERMANENTES -->
-                <!-- Apolo -->
-                <div class="store-card category-permanent" style="display: none;">
-                    <div class="card-header">
-                        <div class="rank-badge permanent">PASE DE TEMPORADA</div>
-                        <h3>APOLO</h3>
-                        <div class="price">$14.99 USD / 14.000 CLP</div>
-                        <p class="season-pass-desc"
-                            style="color:var(--secondary); font-size: 0.9em; margin-bottom: 15px; font-weight: 500;">
-                            ¡Olvídate de pagar cada mes! <br>
-                            <span style="color:var(--text-muted); font-weight: 400;">Asegura tu estatus y beneficios
-                                durante toda la vigencia de la temporada actual.</span>
-                        </p>
-                    </div>
-                    <ul class="benefits-list">
-                        <li><strong>8 Homes</strong></li>
-                        <li>Prefix: &8[&eApolo&8]</li>
-                        <li>5 vaults personales</li>
-                        <li>Acceso a /hat y /back</li>
-                        <li class="note">Incluye: Piedra Protección 100x100</li>
-                    </ul>
-                    <a href="https://discord.gg/rR7FbfCt9Y" target="_blank" class="btn-store">Abrir Ticket en
-                        Discord</a>
-                </div>
-
-                <!-- Cronos -->
-                <div class="store-card category-permanent" style="display: none;">
-                    <div class="card-header">
-                        <div class="rank-badge permanent">PASE DE TEMPORADA</div>
-                        <h3>CRONOS</h3>
-                        <div class="price">$24.99 USD / 23.000 CLP</div>
-                        <p class="season-pass-desc"
-                            style="color:var(--secondary); font-size: 0.9em; margin-bottom: 15px; font-weight: 500;">
-                            ¡Olvídate de pagar cada mes! <br>
-                            <span style="color:var(--text-muted); font-weight: 400;">Asegura tu estatus y beneficios
-                                durante toda la vigencia de la temporada actual.</span>
-                        </p>
-                    </div>
-                    <ul class="benefits-list">
-                        <li><strong>10 Homes</strong></li>
-                        <li>Prefix: &8[&6Cronos&8]</li>
-                        <li>6 vaults personales</li>
-                        <li>/enderchest portátil</li>
-                        <li class="note">Incluye: Piedra Protección 100x100</li>
-                    </ul>
-                    <a href="https://discord.gg/rR7FbfCt9Y" target="_blank" class="btn-store">Abrir Ticket en
-                        Discord</a>
-                </div>
-
-                <!-- Dragón Eterno -->
-                <div class="store-card category-permanent featured" style="display: none;">
-                    <div class="card-header">
-                        <div class="rank-badge permanent">PASE DE TEMPORADA</div>
-                        <h3>DRAGÓN ETERNO</h3>
-                        <div class="price">$39.99 USD / 36.500 CLP</div>
-                        <p class="season-pass-desc"
-                            style="color:var(--secondary); font-size: 0.9em; margin-bottom: 15px; font-weight: 500;">
-                            ¡Olvídate de pagar cada mes! <br>
-                            <span style="color:var(--text-muted); font-weight: 400;">Asegura tu estatus y beneficios
-                                durante toda la vigencia de la temporada actual.</span>
-                        </p>
-                    </div>
-                    <ul class="benefits-list">
-                        <li><strong>12 Homes</strong></li>
-                        <li>Prefix: &8[&5Dragón&8]</li>
-                        <li>8 Personal vaults</li>
-                        <li>Armadura Cosmética</li>
-                        <li class="note">Incluye: Piedra Protección 200x200</li>
-                    </ul>
-                    <a href="https://discord.gg/rR7FbfCt9Y" target="_blank" class="btn-store">Abrir Ticket en
-                        Discord</a>
-                </div>
-
-                <!-- Deus Machina -->
-                <div class="store-card category-permanent" style="display: none;">
-                    <div class="card-header">
-                        <div class="rank-badge permanent">PASE DE TEMPORADA</div>
-                        <h3>DEUS MACHINA</h3>
-                        <div class="price">$59.99 USD / 55.000 CLP</div>
-                        <p class="season-pass-desc"
-                            style="color:var(--secondary); font-size: 0.9em; margin-bottom: 15px; font-weight: 500;">
-                            ¡Olvídate de pagar cada mes! <br>
-                            <span style="color:var(--text-muted); font-weight: 400;">Asegura tu estatus y beneficios
-                                durante toda la vigencia de la temporada actual.</span>
-                        </p>
-                    </div>
-                    <ul class="benefits-list">
-                        <li><strong>15 Homes (Máximo)</strong></li>
-                        <li>Prefix: &8[&4Deus&8]</li>
-                        <li>10 personal vaults</li>
-                        <li>Comandos de utilidad avanzados</li>
-                        <li class="note">Incluye: Piedra Protección 200x200</li>
-                    </ul>
-                    <a href="https://discord.gg/rR7FbfCt9Y" target="_blank" class="btn-store">Abrir Ticket en
-                        Discord</a>
-                </div>
-
-                <!-- DINERO DEL JUEGO -->
-                <div class="store-card category-money" style="display: none;">
-                    <h3>Dinero Cuántico I</h3>
-                    <div class="price">$2.99 USD / 3.000 CLP</div>
-                    <p class="money-amount">$250.000 In-game</p>
-                    <a href="https://discord.gg/rR7FbfCt9Y" target="_blank" class="btn-store">Abrir Ticket en
-                        Discord</a>
-                </div>
-                <div class="store-card category-money" style="display: none;">
-                    <h3>Dinero Cuántico II</h3>
-                    <div class="price">$4.99 USD / 4.550 CLP</div>
-                    <p class="money-amount">$750.000 In-game</p>
-                    <a href="https://discord.gg/rR7FbfCt9Y" target="_blank" class="btn-store">Abrir Ticket en
-                        Discord</a>
-                </div>
-                <div class="store-card category-money" style="display: none;">
-                    <h3>Dinero Galáctico I</h3>
-                    <div class="price">$9.99 USD / 9.100 CLP</div>
-                    <p class="money-amount">$2.500.000 In-game</p>
-                    <a href="https://discord.gg/rR7FbfCt9Y" target="_blank" class="btn-store">Abrir Ticket en
-                        Discord</a>
-                </div>
-                <div class="store-card category-money" style="display: none;">
-                    <h3>Dinero Galáctico II</h3>
-                    <div class="price">$19.99 USD / 18.500 CLP</div>
-                    <p class="money-amount">$7.500.000 In-game</p>
-                    <a href="https://discord.gg/rR7FbfCt9Y" target="_blank" class="btn-store">Abrir Ticket en
-                        Discord</a>
-                </div>
-                <div class="store-card category-money featured" style="display: none;">
-                    <div class="rank-badge money">MEJOR VALOR</div>
-                    <h3>Banco del Dragón</h3>
-                    <div class="price">$34.99 USD / 32.000 CLP</div>
-                    <p class="money-amount">$15.000.000 In-game</p>
-                    <a href="https://discord.gg/rR7FbfCt9Y" target="_blank" class="btn-store">Abrir Ticket en
-                        Discord</a>
-                </div>
-
-                <!-- KITS ESPECIALES -->
-                <div class="store-card category-kits" style="display: none;">
-                    <h3>Kit Técnico Cuántico</h3>
-                    <div class="price">$6.99 USD / 6.500 CLP</div>
-                    <ul class="benefits-list small">
-                        <li>Materiales Slimefun Mid-game</li>
-                        <li>Herramientas Técnicas (Efi 6, etc.)</li>
-                        <li>2 Llaves técnicas (WIP)</li>
-                    </ul>
-                    <a href="https://discord.gg/rR7FbfCt9Y" target="_blank" class="btn-store">Abrir Ticket en
-                        Discord</a>
-                </div>
-                <div class="store-card category-kits" style="display: none;">
-                    <h3>Kit AgroTech</h3>
-                    <div class="price">$4.99 USD / 4.550 CLP</div>
-                    <ul class="benefits-list small">
-                        <li>Semillas y cultivos</li>
-                        <li>Items Slimefun agricultura (Basic)</li>
-                    </ul>
-                    <a href="https://discord.gg/rR7FbfCt9Y" target="_blank" class="btn-store">Abrir Ticket en
-                        Discord</a>
-                </div>
-
-                <!-- PROTECCIONES VIP -->
-                <div class="store-card category-protection" style="display: none;">
-                    <h3>Núcleo Protector I</h3>
-                    <div class="price">$24.99 USD / 23.000 CLP</div>
-                    <ul class="benefits-list small">
-                        <li>Radio: 100x100 bloques</li>
-                        <li>Ideal para Bases Grandes</li>
-                    </ul>
-                    <a href="https://discord.gg/rR7FbfCt9Y" target="_blank" class="btn-store">Abrir Ticket en
-                        Discord</a>
-                </div>
-                <div class="store-card category-protection" style="display: none;">
-                    <h3>Núcleo Protector II</h3>
-                    <div class="price">$39.99 USD / 36.500 CLP</div>
-                    <ul class="benefits-list small">
-                        <li>Radio: 200x200 bloques</li>
-                        <li>Para Ciudades/Megabases</li>
-                    </ul>
-                    <a href="https://discord.gg/rR7FbfCt9Y" target="_blank" class="btn-store">Abrir Ticket en
-                        Discord</a>
-                </div>
-                <div class="store-card category-protection featured" style="display: none;">
-                    <div class="rank-badge money">ÉLITE</div>
-                    <h3>Dominio del Dragón</h3>
-                    <div class="price">$69.99 USD / 63.500 CLP</div>
-                    <ul class="benefits-list small">
-                        <li>Radio: 400x400 bloques</li>
-                        <li>Territorio de Clan/Imperio</li>
-                    </ul>
-                    <a href="https://discord.gg/rR7FbfCt9Y" target="_blank" class="btn-store">Abrir Ticket en
-                        Discord</a>
-                </div>
-
-                <!-- COMANDOS ESPECIALES -->
-                <div class="store-card category-commands" style="display: none;">
-                    <h3>Desbloqueo Slimefun</h3>
-                    <div class="price">$3.5 USD / 3.200 CLP</div>
-                    <p class="money-amount">Desbloqueo total del Slimefun</p>
-                    <a href="https://discord.gg/rR7FbfCt9Y" target="_blank" class="btn-store">Abrir Ticket en
-                        Discord</a>
-                </div>
-                <div class="store-card category-commands" style="display: none;">
-                    <h3>Fly (Sin rango)</h3>
-                    <div class="price">$2 USD / 2.000 CLP</div>
-                    <p class="money-amount">Acceso a /fly (1 Mes)</p>
-                    <a href="https://discord.gg/rR7FbfCt9Y" target="_blank" class="btn-store">Abrir Ticket en
-                        Discord</a>
-                </div>
-                <div class="store-card category-commands" style="display: none;">
-                    <h3>Comando Específico</h3>
-                    <div class="price">$2 USD / 2.000 CLP</div>
-                    <p class="money-amount">Duración definida en Ticket</p>
-                    <a href="https://discord.gg/rR7FbfCt9Y" target="_blank" class="btn-store">Abrir Ticket en
-                        Discord</a>
-                </div>
-
-                <!-- CASINO VEGAS (NUEVO) -->
-                <div class="store-card category-casino" style="display: none;">
-                    <div class="card-header">
-                        <h3>Bolsa de Principiante</h3>
-                        <div class="price">$0.99 USD / 900 CLP</div>
-                    </div>
-                    <div class="money-amount">$50.000 Fichas</div>
-                    <button class="btn-store btn-disabled">Próximamente</button>
-                </div>
-                <div class="store-card category-casino" style="display: none;">
-                    <div class="card-header">
-                        <h3>Maletín de Apostador</h3>
-                        <div class="price">$3.99 USD / 3.800 CLP</div>
-                    </div>
-                    <div class="money-amount">$500.000 Fichas</div>
-                    <button class="btn-store btn-disabled">Próximamente</button>
-                </div>
-                <div class="store-card category-casino featured" style="display: none;">
-                    <div class="card-header">
-                        <div class="rank-badge money">HIGH ROLLER</div>
-                        <h3>Bóveda High Roller</h3>
-                        <div class="price">$8.99 USD / 8.500 CLP</div>
-                    </div>
-                    <div class="money-amount">$2.000.000 Fichas</div>
-                    <button class="btn-store btn-disabled">Próximamente</button>
-                </div>
-                <div class="store-card category-casino" style="display: none;">
-                    <div class="card-header">
-                        <div class="rank-badge permanent">VIP</div>
-                        <h3>Pase VIP Casino</h3>
-                        <div class="price">$4.99 USD / 4.500 CLP</div>
-                    </div>
-                    <ul class="benefits-list small">
-                        <li>Acceso Zona VIP (30 Días)</li>
-                        <li>Mesas de altos límites</li>
-                        <li>BlackJack Exclusivo</li>
-                    </ul>
-                    <button class="btn-store btn-disabled">Próximamente</button>
-                </div>
-
-                <!-- Casino Maintenance Notice -->
-                <div class="category-casino full-width"
-                    style="display: none; grid-column: 1 / -1; margin-bottom: 30px;">
-                    <div class="warning-box"
-                        style="background: rgba(234, 179, 8, 0.1); border: 1px solid #eab308; text-align: center;">
-                        <h3 style="color: #eab308; margin-bottom: 10px;">🚧 EN CONSTRUCCIÓN 🚧</h3>
-                        <p style="color: #fef08a;">El Casino de DrakesCraft se está construyendo. Estos ítems estarán
-                            disponibles pronto, ¡no se permiten pre-compras!</p>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- ENCARGOS ESPECIALES -->
-            <div class="custom-orders-section"
-                style="margin-top: 50px; background: rgba(5, 8, 22, 0.8); border: 1px solid var(--secondary); border-radius: 15px; padding: 30px; text-align: left;">
-                <h3
-                    style="color: #a855f7; font-family: var(--font-heading); font-size: 1.8rem; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
-                    <span>🟣</span> ENCARGOS ESPECIALES: SLIMEFUN
-                </h3>
-                <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 1.05rem;">
-                    ¿Necesitas un ítem avanzado, una máquina compleja o un Spawner y no tienes el nivel o los
-                    materiales?
-                    Ofrecemos un servicio de venta directa de <strong>CUALQUIER ítem de Slimefun</strong> (y sus
-                    expansiones).
-                </p>
-
-                <div
-                    style="background: rgba(255, 255, 255, 0.05); padding: 20px; border-radius: 10px; margin-bottom: 25px;">
-                    <h4 style="color: white; margin-bottom: 15px;">¿Cómo funciona?</h4>
-                    <p style="color: #d1d5db; margin-bottom: 10px;">Este servicio es <strong>manual y
-                            personalizado</strong>. No hay precios fijos porque dependen de la complejidad del ítem.</p>
-                    <ol style="color: var(--text-muted); margin-left: 20px; line-height: 1.8;">
-                        <li>📩 <strong>Abre un Ticket</strong> en nuestro Discord (Soporte/Donaciones).</li>
-                        <li>📝 <strong>Indica el ítem exacto</strong> (Ej: <em>Electric Spawner, Reactor Nuclear,
-                                Ingots</em>).</li>
-                        <li>💰 <strong>Recibe tu cotización:</strong> Te daremos un precio en USD/CLP según la
-                            dificultad.</li>
-                    </ol>
-                </div>
-
-                <div class="note-box"
-                    style="border-left: 4px solid var(--secondary); background: rgba(139, 92, 246, 0.1); padding: 15px;">
-                    <p style="color: #e9d5ff; font-style: italic;">
-                        ⚠️ <strong>Nota:</strong> Ideal para saltarte el "grindeo" y ahorrar tiempo consiguiendo ítems
-                        End-Game al instante.
-                    </p>
+                <div class="store-ranks-cta">
+                    <a href="https://discord.gg/rR7FbfCt9Y" target="_blank" rel="noopener noreferrer"
+                        class="btn-discord">Discord — tickets</a>
                 </div>
             </div>
-
-            <p class="store-note" style="margin-top: 30px;">* Para compras, por favor abrir Ticket en Discord indicando
-                el ítem deseado.</p>
         </div>
     </section>
 

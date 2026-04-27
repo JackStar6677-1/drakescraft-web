@@ -7,13 +7,13 @@
     <title>Tienda - DrakesCraft</title>
     <meta name="description"
         content="Tienda oficial de DrakesCraft. Adquiere rangos, kits, dinero y protecciones para mejorar tu experiencia en el servidor.">
-    <link rel="icon" type="image/png" href="logodrakescraft.png">
+    <link rel="icon" type="image/png" href="assets/logo-drakescraft.png">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
         rel="stylesheet">
 
     <link rel="stylesheet" href="styles.css">
@@ -21,42 +21,26 @@
 
 <body>
 
-    <!-- Background Layers -->
-    <div id="background-layers">
-        <div class="gradient-layer"></div>
-        <canvas id="particles-canvas"></canvas>
-    </div>
-
-    <!-- Sound Effects -->
-    <audio id="sfx-hover" src="hover.mp3" preload="auto"></audio>
-    <audio id="sfx-click" src="click.mp3" preload="auto"></audio>
-
-    <!-- Sound Toggle -->
-    <button id="sound-toggle" class="sound-toggle-btn" aria-label="Toggle Sound">
-        <span class="sound-icon">🔊</span>
-    </button>
-
-    <!-- Navbar -->
-    <nav class="navbar">
+    <nav class="navbar" aria-label="Principal">
         <div class="container nav-container">
             <a href="index.html" class="logo">
-                <img src="logodrakescraft.png" alt="DrakesCraft" class="logo-img">
+                <img src="assets/logo-drakescraft.png" alt="" class="logo-img" width="40" height="40">
                 <span class="logo-text">DrakesCraft</span>
             </a>
-            <div class="nav-toggle" id="nav-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+            <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu"
+                aria-label="Abrir menú">
+                <span></span><span></span><span></span>
+            </button>
             <ul class="nav-menu" id="nav-menu">
-                <li><a href="index.html" class="nav-link">Inicio</a></li>
-                <li><a href="index.html#about" class="nav-link">Sobre el Servidor</a></li>
-                <li><a href="index.html#plugins" class="nav-link">Slimefun & Plugins</a></li>
+                <li><a href="index.html#home" class="nav-link">Inicio</a></li>
+                <li><a href="index.html#conectar" class="nav-link">Conectar</a></li>
+                <li><a href="index.html#odisea" class="nav-link">Odisea</a></li>
+                <li><a href="index.html#slimefun" class="nav-link">Slimefun</a></li>
                 <li><a href="store.html" class="nav-link active">Tienda</a></li>
-                <li><a href="index.html#community" class="nav-link">Comunidad</a></li>
                 <li><a href="rules.html" class="nav-link">Reglas</a></li>
                 <li><a href="index.html#faq" class="nav-link">FAQ</a></li>
-                <li><a href="index.html#join" class="btn-primary nav-btn">Jugar Ahora</a></li>
+                <li><a href="https://discord.gg/rR7FbfCt9Y" class="btn-discord nav-btn" target="_blank"
+                        rel="noopener">Discord</a></li>
             </ul>
         </div>
     </nav>
@@ -84,7 +68,7 @@
                     Únete a nuestro Discord para recibir noticias, actualizaciones de la tienda y soporte en tiempo
                     real. ¡Ahí está toda la info nueva!
                 </p>
-                <a href="https://discord.gg/4kaCMHSYkR" target="_blank" class="btn-discord small">Unirse al Discord</a>
+                <a href="https://discord.gg/rR7FbfCt9Y" target="_blank" class="btn-discord small">Unirse al Discord</a>
             </div>
 
             <div class="store-intro">
@@ -149,7 +133,7 @@
                         <li>Kits Básicos</li>
                         <li>4 vaults personales</li>
                     </ul>
-                    <a href="https://discord.gg/4kaCMHSYkR" target="_blank" class="btn-store">Abrir Ticket en
+                    <a href="https://discord.gg/rR7FbfCt9Y" target="_blank" class="btn-store">Abrir Ticket en
                         Discord</a>
                 </div>
 
@@ -167,7 +151,7 @@
                         <li>Acceso a Zonas VIP</li>
                         <li>5 vaults personales</li>
                     </ul>
-                    <a href="https://discord.gg/4kaCMHSYkR" target="_blank" class="btn-store">Abrir Ticket en
+                    <a href="https://discord.gg/rR7FbfCt9Y" target="_blank" class="btn-store">Abrir Ticket en
                         Discord</a>
                 </div>
 
@@ -185,7 +169,7 @@
                         <li>Paso previo al máximo</li>
                         <li>Mayor límite de vaults</li>
                     </ul>
-                    <a href="https://discord.gg/4kaCMHSYkR" target="_blank" class="btn-store">Abrir Ticket en
+                    <a href="https://discord.gg/rR7FbfCt9Y" target="_blank" class="btn-store">Abrir Ticket en
                         Discord</a>
                 </div>
 
@@ -204,7 +188,7 @@
                         <li>Acceso Total</li>
                         <li>1 Llave Legendaria semanal</li>
                     </ul>
-                    <a href="https://discord.gg/4kaCMHSYkR" target="_blank" class="btn-store">Abrir Ticket en
+                    <a href="https://discord.gg/rR7FbfCt9Y" target="_blank" class="btn-store">Abrir Ticket en
                         Discord</a>
                 </div>
 
@@ -229,7 +213,7 @@
                         <li>Acceso a /hat y /back</li>
                         <li class="note">Incluye: Piedra Protección 100x100</li>
                     </ul>
-                    <a href="https://discord.gg/4kaCMHSYkR" target="_blank" class="btn-store">Abrir Ticket en
+                    <a href="https://discord.gg/rR7FbfCt9Y" target="_blank" class="btn-store">Abrir Ticket en
                         Discord</a>
                 </div>
 
@@ -253,7 +237,7 @@
                         <li>/enderchest portátil</li>
                         <li class="note">Incluye: Piedra Protección 100x100</li>
                     </ul>
-                    <a href="https://discord.gg/4kaCMHSYkR" target="_blank" class="btn-store">Abrir Ticket en
+                    <a href="https://discord.gg/rR7FbfCt9Y" target="_blank" class="btn-store">Abrir Ticket en
                         Discord</a>
                 </div>
 
@@ -277,7 +261,7 @@
                         <li>Armadura Cosmética</li>
                         <li class="note">Incluye: Piedra Protección 200x200</li>
                     </ul>
-                    <a href="https://discord.gg/4kaCMHSYkR" target="_blank" class="btn-store">Abrir Ticket en
+                    <a href="https://discord.gg/rR7FbfCt9Y" target="_blank" class="btn-store">Abrir Ticket en
                         Discord</a>
                 </div>
 
@@ -301,7 +285,7 @@
                         <li>Comandos de utilidad avanzados</li>
                         <li class="note">Incluye: Piedra Protección 200x200</li>
                     </ul>
-                    <a href="https://discord.gg/4kaCMHSYkR" target="_blank" class="btn-store">Abrir Ticket en
+                    <a href="https://discord.gg/rR7FbfCt9Y" target="_blank" class="btn-store">Abrir Ticket en
                         Discord</a>
                 </div>
 
@@ -310,28 +294,28 @@
                     <h3>Dinero Cuántico I</h3>
                     <div class="price">$2.99 USD / 3.000 CLP</div>
                     <p class="money-amount">$250.000 In-game</p>
-                    <a href="https://discord.gg/4kaCMHSYkR" target="_blank" class="btn-store">Abrir Ticket en
+                    <a href="https://discord.gg/rR7FbfCt9Y" target="_blank" class="btn-store">Abrir Ticket en
                         Discord</a>
                 </div>
                 <div class="store-card category-money" style="display: none;">
                     <h3>Dinero Cuántico II</h3>
                     <div class="price">$4.99 USD / 4.550 CLP</div>
                     <p class="money-amount">$750.000 In-game</p>
-                    <a href="https://discord.gg/4kaCMHSYkR" target="_blank" class="btn-store">Abrir Ticket en
+                    <a href="https://discord.gg/rR7FbfCt9Y" target="_blank" class="btn-store">Abrir Ticket en
                         Discord</a>
                 </div>
                 <div class="store-card category-money" style="display: none;">
                     <h3>Dinero Galáctico I</h3>
                     <div class="price">$9.99 USD / 9.100 CLP</div>
                     <p class="money-amount">$2.500.000 In-game</p>
-                    <a href="https://discord.gg/4kaCMHSYkR" target="_blank" class="btn-store">Abrir Ticket en
+                    <a href="https://discord.gg/rR7FbfCt9Y" target="_blank" class="btn-store">Abrir Ticket en
                         Discord</a>
                 </div>
                 <div class="store-card category-money" style="display: none;">
                     <h3>Dinero Galáctico II</h3>
                     <div class="price">$19.99 USD / 18.500 CLP</div>
                     <p class="money-amount">$7.500.000 In-game</p>
-                    <a href="https://discord.gg/4kaCMHSYkR" target="_blank" class="btn-store">Abrir Ticket en
+                    <a href="https://discord.gg/rR7FbfCt9Y" target="_blank" class="btn-store">Abrir Ticket en
                         Discord</a>
                 </div>
                 <div class="store-card category-money featured" style="display: none;">
@@ -339,7 +323,7 @@
                     <h3>Banco del Dragón</h3>
                     <div class="price">$34.99 USD / 32.000 CLP</div>
                     <p class="money-amount">$15.000.000 In-game</p>
-                    <a href="https://discord.gg/4kaCMHSYkR" target="_blank" class="btn-store">Abrir Ticket en
+                    <a href="https://discord.gg/rR7FbfCt9Y" target="_blank" class="btn-store">Abrir Ticket en
                         Discord</a>
                 </div>
 
@@ -352,7 +336,7 @@
                         <li>Herramientas Técnicas (Efi 6, etc.)</li>
                         <li>2 Llaves técnicas (WIP)</li>
                     </ul>
-                    <a href="https://discord.gg/4kaCMHSYkR" target="_blank" class="btn-store">Abrir Ticket en
+                    <a href="https://discord.gg/rR7FbfCt9Y" target="_blank" class="btn-store">Abrir Ticket en
                         Discord</a>
                 </div>
                 <div class="store-card category-kits" style="display: none;">
@@ -362,7 +346,7 @@
                         <li>Semillas y cultivos</li>
                         <li>Items Slimefun agricultura (Basic)</li>
                     </ul>
-                    <a href="https://discord.gg/4kaCMHSYkR" target="_blank" class="btn-store">Abrir Ticket en
+                    <a href="https://discord.gg/rR7FbfCt9Y" target="_blank" class="btn-store">Abrir Ticket en
                         Discord</a>
                 </div>
 
@@ -374,7 +358,7 @@
                         <li>Radio: 100x100 bloques</li>
                         <li>Ideal para Bases Grandes</li>
                     </ul>
-                    <a href="https://discord.gg/4kaCMHSYkR" target="_blank" class="btn-store">Abrir Ticket en
+                    <a href="https://discord.gg/rR7FbfCt9Y" target="_blank" class="btn-store">Abrir Ticket en
                         Discord</a>
                 </div>
                 <div class="store-card category-protection" style="display: none;">
@@ -384,7 +368,7 @@
                         <li>Radio: 200x200 bloques</li>
                         <li>Para Ciudades/Megabases</li>
                     </ul>
-                    <a href="https://discord.gg/4kaCMHSYkR" target="_blank" class="btn-store">Abrir Ticket en
+                    <a href="https://discord.gg/rR7FbfCt9Y" target="_blank" class="btn-store">Abrir Ticket en
                         Discord</a>
                 </div>
                 <div class="store-card category-protection featured" style="display: none;">
@@ -395,7 +379,7 @@
                         <li>Radio: 400x400 bloques</li>
                         <li>Territorio de Clan/Imperio</li>
                     </ul>
-                    <a href="https://discord.gg/4kaCMHSYkR" target="_blank" class="btn-store">Abrir Ticket en
+                    <a href="https://discord.gg/rR7FbfCt9Y" target="_blank" class="btn-store">Abrir Ticket en
                         Discord</a>
                 </div>
 
@@ -404,21 +388,21 @@
                     <h3>Desbloqueo Slimefun</h3>
                     <div class="price">$3.5 USD / 3.200 CLP</div>
                     <p class="money-amount">Desbloqueo total del Slimefun</p>
-                    <a href="https://discord.gg/4kaCMHSYkR" target="_blank" class="btn-store">Abrir Ticket en
+                    <a href="https://discord.gg/rR7FbfCt9Y" target="_blank" class="btn-store">Abrir Ticket en
                         Discord</a>
                 </div>
                 <div class="store-card category-commands" style="display: none;">
                     <h3>Fly (Sin rango)</h3>
                     <div class="price">$2 USD / 2.000 CLP</div>
                     <p class="money-amount">Acceso a /fly (1 Mes)</p>
-                    <a href="https://discord.gg/4kaCMHSYkR" target="_blank" class="btn-store">Abrir Ticket en
+                    <a href="https://discord.gg/rR7FbfCt9Y" target="_blank" class="btn-store">Abrir Ticket en
                         Discord</a>
                 </div>
                 <div class="store-card category-commands" style="display: none;">
                     <h3>Comando Específico</h3>
                     <div class="price">$2 USD / 2.000 CLP</div>
                     <p class="money-amount">Duración definida en Ticket</p>
-                    <a href="https://discord.gg/4kaCMHSYkR" target="_blank" class="btn-store">Abrir Ticket en
+                    <a href="https://discord.gg/rR7FbfCt9Y" target="_blank" class="btn-store">Abrir Ticket en
                         Discord</a>
                 </div>
 
@@ -521,12 +505,12 @@
     <footer class="footer">
         <div class="container footer-content">
             <div class="footer-logo">
-                <img src="logodrakescraft.png" alt="DrakesCraft" height="40">
+                <img src="assets/logo-drakescraft.png" alt="" height="40" width="40">
                 <span>DrakesCraft</span>
             </div>
             <div class="footer-links">
                 <a href="rules.html">Reglamento</a>
-                <a href="https://discord.gg/4kaCMHSYkR">Discord</a>
+                <a href="https://discord.gg/rR7FbfCt9Y">Discord</a>
                 <a href="store.html">Tienda</a>
                 <a href="mailto:contacto@drakescraft.cl">Contacto</a>
                 <div class="footer-votes">
@@ -536,7 +520,7 @@
                     <a href="https://topg.org/minecraft-servers/server-677700" target="_blank">TopG</a>
                 </div>
             </div>
-            <p class="copyright">© 2025 DrakesCraft - Todos los derechos reservados.</p>
+            <p class="copyright">© 2026 DrakesCraft · drakescraft.cl</p>
             <p class="disclaimer">Minecraft es una marca registrada de Mojang AB. No estamos afiliados con Mojang AB.
             </p>
         </div>

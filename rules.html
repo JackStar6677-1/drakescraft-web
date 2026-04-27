@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reglas - DrakesCraft</title>
-    <link rel="icon" type="image/png" href="logodrakescraft.png">
+    <link rel="icon" type="image/png" href="assets/logo-drakescraft.png">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
         rel="stylesheet">
 
     <link rel="stylesheet" href="styles.css">
@@ -104,26 +104,26 @@
 <body>
 
     <!-- Navbar -->
-    <nav class="navbar">
+    <nav class="navbar" aria-label="Principal">
         <div class="container nav-container">
             <a href="index.html" class="logo">
-                <img src="logodrakescraft.png" alt="DrakesCraft" class="logo-img">
+                <img src="assets/logo-drakescraft.png" alt="" class="logo-img" width="40" height="40">
                 <span class="logo-text">DrakesCraft</span>
             </a>
-            <div class="nav-toggle" id="nav-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+            <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu"
+                aria-label="Abrir menú">
+                <span></span><span></span><span></span>
+            </button>
             <ul class="nav-menu" id="nav-menu">
                 <li><a href="index.html#home" class="nav-link">Inicio</a></li>
-                <li><a href="index.html#about" class="nav-link">Sobre el Servidor</a></li>
-                <li><a href="index.html#plugins" class="nav-link">Slimefun & Plugins</a></li>
-                <li><a href="index.html#store" class="nav-link">Tienda</a></li>
-                <li><a href="index.html#community" class="nav-link">Comunidad</a></li>
-                <li><a href="#" class="nav-link active">Reglas</a></li>
+                <li><a href="index.html#conectar" class="nav-link">Conectar</a></li>
+                <li><a href="index.html#odisea" class="nav-link">Odisea</a></li>
+                <li><a href="index.html#slimefun" class="nav-link">Slimefun</a></li>
+                <li><a href="store.html" class="nav-link">Tienda</a></li>
+                <li><a href="rules.html" class="nav-link active">Reglas</a></li>
                 <li><a href="index.html#faq" class="nav-link">FAQ</a></li>
-                <li><a href="index.html#join" class="btn-primary nav-btn">Jugar Ahora</a></li>
+                <li><a href="https://discord.gg/rR7FbfCt9Y" class="btn-discord nav-btn" target="_blank"
+                        rel="noopener">Discord</a></li>
             </ul>
         </div>
     </nav>
@@ -285,13 +285,13 @@
         <div class="container footer-content">
             <div class="footer-links" style="display: flex; gap: 20px; justify-content: center; margin-bottom: 20px;">
                 <a href="index.html" style="color: var(--text-muted); text-decoration: none;">Inicio</a>
-                <a href="https://discord.gg/4kaCMHSYkR"
+                <a href="https://discord.gg/rR7FbfCt9Y" target="_blank" rel="noopener"
                     style="color: var(--text-muted); text-decoration: none;">Discord</a>
                 <a href="store.html" style="color: var(--text-muted); text-decoration: none;">Tienda</a>
                 <a href="mailto:contacto@drakescraft.cl"
                     style="color: var(--text-muted); text-decoration: none;">Contacto</a>
             </div>
-            <p class="copyright">© 2025 DrakesCraft - Todos los derechos reservados.</p>
+            <p class="copyright">© 2026 DrakesCraft · drakescraft.cl</p>
             <p class="disclaimer">Minecraft es una marca registrada de Mojang AB.</p>
         </div>
     </footer>

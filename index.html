@@ -4,16 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DrakesCraft - Servidor Survival Épico</title>
+    <title>DrakesCraft — Odisea | Minecraft Chile</title>
     <meta name="description"
-        content="DrakesCraft: Servidor survival técnico con Slimefun, Galactifun, economía y magia. IP: mc.drakescraft.cl">
-    <link rel="icon" type="image/png" href="logodrakescraft.png">
+        content="DrakesCraft: servidor Paper 1.21 con temática de la Odisea, Slimefun y comunidad en Discord. Java y Bedrock (Geyser).">
+    <link rel="icon" type="image/png" href="assets/logo-drakescraft.png">
 
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
         rel="stylesheet">
 
     <link rel="stylesheet" href="styles.css">
@@ -21,482 +20,178 @@
 
 <body>
 
-    <!-- Background Layers -->
-    <div id="background-layers">
-        <div class="gradient-layer"></div>
-        <canvas id="particles-canvas"></canvas>
-    </div>
-
-    <!-- Sound Effects -->
-    <audio id="sfx-hover" src="hover.mp3" preload="auto"></audio>
-    <audio id="sfx-click" src="click.mp3" preload="auto"></audio>
-
-    <!-- Sound Toggle -->
-    <button id="sound-toggle" class="sound-toggle-btn" aria-label="Toggle Sound">
-        <span class="sound-icon">🔊</span>
-    </button>
-
-    <!-- Navbar -->
-    <nav class="navbar">
+    <nav class="navbar" aria-label="Principal">
         <div class="container nav-container">
-            <a href="#home" class="logo">
-                <img src="logodrakescraft.png" alt="DrakesCraft" class="logo-img">
+            <a href="index.html" class="logo">
+                <img src="assets/logo-drakescraft.png" alt="" class="logo-img" width="44" height="44">
                 <span class="logo-text">DrakesCraft</span>
             </a>
-            <div class="nav-toggle" id="nav-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+            <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu"
+                aria-label="Abrir menú">
+                <span></span><span></span><span></span>
+            </button>
             <ul class="nav-menu" id="nav-menu">
-                <li><a href="#home" class="nav-link active">Inicio</a></li>
-                <li><a href="#about" class="nav-link">Sobre el Servidor</a></li>
-                <li><a href="#plugins" class="nav-link">Slimefun & Plugins</a></li>
+                <li><a href="#home" class="nav-link">Inicio</a></li>
+                <li><a href="#conectar" class="nav-link">Conectar</a></li>
+                <li><a href="#odisea" class="nav-link">Odisea</a></li>
+                <li><a href="#slimefun" class="nav-link">Slimefun</a></li>
                 <li><a href="store.html" class="nav-link">Tienda</a></li>
-                <li><a href="#community" class="nav-link">Comunidad</a></li>
                 <li><a href="rules.html" class="nav-link">Reglas</a></li>
                 <li><a href="#faq" class="nav-link">FAQ</a></li>
-                <li><a href="#join" class="btn-primary nav-btn">Jugar Ahora</a></li>
+                <li><a href="https://discord.gg/rR7FbfCt9Y" class="btn-discord nav-btn" target="_blank"
+                        rel="noopener">Discord</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <header id="home" class="hero">
-        <div class="hero-bg"></div>
-        <div class="hero-overlay"></div>
-
-        <!-- Flying Dragon Animation (Scroll Driven) -->
-        <div class="dragon-fly-layer">
-            <div class="dragon-trajectory">
-                <img src="dragon_fly.png" alt="Dragón dorado DrakesCraft" class="dragon-fly" />
-            </div>
-        </div>
-
-        <div class="container hero-content">
-            <img src="bannerdrakes.jpg" alt="DrakesCraft Banner" class="hero-banner">
-
-            <h1 class="hero-title">DrakesCraft</h1>
-            <p class="hero-subtitle">Servidor Survival Técnico con Slimefun, Magia y Espacio.</p>
-            <p class="hero-description">
-                Explora un universo de posibilidades con <strong>Slimefun y Galactifun</strong>.
-                Construye máquinas complejas, viaja a otros planetas, domina habilidades y crea tu imperio.
-            </p>
-
-            <div class="hero-buttons">
-                <button class="btn-primary" onclick="copyIp('mc.drakescraft.cl')">
-                    <span class="btn-icon">🎮</span> Copiar IP
-                </button>
-                <a href="store.html" class="btn-secondary">
-                    <span class="btn-icon">💎</span> Ir a la Tienda
-                </a>
-                <a href="https://discord.gg/4kaCMHSYkR" target="_blank" class="btn-discord">
-                    <span class="btn-icon">👾</span> Unirse al Discord
-                </a>
-            </div>
-
-            <div class="hero-ip-display">
-                <span class="ip-label">IP Java:</span> <span class="text-gold">mc.drakescraft.cl</span>
-                <span class="divider">|</span>
-                <span class="ip-label">IP Alternativa:</span> <span class="text-gold">play.drakescraft.cl</span>
+    <header id="home" class="site-hero">
+        <div class="site-hero__glow" aria-hidden="true"></div>
+        <div class="container site-hero__inner">
+            <p class="badge-status">MOTD en juego: DrakesCraft — Odisea · Paper 1.21</p>
+            <img src="assets/logo-drakescraft.png" alt="DrakesCraft" class="site-hero__logo" width="220" height="220">
+            <h1 class="site-hero__title">DrakesCraft</h1>
+            <p class="site-hero__tagline">Una odisea en bloques: mitología griega, progresión técnica con Slimefun y una
+                comunidad que habla tu idioma.</p>
+            <p class="site-hero__note">El servidor y los rangos siguen en evolución; la fuente de verdad para novedades
+                y aperturas es <strong>Discord</strong>.</p>
+            <div class="site-hero__actions">
+                <a href="https://discord.gg/rR7FbfCt9Y" class="btn-discord" target="_blank" rel="noopener">Entrar al
+                    Discord</a>
+                <a href="#conectar" class="btn-secondary">Cómo conectar</a>
             </div>
         </div>
     </header>
 
-    <!-- Sobre el Servidor -->
-    <section id="about" class="section">
+    <section id="conectar" class="section section-tight">
         <div class="container">
-            <h2 class="section-title">Sobre <span class="text-gradient">DrakesCraft</span></h2>
-            <p class="section-desc">Un servidor diseñado para ofrecer la mejor experiencia survival con toques RPG y
-                técnicos.</p>
-
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="card-icon">⚡</div>
-                    <h3>Tecnología y Espacio</h3>
-                    <p>Desde reactores nucleares hasta cohetes espaciales. Slimefun + Galactifun expanden el juego al
-                        límite.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="card-icon">💰</div>
-                    <h3>Economía y Tiendas</h3>
-                    <p>Mercado dinámico controlado por jugadores. ¡Crea tu imperio comercial!</p>
-                </div>
-                <div class="feature-card">
-                    <div class="card-icon">⚔️</div>
-                    <h3>PvE Desafiante</h3>
-                    <p>Enfréntate a jefes élite (EliteMobs) y mazmorras para conseguir botín legendario.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="card-icon">⭐</div>
-                    <h3>Progreso y Rangos</h3>
-                    <p>Sistema de rangos justo y gratificante, habilidades con AuraSkills y sin pay2win abusivo.</p>
-                </div>
+            <h2 class="section-title">Conectar</h2>
+            <p class="section-desc">Misma experiencia en Java y Bedrock vía Geyser; los datos coinciden con el TAB y el
+                scoreboard en juego.</p>
+            <div class="connect-grid">
+                <article class="connect-card">
+                    <h3>Java (PC)</h3>
+                    <p class="connect-card__meta">Dirección recomendada</p>
+                    <code class="ip-block">mc.drakescraft.cl</code>
+                    <button type="button" class="btn-copy" onclick="copyIp('mc.drakescraft.cl')">Copiar IP</button>
+                </article>
+                <article class="connect-card">
+                    <h3>Bedrock / consola</h3>
+                    <p class="connect-card__meta">Servidor y puerto UDP (Geyser)</p>
+                    <code class="ip-block">play.drakescraft.cl:25571</code>
+                    <button type="button" class="btn-copy" onclick="copyIp('play.drakescraft.cl:25571')">Copiar</button>
+                    <p class="connect-card__hint">Si tu cliente solo pide el host, usa <strong>play.drakescraft.cl</strong>
+                        y el puerto <strong>25571</strong>.</p>
+                </article>
+                <article class="connect-card connect-card--discord">
+                    <h3>Comunidad</h3>
+                    <p class="connect-card__meta">Anuncios, soporte y whitelist / aperturas</p>
+                    <a href="https://discord.gg/rR7FbfCt9Y" class="btn-discord" target="_blank" rel="noopener">discord.gg
+                        / rR7FbfCt9Y</a>
+                </article>
             </div>
         </div>
     </section>
 
-    <!-- Slimefun & Plugins -->
-    <section id="plugins" class="section section-dark">
+    <section id="odisea" class="section section-dark">
         <div class="container">
-            <h2 class="section-title">Slimefun y <span class="text-gold">Tecnología</span></h2>
-            <p class="section-desc">¡Nuestro servidor está cargado de contenido! Desde magia ancestral hasta tecnología
-                futurista.</p>
-
-            <div class="plugins-categories">
-
-                <div class="plugin-category full-width">
-                    <h3>Slimefun, Espacio y Tecnología</h3>
-                    <div class="tags-container">
-                        <span class="tag">Slimefun 4</span>
-                        <span class="tag">Galactifun (Espacio)</span>
-                        <span class="tag">DynaTech</span>
-                        <span class="tag">InfinityExpansion</span>
-                        <span class="tag">Minetorio</span>
-                        <span class="tag">Networks</span>
-                        <span class="tag">Quaptics</span>
-                        <span class="tag">DracFun</span>
-                        <span class="tag">EcoPower</span>
-                        <span class="tag">FluffyMachines</span>
-                        <span class="tag">FoxyMachines</span>
-                        <span class="tag">EMCTech</span>
-                        <span class="tag">SlimeTinker</span>
-                        <span class="tag">SimpleMaterialGenerators</span>
-                    </div>
+            <h2 class="section-title">Identidad <span class="text-gold">Odisea</span></h2>
+            <p class="section-desc">El servidor se presenta en el MOTD y en la interfaz como una odisea: tonos
+                dorados y púrpuras, bossbar y ambientación alrededor del viaje de vuelta a casa — en bloques.</p>
+            <div class="two-col">
+                <div class="prose-card">
+                    <h3>Orden en TAB (referencia)</h3>
+                    <p>En el plugin TAB los grupos aparecen en un orden inspirado en el panteón y la trama; los nombres
+                        son sobre todo <strong>identidad visual y lore</strong>. Beneficios exactos por rango pueden
+                        cambiar: no los trates como contrato fijo.</p>
+                    <p class="mono-list">odiseo · atenea · penelope · zeus · afrodita · artemisa · hefesto · hermes ·
+                        hestia · hercules · default</p>
                 </div>
-
-                <div class="plugin-category">
-                    <h3>RPG, Skills y PvE</h3>
-                    <div class="tags-container">
-                        <span class="tag">AuraSkills</span>
-                        <span class="tag">EliteMobs</span>
-                        <span class="tag">PlayerKits2</span>
-                        <span class="tag">VanguardRanks</span>
-                        <span class="tag">AlchimiaVitae</span>
-                        <span class="tag">SpiritsUnchained</span>
-                        <span class="tag">RelicsOfCthonia</span>
-                    </div>
-                </div>
-
-                <div class="plugin-category">
-                    <h3>Mundo y Vehículos</h3>
-                    <div class="tags-container">
-                        <span class="tag">Movecraft (Naves)</span>
-                        <span class="tag">ExoticGarden</span>
-                        <span class="tag">Gastronomicon</span>
-                        <span class="tag">Wildernether</span>
-                        <span class="tag">ProtectionStones</span>
-                        <span class="tag">Regions</span>
-                        <span class="tag">Graves</span>
-                    </div>
-                </div>
-
-                <div class="plugin-category">
-                    <h3>Economía y Social</h3>
-                    <div class="tags-container">
-                        <span class="tag">EconomyShopGUI</span>
-                        <span class="tag">QuickShop-Hikari</span>
-                        <span class="tag">Jobs Reborn</span>
-                        <span class="tag">CrazyAuctions</span>
-                        <span class="tag">MarriageMaster</span>
-                        <span class="tag">InteractiveChat</span>
-                        <span class="tag">DiscordSRV</span>
-                        <span class="tag">Votifier</span>
-                    </div>
-                </div>
-
-                <div class="plugin-category full-width">
-                    <h3>Utilidades y Soporte</h3>
-                    <div class="tags-container center">
-                        <span class="tag">Geyser + Floodgate (Bedrock)</span>
-                        <span class="tag">nLogin</span>
-                        <span class="tag">ItemsAdder</span>
-                        <span class="tag">SkinsRestorer</span>
-                        <span class="tag">LuckPerms</span>
-                        <span class="tag">CoreProtect</span>
-                        <span class="tag">AxiomPaper</span>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Recursos -->
-    <section id="resources" class="section">
-        <div class="container">
-            <h2 class="section-title">Recursos <span class="text-gradient">Visuales</span></h2>
-            <p class="section-desc">Para llevar la experiencia visual de <strong>DrakesCraft</strong> al máximo,
-                utilizamos el pack de texturas <strong>"SF To Infinity"</strong>. 🌌</p>
-
-            <!-- Warning Box -->
-            <div class="warning-box"
-                style="background: rgba(220, 38, 38, 0.1); border: 1px solid #dc2626; padding: 25px; border-radius: 15px; margin-bottom: 50px; text-align: left; max-width: 900px; margin-left: auto; margin-right: auto;">
-                <h3
-                    style="color: #ef4444; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; font-family: var(--font-heading);">
-                    <span>🛑</span> REQUISITOS OBLIGATORIOS
-                </h3>
-                <p style="color: #f3f4f6; margin-bottom: 15px;">Este Resource Pack es avanzado. Para ver las texturas,
-                    animaciones y menús correctamente, <strong>TU MINECRAFT NECESITA</strong> los siguientes mods
-                    (Fabric):</p>
-                <ul
-                    style="list-style: none; margin-bottom: 20px; color: #d1d5db; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px;">
-                    <li style="display: flex; align-items: center; gap: 8px;"><span style="color: #ef4444;">•</span>
-                        <strong>CIT Resewn</strong> (Ítems custom)
-                    </li>
-                    <li style="display: flex; align-items: center; gap: 8px;"><span style="color: #ef4444;">•</span>
-                        <strong>Animatica</strong> (Animaciones)
-                    </li>
-                    <li style="display: flex; align-items: center; gap: 8px;"><span style="color: #ef4444;">•</span>
-                        <strong>OptiGUI</strong> (Menús)
-                    </li>
-                    <li style="display: flex; align-items: center; gap: 8px;"><span style="color: #ef4444;">•</span>
-                        Sodium, Lithium... (FPS)</li>
-                </ul>
-                <p
-                    style="color: #fca5a5; font-size: 0.95em; border-top: 1px solid rgba(220, 38, 38, 0.3); padding-top: 15px;">
-                    ⚠️ <strong>¿Qué pasa si no los instalo?</strong> Verás bloques con texturas rotas (morado/negro),
-                    menús desalineados y los ítems tecnológicos se verán mal.
-                </p>
-            </div>
-
-            <div class="features-grid">
-                <!-- Option 1 -->
-                <div class="feature-card" style="border-color: var(--secondary);">
-                    <div class="card-icon">🚀</div>
-                    <h3>OPCIÓN 1: MODPACK</h3>
-                    <div class="rank-badge monthly"
-                        style="display:inline-block; margin-bottom:15px; background: var(--secondary); color: black;">
-                        RECOMENDADA ⭐</div>
-                    <p style="margin-bottom: 15px;">Hemos creado un perfil listo para usar. <strong>Descarga, instala y
-                            juega.</strong></p>
-                    <ul
-                        style="text-align: left; margin-bottom: 20px; font-size: 0.9em; color: var(--text-muted); list-style: none;">
-                        <li style="margin-bottom: 5px;">✅ Texture pack pre-instalado</li>
-                        <li style="margin-bottom: 5px;">✅ Todos los mods técnicos incluidos</li>
-                        <li style="margin-bottom: 5px;">✅ Optimizado para máximo rendimiento</li>
+                <div class="prose-card">
+                    <h3>Qué esperar</h3>
+                    <ul class="checklist">
+                        <li>Progresión con items y máquinas (Slimefun y addon ecosystem).</li>
+                        <li>Servidor semipremium / orientado a comunidad latina.</li>
+                        <li>Reglas claras: convivencia, sin ventajas injustas, reportes por Discord.</li>
                     </ul>
-                    <p style="font-size: 0.9em; color: var(--secondary); margin-bottom: 20px;">¡Es la forma más fácil de
-                        jugar sin errores visuales!</p>
-                    <a href="https://discord.gg/4kaCMHSYkR" target="_blank" class="btn-secondary small">Ir a Descargas
-                        en Discord</a>
                 </div>
-
-                <!-- Option 2 -->
-                <div class="feature-card">
-                    <div class="card-icon">📂</div>
-                    <h3>OPCIÓN 2: TEXTURE PACK</h3>
-                    <p style="margin-bottom: 15px;">Solo el archivo del resource pack. <strong>Para usuarios
-                            avanzados.</strong></p>
-                    <p style="margin-bottom: 20px; font-size: 0.9em; color: var(--text-muted);">Si ya tienes tu propio
-                        cliente y sabes configurar mods manualmente.</p>
-                    <p style="font-size: 0.9em; color: #ef4444; margin-bottom: 20px;">⚠️ Asegúrate de tener instalados
-                        los mods requeridos.</p>
-                    <a href="https://discord.gg/4kaCMHSYkR" target="_blank" class="btn-secondary small">Ir a Descargas
-                        en Discord</a>
-                </div>
-            </div>
-
-            <div style="text-align: center; margin-top: 60px;">
-                <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 1.1rem;">⬇️ <strong>LINKS DE
-                        DESCARGA EN NUESTRO DISCORD</strong> ⬇️</p>
-                <a href="https://discord.gg/4kaCMHSYkR" target="_blank" class="btn-discord-large">
-                    Unirse y Descargar
-                </a>
             </div>
         </div>
+    </section>
 
-        <!-- Tienda -->
-        <!-- Store Teaser -->
-        <section id="store-teaser" class="section">
-            <div class="container" style="text-align: center;">
-                <h2 class="section-title">Tienda del <span class="text-gradient">Servidor</span></h2>
-                <div class="store-intro">
-                    <p style="margin-bottom: 30px; font-size: 1.1rem; color: var(--text-muted);">
-                        Adquiere rangos, kits, dinero y protecciones VIP para mejorar tu experiencia.<br>
-                        Apoya al servidor para que sigamos creciendo.
-                    </p>
-                    <a href="store.html" class="btn-primary" style="font-size: 1.2rem; padding: 15px 40px;">
-                        <span class="btn-icon">💎</span> Ir a la Tienda Completa
-                    </a>
+    <section id="slimefun" class="section">
+        <div class="container">
+            <h2 class="section-title">Slimefun y <span class="text-gradient">tecnología</span></h2>
+            <p class="section-desc">DrakesCraft apuesta por contenido técnico sobre vanilla: cadenas de crafteo,
+                energía, almacenes y expansión progresiva. Los detalles concretos de addons y recetas viven en el
+                juego y en los canales del Discord.</p>
+            <div class="labs-cta">
+                <p>El laboratorio de parches y experimentos del proyecto vive en el ecosistema GitHub del equipo; la web
+                    que estás leyendo también es código abierto.</p>
+                <div class="labs-cta__links">
+                    <a href="https://github.com/JackStar6677-1/drakescraft-web" class="btn-secondary" target="_blank"
+                        rel="noopener">Código de esta web</a>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Cómo entrar -->
-        <section id="join" class="section section-dark join-section">
-            <div class="container">
-                <h2 class="section-title">¿Cómo <span class="text-gold">Entrar?</span></h2>
-
-                <div class="join-cards">
-                    <div class="join-card java">
-                        <div class="edition-icon">☕</div>
-                        <h3>Java Edition</h3>
-                        <p class="version-text">Versión 1.20.x</p>
-                        <ol class="join-steps">
-                            <li>Abre Minecraft Java Edition</li>
-                            <li>Multijugador > Añadir Servidor</li>
-                            <li>IP: <strong class="text-gold">mc.drakescraft.cl</strong></li>
-                            <li>O usa: <strong class="text-gold">play.drakescraft.cl</strong></li>
-                            <li>¡Conectar y jugar!</li>
-                        </ol>
-                        <button class="btn-secondary small" onclick="copyIp('mc.drakescraft.cl')">Copiar IP</button>
-                    </div>
-
-                    <div class="join-card bedrock">
-                        <div class="edition-icon">📱</div>
-                        <h3>Bedrock Edition</h3>
-                        <p class="version-text">Móvil / Consolas / Win10</p>
-                        <ol class="join-steps">
-                            <li>Abre Minecraft Bedrock</li>
-                            <li>Servidores > Añadir Servidor</li>
-                            <li>IP: <strong class="text-gold">mc.drakescraft.cl</strong></li>
-                            <li>O usa: <strong class="text-gold">play.drakescraft.cl</strong></li>
-                            <li>Puerto: <strong class="text-gold">25565</strong></li>
-                        </ol>
-                        <button class="btn-secondary small" onclick="copyIp('mc.drakescraft.cl')">Copiar IP</button>
+    <section id="faq" class="section section-dark">
+        <div class="container">
+            <h2 class="section-title">Preguntas frecuentes</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button type="button" class="faq-question" aria-expanded="false">
+                        ¿Qué versión de Minecraft?
+                        <span class="icon" aria-hidden="true">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>El backend está pensado para <strong>Paper 1.21.x</strong>. Usa el cliente compatible con esa
+                            línea; si hay eventos en otra versión, se anuncian en Discord.</p>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- Comunidad -->
-        <section id="community" class="section">
-            <div class="container">
-                <h2 class="section-title">Nuestra <span class="text-discord">Comunidad</span></h2>
-                <p class="section-desc">Únete a miles de jugadores, participa en sorteos y mantente al tanto de las
-                    novedades.</p>
-
-                <div class="community-grid">
-                    <div class="community-info">
-                        <h3>Discord Oficial</h3>
-                        <p>El corazón de DrakesCraft. Aquí encontrarás soporte, anuncios de eventos, canales de voz y
-                            mucho
-                            más.</p>
-                        <a href="https://discord.gg/4kaCMHSYkR" target="_blank" class="btn-discord-large">
-                            Unirse al Discord
-                        </a>
+                <div class="faq-item">
+                    <button type="button" class="faq-question" aria-expanded="false">
+                        ¿Puedo entrar sin cuenta premium de Java?
+                        <span class="icon" aria-hidden="true">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>La política exacta (premium, Bedrock-only, etc.) la confirma el staff en Discord según la
+                            fase del servidor. Bedrock suele ir por <strong>Geyser</strong> en el puerto indicado arriba.</p>
                     </div>
-                    <div class="discord-previews">
-                        <img src="previewdiscord1.png" alt="Discord Preview 1" class="discord-img">
-                        <img src="previewdiscord2.png" alt="Discord Preview 2" class="discord-img offset">
+                </div>
+                <div class="faq-item">
+                    <button type="button" class="faq-question" aria-expanded="false">
+                        ¿Dónde reporto bugs o jugadores tóxicos?
+                        <span class="icon" aria-hidden="true">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Abre un hilo o ticket en Discord siguiendo las <a href="rules.html">reglas</a>. No uses el
+                            chat del juego como único canal para reportes serios.</p>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- FAQ -->
-        <section id="faq" class="section section-dark">
-            <div class="container">
-                <h2 class="section-title">Preguntas <span class="text-gradient">Frecuentes</span></h2>
-                <div class="faq-container">
-                    <div class="faq-item">
-                        <button class="faq-question">¿El servidor es Premium o No-Premium? <span
-                                class="icon">+</span></button>
-                        <div class="faq-answer">
-                            <p>DrakesCraft es semi-premium (compatible con ambos). Recomendamos cuenta original para
-                                mayor
-                                seguridad, pero todos son bienvenidos.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question">¿Qué pasa si pierdo mis cosas? <span class="icon">+</span></button>
-                        <div class="faq-answer">
-                            <p>Usamos un plugin de tumbas (Graves) en la mayoría de mundos para que no pierdas tus items
-                                al
-                                morir, salvo en zonas PvP específicas o The End.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question">¿La tienda es Pay2Win? <span class="icon">+</span></button>
-                        <div class="faq-answer">
-                            <p>Buscamos un equilibrio. Los rangos ofrecen ventajas de comodidad (/fly, homes extra) y
-                                cosméticos, pero todo el equipo y tecnología se puede conseguir jugando.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question">¿Cada cuánto tiempo hay eventos? <span
-                                class="icon">+</span></button>
-                        <div class="faq-answer">
-                            <p>Tenemos eventos automáticos diarios (KOTH, Pesca) y eventos organizados por el staff
-                                todos
-                                los fines de semana.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question">¿Qué versión recomiendan usar? <span class="icon">+</span></button>
-                        <div class="faq-answer">
-                            <p>Recomendamos la versión 1.20.4 o superior para disfrutar de todas las texturas y bloques
-                                nuevos sin problemas.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-question">¿Cómo funciona Slimefun aquí? <span class="icon">+</span></button>
-                        <div class="faq-answer">
-                            <p>Slimefun funciona como un "modpack" pero sin instalar nada. Desbloqueas máquinas y
-                                recetas
-                                con experiencia (XP) en el juego.</p>
-                        </div>
-                    </div>
-                </div>
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-logo">
+                <img src="assets/logo-drakescraft.png" alt="" width="36" height="36">
+                <span>DrakesCraft</span>
             </div>
-        </section>
-
-        <!-- Vote Section -->
-        <section id="vote" class="section">
-            <div class="container">
-                <h2 class="section-title">Vota por <span class="text-gradient">Nosotros</span></h2>
-                <p class="section-desc">Apoya al servidor votando diariamente y recibe recompensas increíbles en el
-                    juego.
-                </p>
-
-                <div class="features-grid">
-                    <a href="https://minecraft-mp.com/server-s351633" target="_blank" class="feature-card">
-                        <div class="card-icon">🗳️</div>
-                        <h3>Minecraft-MP</h3>
-                        <p>Vota en Minecraft-MP</p>
-                    </a>
-                    <a href="https://minecraft-server-list.com/server/516486/" target="_blank" class="feature-card">
-                        <div class="card-icon">📜</div>
-                        <h3>Server List</h3>
-                        <p>Vota en MC Server List</p>
-                    </a>
-                    <a href="https://topg.org/minecraft-servers/server-677700" target="_blank" class="feature-card">
-                        <div class="card-icon">🏆</div>
-                        <h3>TopG</h3>
-                        <p>Vota en TopG</p>
-                    </a>
-                </div>
+            <div class="footer-links">
+                <a href="index.html">Inicio</a>
+                <a href="rules.html">Reglas</a>
+                <a href="store.html">Tienda</a>
+                <a href="https://discord.gg/rR7FbfCt9Y" target="_blank" rel="noopener">Discord</a>
+                <a href="mailto:contacto@drakescraft.cl">Contacto</a>
             </div>
-        </section>
+            <p class="copyright">© 2026 DrakesCraft · drakescraft.cl</p>
+            <p class="disclaimer">Minecraft es una marca de Mojang AB. No afiliado.</p>
+        </div>
+    </footer>
 
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="container footer-content">
-                <div class="footer-logo">
-                    <img src="logodrakescraft.png" alt="DrakesCraft" height="40">
-                    <span>DrakesCraft</span>
-                </div>
-                <div class="footer-links">
-                    <a href="rules.html">Reglamento</a>
-                    <a href="https://discord.gg/4kaCMHSYkR">Discord</a>
-                    <a href="store.html">Tienda</a>
-                    <a href="mailto:contacto@drakescraft.cl">Contacto</a>
-                    <div class="footer-votes">
-                        <span>Votar:</span>
-                        <a href="https://minecraft-mp.com/server-s351633" target="_blank">Minecraft-MP</a>
-                        <a href="https://minecraft-server-list.com/server/516486/" target="_blank">MC Server List</a>
-                        <a href="https://topg.org/minecraft-servers/server-677700" target="_blank">TopG</a>
-                    </div>
-                </div>
-                <p class="copyright">© 2025 DrakesCraft - Todos los derechos reservados.</p>
-                <p class="disclaimer">Minecraft es una marca registrada de Mojang AB. No estamos afiliados con Mojang
-                    AB.
-                </p>
-            </div>
-        </footer>
-
-        <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>

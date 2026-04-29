@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
+    setupVisitorStats();
+
     const navToggle = document.getElementById('nav-toggle');
     const navMenu = document.getElementById('nav-menu');
     const navLinks = document.querySelectorAll('.nav-link');
@@ -199,4 +201,55 @@ function showToast(message) {
         toast.style.opacity = '0';
         setTimeout(() => toast.remove(), 300);
     }, 2800);
+}
+
+function setupVisitorStats() {
+    const visitCountEl = document.getElementById('visit-count');
+    const viewerLocationEl = document.getElementById('viewer-location');
+    const viewerDateTimeEl = document.getElementById('viewer-datetime');
+    if (!visitCountEl || !viewerLocationEl || !viewerDateTimeEl) return;
+
+    const updateDateTime = (timeZone) => {
+        const now = new Date();
+        const formatter = new Intl.DateTimeFormat('es-CL', {
+            dateStyle: 'full',
+            timeStyle: 'medium',
+            timeZone: timeZone || Intl.DateTimeFormat().resolvedOptions().timeZone
+        });
+        viewerDateTimeEl.textContent = formatter.format(now);
+    };
+
+    fetch('https://api.countapi.xyz/hit/drakescraft.cl/site-views')
+        .then((res) => {
+            if (!res.ok) throw new Error('countapi error');
+            return res.json();
+        })
+        .then((data) => {
+            const visits = typeof data.value === 'number' ? data.value.toLocaleString('es-CL') : null;
+            visitCountEl.textContent = visits || 'No disponible';
+        })
+        .catch(() => {
+            visitCountEl.textContent = 'No disponible';
+        });
+
+    fetch('https://ipapi.co/json/')
+        .then((res) => {
+            if (!res.ok) throw new Error('ipapi error');
+            return res.json();
+        })
+        .then((data) => {
+            const city = data.city || 'Ciudad no detectada';
+            const region = data.region || '';
+            const country = data.country_name || 'Pais no detectado';
+            const zoneText = [city, region, country].filter(Boolean).join(', ');
+            viewerLocationEl.textContent = zoneText;
+            updateDateTime(data.timezone);
+        })
+        .catch(() => {
+            viewerLocationEl.textContent = 'No disponible';
+            updateDateTime();
+        });
+
+    updateDateTime();
+    setInterval(() => updateDateTime(), 1000);
 }

@@ -1176,6 +1176,33 @@ img {
     align-items: center;
 }
 
+.visitor-stats {
+    margin: 0 auto 18px;
+    max-width: 540px;
+    padding: 0.9rem 1rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(12, 16, 35, 0.6);
+    text-align: left;
+}
+
+.visitor-stats__title {
+    margin-bottom: 0.4rem;
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    color: var(--secondary);
+}
+
+.visitor-stats__line {
+    margin: 0.2rem 0;
+    font-size: 0.86rem;
+    color: var(--text-muted);
+}
+
+.visitor-stats__line strong {
+    color: var(--text-main);
+}
+
 .footer-links a {
     color: var(--text-muted);
     font-size: 0.9rem;
@@ -1248,6 +1275,10 @@ img {
     .footer-links {
         flex-direction: column;
         gap: 15px;
+    }
+
+    .visitor-stats {
+        text-align: center;
     }
 
     .footer-votes {

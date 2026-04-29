@@ -261,10 +261,10 @@ img {
 }
 
 .discord-widget {
-    width: min(100%, 920px);
-    max-width: 920px;
+    width: 100%;
+    max-width: 420px;
     height: 620px;
-    margin-top: 1.25rem;
+    margin-top: 0;
     border: 0;
     border-radius: 14px;
     overflow: hidden;
@@ -275,9 +275,18 @@ img {
     text-align: center;
 }
 
-.discord-live-panel {
-    width: min(100%, 920px);
+.community-layout {
+    width: min(100%, 1120px);
     margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 420px);
+    gap: 1rem;
+    align-items: start;
+}
+
+.discord-live-panel {
+    width: 100%;
+    margin: 0;
     padding: 1.2rem;
     border-radius: 16px;
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -369,6 +378,15 @@ img {
     justify-content: center;
     width: 100%;
     max-width: 300px;
+}
+
+.discord-widget-wrap {
+    background: rgba(0, 0, 0, 0.24);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 0.7rem;
+    display: flex;
+    justify-content: center;
 }
 
 .two-col {
@@ -1378,6 +1396,10 @@ img {
     }
 
     .discord-channels-list {
+        grid-template-columns: 1fr;
+    }
+
+    .community-layout {
         grid-template-columns: 1fr;
     }
 

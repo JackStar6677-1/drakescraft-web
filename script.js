@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     setupVisitorStats();
+    setupDiscordLivePanel();
 
     const navToggle = document.getElementById('nav-toggle');
     const navMenu = document.getElementById('nav-menu');
@@ -261,4 +262,59 @@ function setupVisitorStats() {
 
     updateDateTime();
     setInterval(() => updateDateTime(), 1000);
+}
+
+function setupDiscordLivePanel() {
+    const statusDot = document.getElementById('discord-status-dot');
+    const statusText = document.getElementById('discord-status-text');
+    const presenceCount = document.getElementById('discord-presence-count');
+    const totalCount = document.getElementById('discord-total-count');
+    const channelsList = document.getElementById('discord-channels-list');
+    if (!statusDot || !statusText || !presenceCount || !totalCount || !channelsList) return;
+
+    const setOffline = () => {
+        statusDot.classList.remove('online');
+        statusDot.classList.add('offline');
+        statusText.textContent = 'Sin conexion';
+        channelsList.innerHTML = '<li>No se pudo cargar el widget.json</li>';
+    };
+
+    const renderChannels = (channels) => {
+        if (!Array.isArray(channels) || channels.length === 0) {
+            channelsList.innerHTML = '<li>No hay canales visibles en el widget</li>';
+            return;
+        }
+
+        const names = channels
+            .map((channel) => channel && channel.name ? channel.name : '')
+            .filter(Boolean)
+            .slice(0, 12);
+
+        channelsList.innerHTML = names.map((name) => '<li># ' + name + '</li>').join('');
+    };
+
+    const fetchDiscordData = () => {
+        fetch('https://discord.com/api/guilds/699391897369575476/widget.json')
+            .then((res) => {
+                if (!res.ok) throw new Error('discord widget json error');
+                return res.json();
+            })
+            .then((data) => {
+                const online = Number.isFinite(data.presence_count) ? data.presence_count : 0;
+                const estimatedTotal = Array.isArray(data.members) ? data.members.length : null;
+
+                statusDot.classList.remove('offline');
+                statusDot.classList.add('online');
+                statusText.textContent = 'En linea';
+                presenceCount.textContent = online.toLocaleString('es-CL');
+                totalCount.textContent = estimatedTotal !== null ? estimatedTotal.toLocaleString('es-CL') : 'N/D';
+                renderChannels(data.channels);
+            })
+            .catch(() => {
+                setOffline();
+            });
+    };
+
+    fetchDiscordData();
+    setInterval(fetchDiscordData, 60000);
 }

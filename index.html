@@ -33,6 +33,7 @@
             <ul class="nav-menu" id="nav-menu">
                 <li><a href="#home" class="nav-link">Inicio</a></li>
                 <li><a href="#conectar" class="nav-link">Conectar</a></li>
+                <li><a href="#comunidad" class="nav-link">Comunidad</a></li>
                 <li><a href="#odisea" class="nav-link">Odisea</a></li>
                 <li><a href="#slimefun" class="nav-link">Slimefun</a></li>
                 <li><a href="store.html" class="nav-link">Tienda</a></li>
@@ -102,6 +103,29 @@
         <div class="container community-widget-block">
             <h2 class="section-title">Comunidad en Discord</h2>
             <p class="section-desc">Este bloque muestra el servidor en vivo para que veas canales y actividad antes de entrar.</p>
+            <div class="discord-live-panel">
+                <div class="discord-live-panel__metrics">
+                    <article class="discord-metric-card">
+                        <p class="discord-metric-card__label">Estado</p>
+                        <p class="discord-metric-card__value"><span id="discord-status-dot" class="status-dot"></span><span id="discord-status-text">Cargando...</span></p>
+                    </article>
+                    <article class="discord-metric-card">
+                        <p class="discord-metric-card__label">Miembros online</p>
+                        <p class="discord-metric-card__value" id="discord-presence-count">--</p>
+                    </article>
+                    <article class="discord-metric-card">
+                        <p class="discord-metric-card__label">Miembros listados</p>
+                        <p class="discord-metric-card__value" id="discord-total-count">--</p>
+                    </article>
+                </div>
+                <div class="discord-live-panel__channels">
+                    <p class="discord-live-panel__subtitle">Canales visibles</p>
+                    <ul id="discord-channels-list" class="discord-channels-list">
+                        <li>Cargando canales...</li>
+                    </ul>
+                </div>
+                <a href="https://discord.gg/rR7FbfCt9Y" class="btn-discord" target="_blank" rel="noopener">Unirme al Discord</a>
+            </div>
             <iframe
                 src="https://discord.com/widget?id=699391897369575476&theme=dark"
                 width="900"

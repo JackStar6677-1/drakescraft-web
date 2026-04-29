@@ -261,13 +261,17 @@ img {
 }
 
 .discord-widget {
-    width: 100%;
+    width: min(100%, 350px);
     max-width: 350px;
-    height: 420px;
+    height: 500px;
     margin-top: 1rem;
     border: 0;
     border-radius: 10px;
     overflow: hidden;
+}
+
+.community-widget-block {
+    text-align: center;
 }
 
 .two-col {

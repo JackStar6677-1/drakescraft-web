@@ -222,10 +222,26 @@ function setupVisitorStats() {
 
     const renderBadgeFallback = () => {
         const badgeUrl = 'https://visitor-badge.laobi.icu/badge?page_id=drakescraft.cl';
-        visitCountEl.innerHTML =
-            '<img src="' +
-            badgeUrl +
-            '" alt="Contador de visitas" style="vertical-align:middle;height:20px;max-width:100%;" />';
+        fetch(badgeUrl)
+            .then((res) => {
+                if (!res.ok) throw new Error('badge endpoint error');
+                return res.text();
+            })
+            .then((svgText) => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(svgText, 'image/svg+xml');
+                const textNodes = Array.from(doc.querySelectorAll('text'))
+                    .map((node) => (node.textContent || '').trim())
+                    .filter(Boolean);
+                const rawCounter = textNodes.reverse().find((value) => /^\d[\d.,]*$/.test(value));
+                if (!rawCounter) throw new Error('badge counter not found');
+                const normalizedNumber = Number(rawCounter.replace(/[^\d]/g, ''));
+                if (!Number.isFinite(normalizedNumber)) throw new Error('badge counter parse error');
+                visitCountEl.textContent = normalizedNumber.toLocaleString('es-CL');
+            })
+            .catch(() => {
+                visitCountEl.textContent = 'No disponible';
+            });
     };
 
     fetch('https://api.countapi.xyz/hit/drakescraft.cl/site-views')

@@ -770,6 +770,12 @@ img {
     color: var(--text-muted);
 }
 
+.store-lead {
+    max-width: 860px;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+
 /* Tienda: solo nombres de rangos (sin perks inventados) */
 .store-ranks-section {
     margin-top: 2.5rem;
@@ -915,10 +921,26 @@ img {
     margin-bottom: 10px;
 }
 
+.store-card-subtitle {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+    min-height: 3.2em;
+}
+
 .price {
     font-size: 1.8rem;
     font-weight: 700;
     color: var(--text-main);
+    line-height: 1.2;
+}
+
+.price span {
+    display: block;
+    margin-top: 6px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-muted);
 }
 
 .money-amount {
@@ -940,10 +962,22 @@ img {
     position: relative;
     font-size: 0.9rem;
     color: var(--text-muted);
+    line-height: 1.55;
 }
 
 .benefits-list li strong {
     color: var(--text-main);
+}
+
+.benefits-list code,
+.store-intro code {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+    color: var(--secondary);
+    font-family: var(--font-body);
+    font-size: 0.88em;
+    padding: 1px 6px;
 }
 
 .benefits-list li::before {

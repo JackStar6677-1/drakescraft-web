@@ -219,6 +219,14 @@ function setupVisitorStats() {
         viewerDateTimeEl.textContent = formatter.format(now);
     };
 
+    const renderBadgeFallback = () => {
+        const badgeUrl = 'https://visitor-badge.laobi.icu/badge?page_id=drakescraft.cl';
+        visitCountEl.innerHTML =
+            '<img src="' +
+            badgeUrl +
+            '" alt="Contador de visitas" style="vertical-align:middle;height:20px;max-width:100%;" />';
+    };
+
     fetch('https://api.countapi.xyz/hit/drakescraft.cl/site-views')
         .then((res) => {
             if (!res.ok) throw new Error('countapi error');
@@ -226,10 +234,11 @@ function setupVisitorStats() {
         })
         .then((data) => {
             const visits = typeof data.value === 'number' ? data.value.toLocaleString('es-CL') : null;
-            visitCountEl.textContent = visits || 'No disponible';
+            if (!visits) throw new Error('countapi without value');
+            visitCountEl.textContent = visits;
         })
         .catch(() => {
-            visitCountEl.textContent = 'No disponible';
+            renderBadgeFallback();
         });
 
     fetch('https://ipapi.co/json/')

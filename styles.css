@@ -260,6 +260,16 @@ img {
     width: 100%;
 }
 
+.discord-widget {
+    width: 100%;
+    max-width: 350px;
+    height: 420px;
+    margin-top: 1rem;
+    border: 0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
 .two-col {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));

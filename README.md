@@ -6,6 +6,21 @@
 
 Sitio web oficial y portal de comunidad para **DrakesCraft**, un servidor de Minecraft Survival de alta gama con temática de **Odisea Cósmica**, integración profunda de **Slimefun** y soporte multiplataforma completo (Java y Bedrock).
 
+> [!NOTE]
+> Este repositorio está archivado. El sitio oficial se ejecuta en el servidor
+> `star` y está disponible en [https://web.drakescraft.cl](https://web.drakescraft.cl).
+
+## Despliegue
+
+El sitio se sirve como contenido estático mediante Nginx dentro de Docker:
+
+```text
+Repositorio GitHub -> star -> Nginx en 127.0.0.1:8081 -> Cloudflare Tunnel -> web.drakescraft.cl
+```
+
+Cloudflare se utiliza únicamente como túnel y proxy público. El sitio no se
+despliega mediante Cloudflare Pages.
+
 ---
 
 ## 🌌 Características de DrakesCraft
@@ -73,7 +88,7 @@ npx --yes serve .
 
 ## 👥 Comunidad y Enlaces
 
-*   **Sitio Oficial:** [https://drakescraft.cl](https://drakescraft.cl)
+*   **Sitio Oficial:** [https://web.drakescraft.cl](https://web.drakescraft.cl)
 *   **Servidor de Discord:** [discord.gg/rR7FbfCt9Y](https://discord.gg/rR7FbfCt9Y)
 
 ---

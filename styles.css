@@ -1594,9 +1594,9 @@ img {
     min-height: 100vh;
     isolation: isolate;
     background:
-        radial-gradient(circle at 22% 34%, rgba(124, 58, 237, 0.35), transparent 34%),
-        radial-gradient(circle at 72% 26%, rgba(250, 204, 21, 0.14), transparent 26%),
-        linear-gradient(135deg, rgba(5, 3, 14, 0.98), rgba(18, 10, 42, 0.94) 46%, rgba(5, 3, 14, 0.98));
+        linear-gradient(90deg, rgba(5, 3, 14, 0.96), rgba(5, 3, 14, 0.8) 48%, rgba(5, 3, 14, 0.96)),
+        linear-gradient(180deg, rgba(5, 3, 14, 0.35), rgba(5, 3, 14, 0.95)),
+        url('assets/portal-background-v1.png') center / cover no-repeat;
     padding-top: 9rem;
 }
 

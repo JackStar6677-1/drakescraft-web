@@ -96,6 +96,9 @@ app.addHook('onSend', async (_request, reply) => {
   reply.header('X-Content-Type-Options', 'nosniff');
   reply.header('Referrer-Policy', 'strict-origin-when-cross-origin');
   reply.header('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
+  reply.header('X-Frame-Options', 'SAMEORIGIN');
+  reply.header('X-XSS-Protection', '1; mode=block');
+  reply.header('Content-Security-Policy', "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src * data:; font-src 'self' data:; connect-src 'self' https://discord.com;");
 });
 
 app.get('/api/health', async () => ({

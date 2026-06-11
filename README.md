@@ -24,6 +24,24 @@ despliega mediante Cloudflare Pages.
 El backend entrega health checks, contador persistente y datos de Discord con
 caché para evitar depender directamente de servicios externos desde el navegador.
 
+### Variables privadas de pagos
+
+La configuración productiva vive únicamente en el `.env` del servidor:
+
+```text
+MP_ACCESS_TOKEN
+MP_WEBHOOK_SECRET
+PAYPAL_MODE
+PAYPAL_CLIENT_ID
+PAYPAL_CLIENT_SECRET
+PAYPAL_WEBHOOK_ID
+STORE_API_KEY
+DISCORD_PAYMENTS_WEBHOOK
+DISCORD_STORE_WEBHOOK
+```
+
+No se deben guardar tokens, claves API ni URLs completas de webhooks en Git.
+
 ---
 
 ## 🌌 Características de DrakesCraft

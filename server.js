@@ -1,4 +1,5 @@
 import fs from 'node:fs/promises';
+import { createHmac, timingSafeEqual } from 'node:crypto';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import Fastify from 'fastify';
@@ -289,8 +290,10 @@ if (mpAccessToken) {
 // ─── PayPal Configuration ───────────────────────────────────────────────────
 const paypalClientId = process.env.PAYPAL_CLIENT_ID;
 const paypalClientSecret = process.env.PAYPAL_CLIENT_SECRET;
+const paypalWebhookId = process.env.PAYPAL_WEBHOOK_ID;
 const paypalMode = process.env.PAYPAL_MODE || 'live'; // por defecto live
 const paypalBaseUrl = paypalMode === 'live' ? 'https://api-m.paypal.com' : 'https://api-m.sandbox.paypal.com';
+const mpWebhookSecret = process.env.MP_WEBHOOK_SECRET;
 
 async function getPaypalAccessToken() {
   if (!paypalClientId || !paypalClientSecret) {
@@ -314,6 +317,65 @@ async function getPaypalAccessToken() {
   return data.access_token;
 }
 
+function safeEqualText(left, right) {
+  const leftBuffer = Buffer.from(String(left || ''), 'utf8');
+  const rightBuffer = Buffer.from(String(right || ''), 'utf8');
+  return leftBuffer.length === rightBuffer.length && timingSafeEqual(leftBuffer, rightBuffer);
+}
+
+// Rebuilds Mercado Pago's signed manifest without trusting the webhook payload.
+function verifyMercadoPagoSignature(request) {
+  if (!mpWebhookSecret) return false;
+
+  const signatureParts = Object.fromEntries(
+    String(request.headers['x-signature'] || '')
+      .split(',')
+      .map(part => part.trim().split('=', 2))
+      .filter(([key, value]) => key && value)
+  );
+  const requestId = String(request.headers['x-request-id'] || '');
+  const dataId = String(request.query?.['data.id'] || request.body?.data?.id || '').toLowerCase();
+  const timestamp = signatureParts.ts || '';
+  const receivedSignature = signatureParts.v1 || '';
+
+  if (!requestId || !dataId || !timestamp || !receivedSignature) return false;
+
+  const manifest = `id:${dataId};request-id:${requestId};ts:${timestamp};`;
+  const expectedSignature = createHmac('sha256', mpWebhookSecret).update(manifest).digest('hex');
+  return safeEqualText(receivedSignature, expectedSignature);
+}
+
+// Uses PayPal's verification endpoint and the webhook ID bound to this application.
+async function verifyPaypalWebhook(request) {
+  if (!paypalWebhookId) return false;
+
+  const accessToken = await getPaypalAccessToken();
+  const response = await fetch(`${paypalBaseUrl}/v1/notifications/verify-webhook-signature`, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      transmission_id: request.headers['paypal-transmission-id'],
+      transmission_time: request.headers['paypal-transmission-time'],
+      cert_url: request.headers['paypal-cert-url'],
+      auth_algo: request.headers['paypal-auth-algo'],
+      transmission_sig: request.headers['paypal-transmission-sig'],
+      webhook_id: paypalWebhookId,
+      webhook_event: request.body
+    })
+  });
+
+  if (!response.ok) {
+    app.log.warn({ status: response.status }, 'PayPal webhook verification failed');
+    return false;
+  }
+
+  const verification = await response.json();
+  return verification.verification_status === 'SUCCESS';
+}
+
 const subscriptionsFile = path.join(dataDir, 'subscriptions.json');
 const paypalPlansFile = path.join(dataDir, 'paypal-plans.json');
 
@@ -330,7 +392,9 @@ async function loadSubscriptions() {
 async function saveSubscriptions(list) {
   try {
     await fs.mkdir(dataDir, { recursive: true });
-    await fs.writeFile(subscriptionsFile, JSON.stringify(list, null, 2), 'utf8');
+    const temporaryFile = `${subscriptionsFile}.tmp`;
+    await fs.writeFile(temporaryFile, JSON.stringify(list, null, 2), 'utf8');
+    await fs.rename(temporaryFile, subscriptionsFile);
   } catch (error) {
     app.log.error(error, 'No se pudo guardar las suscripciones');
   }
@@ -349,7 +413,9 @@ async function loadPaypalPlans() {
 async function savePaypalPlans(plans) {
   try {
     await fs.mkdir(dataDir, { recursive: true });
-    await fs.writeFile(paypalPlansFile, JSON.stringify(plans, null, 2), 'utf8');
+    const temporaryFile = `${paypalPlansFile}.tmp`;
+    await fs.writeFile(temporaryFile, JSON.stringify(plans, null, 2), 'utf8');
+    await fs.rename(temporaryFile, paypalPlansFile);
   } catch (error) {
     app.log.error(error, 'No se pudo guardar los planes de PayPal');
   }
@@ -530,6 +596,7 @@ app.post('/api/store/checkout', async (request, reply) => {
             transaction_amount: targetItem.clp,
             currency_id: 'CLP'
           },
+          notification_url: 'https://web.drakescraft.cl/api/mp/webhook',
           status: 'pending'
         })
       });
@@ -627,9 +694,13 @@ app.post('/api/store/checkout', async (request, reply) => {
 
 // POST /api/mp/webhook — recibe notificaciones de pago de MercadoPago
 app.post('/api/mp/webhook', async (request, reply) => {
-  reply.code(200).send('ok'); // responder rápido a MP
   const body = request.body || {};
-  if (body.type !== 'payment' || !body.data?.id || !mp) return;
+  if (!verifyMercadoPagoSignature(request)) {
+    return reply.code(401).send({ error: 'Firma de Mercado Pago inválida.' });
+  }
+  if ((body.type !== 'payment' && body.topic !== 'payment') || !body.data?.id || !mp) {
+    return reply.code(200).send('ignored');
+  }
 
   try {
     const paymentApi = new Payment(mp);
@@ -696,8 +767,10 @@ app.post('/api/mp/webhook', async (request, reply) => {
         await savePendingPurchases(pending);
       }
     }
+    return reply.code(200).send('ok');
   } catch (err) {
     app.log.warn(err, 'mp webhook error');
+    return reply.code(500).send({ error: 'No se pudo procesar la notificación.' });
   }
 });
 
@@ -966,7 +1039,7 @@ app.post('/api/store/paypal/capture', async (request, reply) => {
   }
 });
 
-// POST /api/store/paypal/capture-subscription — valida una suscripción aprobada
+// POST /api/store/paypal/capture-subscription — valida la aprobación; la entrega espera el cobro confirmado
 app.post('/api/store/paypal/capture-subscription', async (request, reply) => {
   const body = request.body || {};
   const subscriptionId = body.subscriptionId;
@@ -993,54 +1066,11 @@ app.post('/api/store/paypal/capture-subscription', async (request, reply) => {
     if (status === 'ACTIVE' || status === 'APPROVED') {
       const subscriptions = await loadSubscriptions();
       const subRecord = subscriptions.find(s => s.id === subscriptionId);
-
-      let nick = '';
-      let contact = '';
-      let productId = '';
-      let productName = '';
-
-      if (subRecord) {
-        nick = subRecord.nick;
-        contact = subRecord.contact;
-        productId = subRecord.productId;
-        productName = subRecord.productName;
-      } else {
-        try {
-          const custom = JSON.parse(subscription.custom_id);
-          nick = custom.nick;
-          contact = custom.contact;
-        } catch (_) {}
-      }
-
-      if (!productId) {
+      if (!subRecord) {
         return reply.code(400).send({ error: 'No se pudo asociar la suscripción con un producto válido.' });
       }
 
-      const pending = await loadPendingPurchases();
-      const txnId = `pp_sub_${subscriptionId}_init`;
-      if (!pending.some(p => p.id === txnId)) {
-        pending.push({
-          id: txnId,
-          nick,
-          productId,
-          productName,
-          timestamp: new Date().toISOString()
-        });
-        await savePendingPurchases(pending);
-      }
-
-      await notifyPaymentDiscord({
-        platform: 'PayPal (Suscripción)',
-        paymentId: subscriptionId,
-        status: `Suscripción Activa (${status})`,
-        items: [{ id: productId, name: productName }],
-        nick,
-        contact,
-        amount: parseFloat(subscription.billing_info?.last_payment?.amount?.value || 0),
-        currency: 'USD'
-      });
-
-      return { ok: true, status, subscriptionId };
+      return { ok: true, status, subscriptionId, paymentPending: true };
     }
 
     return { ok: false, status };
@@ -1052,19 +1082,27 @@ app.post('/api/store/paypal/capture-subscription', async (request, reply) => {
 
 // POST /api/paypal/webhook — recibe notificaciones de PayPal (suscripciones recurrentes)
 app.post('/api/paypal/webhook', async (request, reply) => {
-  reply.code(200).send('ok'); // responder rápido a PayPal
+  try {
+    if (!await verifyPaypalWebhook(request)) {
+      return reply.code(401).send({ error: 'Firma de PayPal inválida.' });
+    }
+  } catch (err) {
+    app.log.error(err, 'Error verificando webhook de PayPal');
+    return reply.code(503).send({ error: 'No se pudo verificar la notificación.' });
+  }
+
   const body = request.body || {};
   const eventType = body.event_type;
 
   if (eventType !== 'PAYMENT.SALE.COMPLETED') {
-    return;
+    return reply.code(200).send('ignored');
   }
 
   const resource = body.resource || {};
   const billingAgreementId = resource.billing_agreement_id;
 
   if (!billingAgreementId) {
-    return;
+    return reply.code(200).send('ignored');
   }
 
   try {
@@ -1073,7 +1111,7 @@ app.post('/api/paypal/webhook', async (request, reply) => {
 
     if (!subRecord) {
       app.log.warn({ billingAgreementId }, 'Webhook de pago recibido para suscripción no registrada localmente.');
-      return;
+      return reply.code(200).send('ignored');
     }
 
     const nick = subRecord.nick;
@@ -1109,12 +1147,14 @@ app.post('/api/paypal/webhook', async (request, reply) => {
 
       app.log.info({ saleId, billingAgreementId, nick }, 'Renovación automática de PayPal procesada y encolada.');
     }
+    return reply.code(200).send('ok');
   } catch (err) {
     app.log.error(err, 'Error procesando webhook de pago de PayPal');
+    return reply.code(500).send({ error: 'No se pudo procesar la notificación.' });
   }
 });
 
-const storeApiKey = process.env.STORE_API_KEY || 'drakescraft-default-secret-key-12345';
+const storeApiKey = process.env.STORE_API_KEY;
 const pendingPurchasesFile = path.join(dataDir, 'pending-purchases.json');
 
 async function loadPendingPurchases() {
@@ -1130,7 +1170,9 @@ async function loadPendingPurchases() {
 async function savePendingPurchases(list) {
   try {
     await fs.mkdir(dataDir, { recursive: true });
-    await fs.writeFile(pendingPurchasesFile, JSON.stringify(list, null, 2), 'utf8');
+    const temporaryFile = `${pendingPurchasesFile}.tmp`;
+    await fs.writeFile(temporaryFile, JSON.stringify(list, null, 2), 'utf8');
+    await fs.rename(temporaryFile, pendingPurchasesFile);
   } catch (error) {
     app.log.error(error, 'No se pudo guardar las compras pendientes');
   }
@@ -1138,8 +1180,9 @@ async function savePendingPurchases(list) {
 
 // GET /api/store/pending
 app.get('/api/store/pending', async (request, reply) => {
-  const key = request.headers['x-api-key'] || request.query.key;
-  if (!key || key !== storeApiKey) {
+  const key = request.headers['x-api-key'];
+  if (!storeApiKey) return reply.code(503).send({ error: 'API de entregas no configurada.' });
+  if (!key || !safeEqualText(key, storeApiKey)) {
     return reply.code(401).send({ error: 'No autorizado' });
   }
   const pending = await loadPendingPurchases();
@@ -1148,8 +1191,9 @@ app.get('/api/store/pending', async (request, reply) => {
 
 // POST /api/store/confirm
 app.post('/api/store/confirm', async (request, reply) => {
-  const key = request.headers['x-api-key'] || request.query.key;
-  if (!key || key !== storeApiKey) {
+  const key = request.headers['x-api-key'];
+  if (!storeApiKey) return reply.code(503).send({ error: 'API de entregas no configurada.' });
+  if (!key || !safeEqualText(key, storeApiKey)) {
     return reply.code(401).send({ error: 'No autorizado' });
   }
   const body = request.body || {};

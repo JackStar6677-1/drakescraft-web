@@ -445,9 +445,11 @@ function setupStoreExperience() {
 
     const renderQuote = () => {
         const selected = Array.from(state.selected).map(productById).filter(Boolean);
+        const autoRenewContainer = document.getElementById('auto-renew-container');
         if (!selected.length) {
             quoteItems.innerHTML = '<p>No hay productos seleccionados todavía.</p>';
             quoteTotal.textContent = '$0 CLP';
+            if (autoRenewContainer) autoRenewContainer.style.display = 'none';
             return;
         }
 
@@ -461,7 +463,6 @@ function setupStoreExperience() {
             </div>
         `).join('');
 
-        const autoRenewContainer = document.getElementById('auto-renew-container');
         if (autoRenewContainer) {
             const hasOnlyMonthlyOrRoles = selected.length > 0 && selected.every(p => p.category === 'monthly' || p.category === 'roles');
             autoRenewContainer.style.display = hasOnlyMonthlyOrRoles ? 'flex' : 'none';
@@ -663,7 +664,7 @@ function setupStoreExperience() {
                 .then(res => res.json())
                 .then(data => {
                     if (data.ok && (data.status === 'ACTIVE' || data.status === 'APPROVED')) {
-                        showToast('¡Suscripción de PayPal activada con éxito! Rangos entregándose en el servidor.');
+                        showToast('¡Suscripción de PayPal activada! El rango se entregará al confirmarse el primer cobro.');
                     } else {
                         showToast('No se pudo confirmar la suscripción de PayPal.');
                     }

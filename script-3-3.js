@@ -560,15 +560,31 @@ function setupStoreExperience() {
                 }
 
                 if (hasUsd) {
-                    // PayPal manual — envío directo a paypal.me/jackstar6677
-                    const usdTotal = selectedProducts.filter(p => Number.isFinite(p.usd)).reduce((s, p) => s + p.usd, 0);
-                    const ppAmount = usdTotal > 0 ? usdTotal.toFixed(2) : '';
-                    const ppUrl = `https://www.paypal.com/paypalme/jackstar6677${ppAmount ? '/' + ppAmount : ''}`;
-                    paypalButton = `<a class="btn-paypal" href="${escapeHtml(ppUrl)}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;width:100%;margin-bottom:8px;">
-                        <img src="assets/paypal-logo.svg" alt="" width="20" height="20" style="vertical-align:middle;margin-right:8px;border-radius:4px;">
-                        Pagar con PayPal (USD$${ppAmount || '—'})
-                    </a>
-                    <p style="font-size:0.78rem;opacity:0.65;margin:0 0 4px;text-align:center;">Envía el pago y luego abre ticket en Discord con la captura.</p>`;
+                    try {
+                        const ppRes = await fetch('/api/store/paypal/checkout', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(payload)
+                        });
+                        if (ppRes.ok) {
+                            const ppData = await ppRes.json();
+                            if (ppData.init_point) {
+                                paypalButton = `<a class="btn-paypal" href="${escapeHtml(ppData.init_point)}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;width:100%;margin-bottom:8px;">
+                                    <img src="assets/paypal-logo.svg" alt="" width="20" height="20" style="vertical-align:middle;margin-right:8px;border-radius:4px;">
+                                    Pagar con PayPal (USD$${ppData.total_usd || ''})
+                                </a>`;
+                            }
+                        }
+                    } catch (_) {
+                        // fallback manual si la API falla
+                        const usdTotal = selectedProducts.filter(p => Number.isFinite(p.usd)).reduce((s, p) => s + p.usd, 0);
+                        const ppUrl = `https://www.paypal.com/paypalme/jackstar6677${usdTotal > 0 ? '/' + usdTotal.toFixed(2) : ''}`;
+                        paypalButton = `<a class="btn-paypal" href="${escapeHtml(ppUrl)}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;width:100%;margin-bottom:8px;">
+                            <img src="assets/paypal-logo.svg" alt="" width="20" height="20" style="vertical-align:middle;margin-right:8px;border-radius:4px;">
+                            Pagar con PayPal (manual)
+                        </a>
+                        <p style="font-size:0.78rem;opacity:0.65;margin:0 0 4px;text-align:center;">Envía el pago y abre ticket en Discord con captura.</p>`;
+                    }
                 }
 
                 if (mpButton || paypalButton) {

@@ -927,7 +927,7 @@ app.post('/api/store/paypal/checkout', async (request, reply) => {
       currency: 'USD'
     });
 
-    return { ok: true, quoteId, init_point: approveLink, orderId: order.id };
+    return { ok: true, quoteId, init_point: approveLink, orderId: order.id, total_usd: totalUsd };
   } catch (err) {
     app.log.error(err, 'paypal checkout creation error');
     return reply.code(500).send({ error: 'Error interno de PayPal.' });

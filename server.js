@@ -16,7 +16,7 @@ let discordCache = { expiresAt: 0, value: null };
 let visits = 0;
 
 const storeCatalog = {
-  updatedAt: '2026-06-04',
+  updatedAt: '2026-06-11',
   currency: 'CLP',
   payment: {
     mode: 'ticket',
@@ -25,28 +25,45 @@ const storeCatalog = {
     mercadoPago: 'https://link.mercadopago.cl/drakescraft'
   },
   categories: [
-    { id: 'monthly', label: 'Rangos mensuales', tagline: 'Identidad griega, utilidad progresiva y kits fuertes.' },
+    { id: 'monthly', label: 'Rangos VIP', tagline: 'Identidad griega, utilidad progresiva y kits fuertes.' },
+    { id: 'roles', label: 'Roles de Juego', tagline: 'Subrangos con prefijo secundario y kit diario.' },
     { id: 'kits', label: 'Kits y equipo', tagline: 'Resumen de lo que trae cada línea de rango.' },
     { id: 'protection', label: 'Protecciones', tagline: 'Territorio VIP para bases, gremios y proyectos.' },
-    { id: 'utility', label: 'Utilidad', tagline: 'Comandos, Dragmas y comodidad diaria.' },
+    { id: 'utility', label: 'Utilidad', tagline: 'Dragmas de plata y beneficios de economía.' },
+    { id: 'economy-kits', label: 'Kits del Survival', tagline: 'Kits comprables in-game usando Dragmas (₯).' },
     { id: 'custom', label: 'Especiales', tagline: 'Cotizaciones manuales sin romper el balance.' }
   ],
   products: [
-    { id: 'hercules', category: 'monthly', tier: 1, name: 'Hércules', badge: 'Entrada', clp: 4990, usd: 4.99, featured: false, accent: 'bronze', summary: 'Primer salto premium para empezar cómodo.', includes: ['3 homes y 5 playerwarps', 'Chat con color, /hat y /recipe', 'Kit diamante Protección VIII + Sharpness X', 'Protección VIP 49x49'] },
-    { id: 'hestia', category: 'monthly', tier: 2, name: 'Hestia', badge: 'Social', clp: 7990, usd: 7.99, featured: false, accent: 'rose', summary: 'Más presencia social y mejor kit diamante.', includes: ['5 homes y /nick', 'Hora y clima personal', 'Kit diamante Protección X + Power X', 'Protección VIP 81x81'] },
-    { id: 'hermes', category: 'monthly', tier: 3, name: 'Hermes', badge: 'Recomendado', clp: 10990, usd: 10.99, featured: true, accent: 'violet', summary: 'Movilidad total para explorar y construir rápido.', includes: ['/fly, /speed, /back y /enderchest', '/workbench y mejoras de viaje', 'Kit diamante Protección XII + Sharpness XIV', 'Protección VIP 113x113'] },
-    { id: 'hefesto', category: 'monthly', tier: 4, name: 'Hefesto', badge: 'Técnico', clp: 15990, usd: 15.99, featured: false, accent: 'ember', summary: 'Utilidad pesada y entrada a netherita.', includes: ['/feed, /top, /anvil y mesas premium', 'Herramientas de trabajo avanzadas', 'Kit netherita Protección XVI + Sharpness XVIII', 'Protección VIP 177x177'] },
-    { id: 'artemisa', category: 'monthly', tier: 5, name: 'Artemisa', badge: 'Exploración', clp: 22990, usd: 22.99, featured: false, accent: 'cyan', summary: 'Verticalidad, movilidad y equipo endgame.', includes: ['/fly, /speed, /jump y /compass', '12 playerwarps', 'Netherita Protección XVIII + tridente Impaling XII', 'Protección VIP 241x241'] },
-    { id: 'afrodita', category: 'monthly', tier: 6, name: 'Afrodita', badge: 'Economía', clp: 31990, usd: 31.99, featured: false, accent: 'pink', summary: 'Presencia premium, reparación y comercio.', includes: ['/repair y límites superiores', 'ChestShop sin tasa de apertura', 'Kit élite Protección XXII + Sharpness XXIV', 'Protección VIP 353x353'] },
-    { id: 'zeus', category: 'monthly', tier: 7, name: 'Zeus', badge: 'Rango top', clp: 44990, usd: 44.99, featured: true, accent: 'gold', summary: 'El rango insignia para una odisea completa.', includes: ['/repair all, /heal, /ext y /near', 'ChestShop sin fee y sin tax al comprar', 'Kit mítico Protección XXX + Sharpness XXX', 'Protección VIP 481x481'] },
+    { id: 'hercules', category: 'monthly', tier: 1, name: 'Hércules', badge: 'Entrada VIP', clp: 4990, usd: 4.99, featured: false, accent: 'bronze', summary: 'El primer gran paso en tu odisea. Ideal para empezar tu aventura con comodidad y estilo.', includes: ['3 homes y 5 warps de jugador (/pw)', 'Chat con formato de colores y comando /hat', 'Comando /clearinventory (/ci) para limpieza', '2 regiones de protección personal de 49x49', 'Kit (24h): Diamante Protec VIII, Irromp V', 'Espada Sharpness X, Saqueo V', 'Herramientas Eficiencia VIII, Fortuna VI', '48 zanahorias doradas, 64 filetes, 4 gapples, 1 Tótem', '$25,000 ₯ al reclamar el kit'] },
+    { id: 'hestia', category: 'monthly', tier: 2, name: 'Hestia', badge: 'Social', clp: 7990, usd: 7.99, featured: false, accent: 'rose', summary: 'Diseñado para constructores sociales y jugadores que disfrutan de personalizar su entorno.', includes: ['5 homes y comando /nick', 'Hora (/ptime) y clima (/pweather) personal', 'Comando /ext para apagarte al instante', '3 regiones de protección personal de 81x81', 'Kit (24h): Diamante Protec X, Irromp VI, Espinas III', 'Espada Sharpness XII, Saqueo VI', 'Arco del Olimpo Poder X, Infinidad', 'Herramientas Eficiencia X, Silk Touch', '1 Shulker, 6 gapples, 2 Tótems', '$50,000 ₯ al reclamar. Hereda Hércules'] },
+    { id: 'hermes', category: 'monthly', tier: 3, name: 'Hermes', badge: 'Recomendado', clp: 10990, usd: 10.99, featured: true, accent: 'violet', summary: '¡Movilidad absoluta! Explora el mapa a toda velocidad y viaja sin límites.', includes: ['Vuelo con /fly y velocidad con /speed', '/workbench y /enderchest virtuales', '/back para retornar (y al morir)', '/compass y /wild (RTP instantáneo)', '4 regiones de protección de 113x113', 'Kit (24h): Alas de Ícaro (Elytra) incluidas', 'Armadura Protec XII, Irromp VII, Soul Speed IV, Feather Falling X', 'Espada Sharpness XIV, Saqueo VII', 'Arco del Olimpo Poder XII, Infinidad', 'Herramientas Eficiencia XII, Fortuna VIII', '1 Shulker, 64 cohetes, 10 gapples, 3 Tótems', '$100,000 ₯ al reclamar. Hereda anteriores'] },
+    { id: 'hefesto', category: 'monthly', tier: 4, name: 'Hefesto', badge: 'Técnico', clp: 15990, usd: 15.99, featured: false, accent: 'ember', summary: 'El rango predilecto para los creadores de granjas, mineros técnicos y entusiastas del metal.', includes: ['8 homes y comando /feed', '/anvil, /grindstone, /loom, /stonecutter, /smithingtable virtuales', 'Comando /condense para compactar recursos', '5 regiones de protección de 177x177', '/wild (RTP) sin cooldown', 'Kit (24h): Primer kit con NETHERITA completa', 'Armadura Netherita Protec XVI, Irromp VIII', 'Espada Netherita Sharpness XVIII, Saqueo VIII, Knockback I', 'Pico Netherita Eficiencia XIV, Fortuna X', '1 Beacon, 1 Shulker, 14 gapples, 1 notch apple, 4 Tótems', '$175,000 ₯ al reclamar. Hereda anteriores'] },
+    { id: 'artemisa', category: 'monthly', tier: 5, name: 'Artemisa', badge: 'Exploración', clp: 22990, usd: 22.99, featured: false, accent: 'cyan', summary: 'Equipamiento mítico y verticalidad. Conquista los cielos y los abismos marinos sin temor a la muerte.', includes: ['12 warps de jugador (/pw) y comando /jump', 'Conserva tu XP al morir (keepxp)', '5 regiones de protección de 241x241', 'Kit (24h): Tridente Impaling XII, Loyalty VIII, Channeling I', 'Armadura Netherita Protec XVIII, Irromp IX, Feather Falling XIV', 'Espada Netherita Sharpness XX, Saqueo IX', 'Herramientas Netherita Eficiencia XVI, Fortuna XII', '1 Beacon, 1 Shulker, 18 gapples, 2 notch apples, 6 Tótems', '$300,000 ₯ al reclamar. Hereda anteriores'] },
+    { id: 'afrodita', category: 'monthly', tier: 6, name: 'Afrodita', badge: 'Economía', clp: 31990, usd: 31.99, featured: false, accent: 'pink', summary: 'Domina la economía del servidor. Repara tus armas gratis, vende al instante y abre tiendas sin pagar tarifas.', includes: ['12 homes y 15 warps de jugador (/pw)', 'Comando /repair gratis para reparar en mano', 'Comando /sell para vender al server', 'Abre ChestShop sin pagar fee inicial ($100 ₯)', '6 regiones de protección de 353x353', 'Kit (24h): Elytra mítica Unbreaking V, Mending IV', 'Armadura Netherita Protec XXII, Irromp X, Espinas VII', 'Espada Netherita Sharpness XXIV, Saqueo X', 'Herramientas Netherita Eficiencia XVIII, Fortuna XIV', '2 Beacons, 2 Shulkers, 24 gapples, 3 notch apples, 8 Tótems', '$500,000 ₯ al reclamar. Hereda anteriores'] },
+    { id: 'zeus', category: 'monthly', tier: 7, name: 'Zeus', badge: 'Rango top', clp: 44990, usd: 44.99, featured: true, accent: 'gold', summary: 'El rango insignia de DrakesCraft. El poder total del Olimpo bajo tu control.', includes: ['20 homes, 25 warps de jugador (/pw)', '/repair all y /heal al instante', '/near y conserva inventario al morir (keepinv)', 'Exención de impuestos en transacciones ChestShop', '7 regiones de protección de 481x481', 'Kit (24h): Netherita definitiva Protec XXX, Irromp XII, Espinas X', 'Espada del Olimpo Sharpness XXX, Saqueo XII, Fire Aspect V, Knockback III', 'Pico Efic XX + Fortune XVI y Pico Efic XX + Silk Touch', 'Arco del Olimpo Poder XX, Infinidad y Elytra Unbreaking V + Mending IV', '3 Beacons, 3 Shulkers, 32 gapples, 8 notch apples, 12 Tótems', '$1,000,000 ₯ al reclamar. Hereda anteriores'] },
+    
+    { id: 'minero', category: 'roles', tier: 3, name: 'Rol: Minero', badge: 'Subrango', clp: 2990, usd: 2.99, featured: false, accent: 'bronze', summary: 'El devorador de minas. Ideal para recolectores masivos. Agrega prefijo secundario en el chat.', includes: ['Prefijo [⛏ MINERO] secundario en el chat', 'Kit (24h): Pico Explosivo Élite (3x3 Slimefun) Eficiencia X + Irrompibilidad X (Irrompible)', 'Poción de Prisa Minera II (Haste II) de larga duración', 'Poción de Visión Nocturna', 'Materiales: 64 Hierros crudos, 64 Carbones, 32 Oros crudos, 8 Diamantes'] },
+    { id: 'cazador', category: 'roles', tier: 3, name: 'Rol: Cazador', badge: 'Subrango', clp: 2990, usd: 2.99, featured: false, accent: 'rose', summary: 'El azote de los monstruos. Ideal para granjas de mobs y caza.', includes: ['Prefijo [⚔ CAZADOR] secundario en el chat', 'Kit (24h): 2 Atrapamobs Místicos de Slimefun', 'Espada del Cazador de Diamante Sharpness VII, Saqueo V', 'Arco con Poder VII y Retroceso II (Punch II)', 'Poción de Fuerza II y 128 Flechas'] },
+    { id: 'constructor', category: 'roles', tier: 3, name: 'Rol: Constructor', badge: 'Subrango', clp: 2990, usd: 2.99, featured: false, accent: 'violet', summary: 'Diseñado para arquitectos de imperios y constructores.', includes: ['Prefijo [⚒ CONSTRUCTOR] secundario en el chat', 'Kit (24h): 1 Varita del Constructor de Slimefun', 'Materiales: 128 Hormigón Blanco, 128 Cristales, 128 Ladrillos de Piedra y madera variada'] },
+    { id: 'lenador', category: 'roles', tier: 3, name: 'Rol: Leñador', badge: 'Subrango', clp: 2990, usd: 2.99, featured: false, accent: 'ember', summary: 'El destructor de bosques. Talarás madera en segundos.', includes: ['Prefijo [🪓 LEÑADOR] secundario en el chat', 'Kit (24h): Hacha del Leñador Loco de netherita con Eficiencia X, Irrompibilidad X y Sharpness VIII', '1 Grifo de Árbol (Tree Tap) de Slimefun para extraer savias', 'Materiales: 128 Troncos de roble y 128 de abeto'] },
+    { id: 'alquimista', category: 'roles', tier: 3, name: 'Rol: Alquimista', badge: 'Subrango', clp: 2990, usd: 2.99, featured: false, accent: 'cyan', summary: 'El maestro de las pócimas y brebajes.', includes: ['Prefijo [🧪 ALQUIMISTA] secundario en el chat', 'Kit (24h): 1 Alambique y 64 botellas de vidrio', 'Reactivos: 32 Blaze Powder, 32 Nether Wart, 32 Glowstone', '32 Redstone, 16 Gunpowder y 4 Aliento de Dragón', 'Pociones de Velocidad II, Regeneración II y Fuerza II'] },
+    { id: 'nomada', category: 'roles', tier: 3, name: 'Rol: Nómada', badge: 'Subrango', clp: 2990, usd: 2.99, featured: false, accent: 'pink', summary: 'El jinete errante. Ideal para explorar y viajar a caballo.', includes: ['Prefijo [⛺ NÓMADA] secundario en el chat', 'Kit (24h): Montura de caballo, armadura dorada para caballo, rienda y catalejo', '48 zanahorias doradas para tu montura', 'Armadura del Nómada de cuero con Protección VIII, Irrompibilidad X y Feather Falling X'] },
+
     { id: 'kit-hermes', category: 'kits', tier: 3, name: 'Kit Hermes', badge: 'Movilidad', clp: 5990, usd: 5.99, featured: true, accent: 'violet', summary: 'Equipo de diamante premium bendecido por Hermes, enfocado en viajar.', includes: ['Botas con Feather Falling X y Soul Speed IV', 'Pico Eficiencia XII + Fortune VIII', 'Arco Power XII + Infinity', 'Shulker, cohetes, totems y comida premium'] },
     { id: 'kit-zeus', category: 'kits', tier: 7, name: 'Kit Zeus', badge: 'Mítico', clp: 14990, usd: 14.99, featured: true, accent: 'gold', summary: 'Netherita del Olimpo con herramientas extremas de línea alta.', includes: ['Protección XXX y Espinas X', 'Sharpness XXX + Looting XII', 'Doble pico Eficiencia XX', 'Beacons, shulkers, totems y recursos premium'] },
     { id: 'protection-177', category: 'protection', tier: 4, name: 'Protección 177x177', badge: 'Base seria', clp: 3990, usd: 3.99, featured: false, accent: 'ember', summary: 'Terreno consagrado (177x177) para bases y templos medianos.', includes: ['Área cuadrada de 177x177 bloques', 'Pensada para farms y almacenes técnicos', 'Entrega rápida por staff en el servidor', 'Revisión y ayuda de ubicación incluida'] },
     { id: 'protection-481', category: 'protection', tier: 7, name: 'Protección 481x481', badge: 'Colosal', clp: 11990, usd: 11.99, featured: true, accent: 'gold', summary: 'Territorio colosal (481x481) para acrópolis, ciudades o gremios.', includes: ['Área cuadrada de 481x481 bloques', 'Ideal para clanes o ciudades grandiosas', 'Entrega manual supervisada por admin', 'No invade claims activos existentes'] },
+    
     { id: 'utility-economy', category: 'utility', tier: 6, name: 'Economía Premium', badge: 'Perks', clp: 6990, usd: 6.99, featured: false, accent: 'pink', summary: 'Beneficios comerciales perpetuos para mercaderes hábiles.', includes: ['Creación de ChestShop sin pagar fee inicial', 'Menor fricción y mejores tasas para vender', 'Soporte prioritario ante bugs de economía', 'Beneficio estético y chat con color'] },
     { id: 'dragmas-saco', category: 'utility', tier: 3, name: 'Saco de Dragmas (50.000 ₯)', badge: 'Comercio', clp: 1990, usd: 1.99, featured: false, accent: 'bronze', summary: 'Un saco mediano de dragmas de plata para impulsar tu economía.', includes: ['50.000 Dragmas (₯) depositados en el juego', 'Comercio instantáneo en tiendas de jugadores', 'Ideal para compra de materias primas', 'Entrega automatizada vía comando o ticket'] },
     { id: 'dragmas-cofre', category: 'utility', tier: 5, name: 'Cofre de Dragmas (250.000 ₯)', badge: 'Popular', clp: 7990, usd: 7.99, featured: true, accent: 'violet', summary: 'Cofre robusto de dragmas con un 20% de descuento incluido.', includes: ['250.000 Dragmas (₯) depositados en el juego', 'Mayor capital para comprar claims o máquinas', 'Descuento por volumen pre-aplicado', 'Entrega automatizada vía comando o ticket'] },
     { id: 'dragmas-anfora', category: 'utility', tier: 7, name: 'Ánfora de Dragmas (1.000.000 ₯)', badge: 'Olimpo', clp: 24990, usd: 24.99, featured: true, accent: 'gold', summary: 'La ánfora colosal del templo para los más influyentes. Ahorra 37%.', includes: ['1.000.000 Dragmas (₯) depositados en el juego', 'Máximo poder adquisitivo en el servidor', 'Comercio pesado y compra de items míticos', 'Entrega automatizada vía comando o ticket'] },
+
+    { id: 'economy-comida', category: 'economy-kits', tier: 1, name: 'Kit Comida', badge: 'Survival In-Game', clp: null, usd: null, coins: 1000, featured: false, accent: 'bronze', summary: 'Provisiones básicas de comida para tus viajes. Adquirible en el juego.', includes: ['32 Filetes cocinados', '16 Zanahorias doradas', '32 Panes', '16 Galletas', 'Cooldown de uso: 30 minutos'] },
+    { id: 'economy-madera', category: 'economy-kits', tier: 1, name: 'Kit Madera', badge: 'Survival In-Game', clp: null, usd: null, coins: 2000, featured: false, accent: 'rose', summary: 'Lote de madera variada para construcción. Adquirible en el juego.', includes: ['64 Troncos de roble', '64 Troncos de abeto', '64 Troncos de abedul', '64 Troncos de roble oscuro', 'Cooldown de uso: 30 minutos'] },
+    { id: 'economy-piedra', category: 'economy-kits', tier: 1, name: 'Kit Piedra', badge: 'Survival In-Game', clp: null, usd: null, coins: 2000, featured: false, accent: 'violet', summary: 'Bloques de piedra labrada para tus estructuras. Adquirible en el juego.', includes: ['64 Smooth Stone', '64 Stone Bricks', '64 Mossy Stone Bricks', '64 Deepslate Bricks', 'Cooldown de uso: 30 minutos'] },
+    { id: 'economy-armadura', category: 'economy-kits', tier: 1, name: 'Kit Armadura', badge: 'Survival In-Game', clp: null, usd: null, coins: 5000, featured: false, accent: 'ember', summary: 'Set de armadura de hierro reforzado para supervivencia. Adquirible en el juego.', includes: ['Casco de hierro con Protección V, Irromp V', 'Pechera de hierro con Protección V, Irromp V', 'Grebas de hierro con Protección V, Irromp V', 'Botas de hierro con Protección V, Irromp V', 'Cooldown de uso: 1 hora'] },
+
     { id: 'custom-slimefun', category: 'custom', tier: 5, name: 'Encargo Slimefun (Cotización)', badge: 'Manual', clp: null, usd: null, featured: false, accent: 'cyan', summary: 'Encargos específicos de máquinas avanzadas o componentes técnicos.', includes: ['Precio final calculado post-evaluación', 'Apertura de ticket en Discord requerida', 'Viabilidad técnica revisada por admins', 'Precios de referencia: 50k a 300k Dragmas'] },
     { id: 'custom-guild', category: 'custom', tier: 5, name: 'Pack de Gremio (Cotización)', badge: 'Manual', clp: null, usd: null, featured: false, accent: 'violet', summary: 'Paquete personalizado de claims contiguos, canales de Discord VIP y perks para grupos.', includes: ['Cotización en base al número de integrantes', 'Entrevista inicial obligatoria con el Staff', 'No se aprueba contenido pay-to-win', 'Coordinación directa para la entrega'] }
   ]
@@ -436,6 +453,24 @@ app.post('/api/mp/webhook', async (request, reply) => {
         amount: payment.transaction_amount,
         currency: 'CLP'
       });
+
+      // Agregar a la cola de entregas automáticas
+      if (payment.status === 'approved') {
+        const pending = await loadPendingPurchases();
+        for (const item of items) {
+          const txnId = `mp_${payment.id}_${item.id}`;
+          if (!pending.some(p => p.id === txnId)) {
+            pending.push({
+              id: txnId,
+              nick,
+              productId: item.id,
+              productName: item.name,
+              timestamp: new Date().toISOString()
+            });
+          }
+        }
+        await savePendingPurchases(pending);
+      }
     }
   } catch (err) {
     app.log.warn(err, 'mp webhook error');
@@ -601,6 +636,23 @@ app.post('/api/store/paypal/capture', async (request, reply) => {
         currency: 'USD'
       });
 
+      // Agregar a la cola de entregas automáticas
+      const pending = await loadPendingPurchases();
+      for (const item of items) {
+        if (!item.id) continue;
+        const txnId = `pp_${order.id}_${item.id}`;
+        if (!pending.some(p => p.id === txnId)) {
+          pending.push({
+            id: txnId,
+            nick,
+            productId: item.id,
+            productName: item.name,
+            timestamp: new Date().toISOString()
+          });
+        }
+      }
+      await savePendingPurchases(pending);
+
       return { ok: true, status: 'COMPLETED', orderId: order.id };
     }
 
@@ -611,6 +663,54 @@ app.post('/api/store/paypal/capture', async (request, reply) => {
   }
 });
 
+const storeApiKey = process.env.STORE_API_KEY || 'drakescraft-default-secret-key-12345';
+const pendingPurchasesFile = path.join(dataDir, 'pending-purchases.json');
+
+async function loadPendingPurchases() {
+  try {
+    const data = await fs.readFile(pendingPurchasesFile, 'utf8');
+    return JSON.parse(data);
+  } catch (error) {
+    if (error.code !== 'ENOENT') app.log.warn(error, 'No se pudo leer las compras pendientes');
+    return [];
+  }
+}
+
+async function savePendingPurchases(list) {
+  try {
+    await fs.mkdir(dataDir, { recursive: true });
+    await fs.writeFile(pendingPurchasesFile, JSON.stringify(list, null, 2), 'utf8');
+  } catch (error) {
+    app.log.error(error, 'No se pudo guardar las compras pendientes');
+  }
+}
+
+// GET /api/store/pending
+app.get('/api/store/pending', async (request, reply) => {
+  const key = request.headers['x-api-key'] || request.query.key;
+  if (!key || key !== storeApiKey) {
+    return reply.code(401).send({ error: 'No autorizado' });
+  }
+  const pending = await loadPendingPurchases();
+  return pending;
+});
+
+// POST /api/store/confirm
+app.post('/api/store/confirm', async (request, reply) => {
+  const key = request.headers['x-api-key'] || request.query.key;
+  if (!key || key !== storeApiKey) {
+    return reply.code(401).send({ error: 'No autorizado' });
+  }
+  const body = request.body || {};
+  const id = body.id;
+  if (!id) {
+    return reply.code(400).send({ error: 'Falta id de transaccion' });
+  }
+  const pending = await loadPendingPurchases();
+  const filtered = pending.filter(p => p.id !== id);
+  await savePendingPurchases(filtered);
+  return { ok: true };
+});
 
 await app.register(fastifyStatic, {
   root,
@@ -625,6 +725,8 @@ await app.register(fastifyStatic, {
       'store.html',
       'styles-3-2.css',
       'script-3-2.js',
+      'styles-3-3.css',
+      'script-3-3.js',
       'bannerdrakes.jpg',
       'dragon_fly.png',
       'logodrakescraft.png',

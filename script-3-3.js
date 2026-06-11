@@ -397,9 +397,14 @@ function setupStoreExperience() {
         selected: new Set()
     };
 
-    const money = (value) => Number.isFinite(value)
-        ? '$' + value.toLocaleString('es-CL') + ' CLP'
-        : 'Cotización';
+    const money = (value, product) => {
+        if (product && product.coins) {
+            return product.coins.toLocaleString('es-CL') + ' ₯';
+        }
+        return Number.isFinite(value)
+            ? '$' + value.toLocaleString('es-CL') + ' CLP'
+            : 'Cotización';
+    };
 
     const productById = (id) => state.catalog.products.find((product) => product.id === id);
 
@@ -420,14 +425,20 @@ function setupStoreExperience() {
                     <div class="rank-badge ${product.featured ? 'monthly' : 'permanent'}">${escapeHtml(product.badge)}</div>
                     <h3>${escapeHtml(product.name)}</h3>
                     <p class="store-card-subtitle">${escapeHtml(product.summary)}</p>
-                    <div class="price">${money(product.clp)}${Number.isFinite(product.usd) ? `<span>/ USD ${product.usd}</span>` : ''}</div>
+                    <div class="price">${money(product.clp, product)}${Number.isFinite(product.usd) ? `<span>/ USD ${product.usd}</span>` : ''}</div>
                 </div>
                 <ul class="benefits-list">
                     ${product.includes.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}
                 </ul>
-                <button type="button" class="btn-store ${state.selected.has(product.id) ? 'selected' : ''}" data-product-id="${product.id}">
-                    ${state.selected.has(product.id) ? 'Seleccionado' : 'Agregar a solicitud'}
-                </button>
+                ${product.category === 'economy-kits' ? `
+                    <button type="button" class="btn-store btn-store--disabled" disabled style="background:rgba(255,255,255,0.05);border-color:rgba(255,255,255,0.1);color:var(--text-muted);cursor:not-allowed;width:100%;">
+                        Disponible In-Game
+                    </button>
+                ` : `
+                    <button type="button" class="btn-store ${state.selected.has(product.id) ? 'selected' : ''}" data-product-id="${product.id}">
+                        ${state.selected.has(product.id) ? 'Seleccionado' : 'Agregar a solicitud'}
+                    </button>
+                `}
             </article>
         `).join('');
     };
@@ -445,7 +456,7 @@ function setupStoreExperience() {
         quoteItems.innerHTML = selected.map((product) => `
             <div class="quote-item">
                 <span>${escapeHtml(product.name)}</span>
-                <strong>${money(product.clp)}</strong>
+                <strong>${money(product.clp, product)}</strong>
                 <button type="button" data-remove-product="${product.id}" aria-label="Quitar ${escapeHtml(product.name)}">×</button>
             </div>
         `).join('');

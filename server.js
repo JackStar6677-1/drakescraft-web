@@ -177,6 +177,19 @@ app.post('/api/store/quote', async (request, reply) => {
 
   const selected = storeCatalog.products.filter((product) => items.includes(product.id));
   const total = selected.reduce((sum, product) => sum + (Number.isFinite(product.clp) ? product.clp : 0), 0);
+
+  // Notificar cotización manual por Discord webhook
+  await notifyQuoteDiscord({
+    type: 'Nueva Solicitud (Ticket Manual)',
+    quoteId: quote.id,
+    items: selected,
+    nick,
+    contact,
+    notes,
+    total,
+    currency: 'CLP'
+  });
+
   return {
     ok: true,
     quoteId: quote.id,
@@ -191,6 +204,40 @@ app.post('/api/store/quote', async (request, reply) => {
     ].filter(Boolean).join('\n')
   };
 });
+
+async function notifyQuoteDiscord({ type, quoteId, items, nick, contact, notes, total, currency }) {
+  const webhook = process.env.DISCORD_PAYMENTS_WEBHOOK;
+  if (!webhook) return;
+
+  const names = items.map(p => p.name).join(', ');
+  const formattedAmount = currency === 'CLP' 
+    ? `$${total.toLocaleString('es-CL')} CLP` 
+    : `$${total.toFixed(2)} USD`;
+  
+  const emoji = type.includes('Pago') ? '🛒' : '📝';
+  const color = type.includes('Pago') ? 16750848 : 3447003; // Naranja para pago, Azul para manual
+
+  await fetch(webhook, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      username: 'DrakesCraft · Solicitudes',
+      embeds: [{
+        title: `${emoji} ${type} — ${names}`,
+        color,
+        fields: [
+          { name: '🎮 Nick', value: nick || '—', inline: true },
+          { name: '💬 Contacto', value: contact || '—', inline: true },
+          { name: '💰 Total', value: formattedAmount, inline: true },
+          { name: '🔑 ID Solicitud', value: `\`${quoteId}\``, inline: false },
+          { name: '📝 Notas', value: notes || 'Sin notas.', inline: false },
+        ],
+        footer: { text: `DrakesCraft · ${new Date().toLocaleString('es-CL', { timeZone: 'America/Santiago' })}` }
+      }]
+    })
+  }).catch(() => {});
+}
+
 
 
 // ─── MercadoPago Configuration ───────────────────────────────────────────────
@@ -302,6 +349,19 @@ app.post('/api/store/checkout', async (request, reply) => {
     await fs.mkdir(dataDir, { recursive: true });
     await fs.appendFile(quoteFile, `${JSON.stringify(quote)}\n`, 'utf8');
 
+    // Notificar a Discord la intención de pago
+    const totalClp = items.reduce((sum, p) => sum + p.clp, 0);
+    await notifyQuoteDiscord({
+      type: 'Nueva Intención de Pago (Mercado Pago)',
+      quoteId,
+      items,
+      nick,
+      contact,
+      notes,
+      total: totalClp,
+      currency: 'CLP'
+    });
+
     return { ok: true, quoteId, init_point: prefData.init_point };
   } catch (err) {
     app.log.error(err, 'mp preference creation error');
@@ -407,6 +467,18 @@ app.post('/api/store/paypal/checkout', async (request, reply) => {
     const quote = { id: quoteId, createdAt: new Date().toISOString(), nick, contact, items: items.map(p => p.id), notes, paypalOrderId: order.id };
     await fs.mkdir(dataDir, { recursive: true });
     await fs.appendFile(quoteFile, `${JSON.stringify(quote)}\n`, 'utf8');
+
+    // Notificar a Discord la intención de pago
+    await notifyQuoteDiscord({
+      type: 'Nueva Intención de Pago (PayPal)',
+      quoteId,
+      items,
+      nick,
+      contact,
+      notes,
+      total: totalUsd,
+      currency: 'USD'
+    });
 
     return { ok: true, quoteId, init_point: approveLink, orderId: order.id };
   } catch (err) {

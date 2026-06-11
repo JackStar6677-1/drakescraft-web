@@ -50,7 +50,6 @@ const storeCatalog = {
     { id: 'custom-slimefun', category: 'custom', tier: 5, name: 'Encargo Slimefun (Cotización)', badge: 'Manual', clp: null, usd: null, featured: false, accent: 'cyan', summary: 'Encargos específicos de máquinas avanzadas o componentes técnicos.', includes: ['Precio final calculado post-evaluación', 'Apertura de ticket en Discord requerida', 'Viabilidad técnica revisada por admins', 'Precios de referencia: 50k a 300k Dragmas'] },
     { id: 'custom-guild', category: 'custom', tier: 5, name: 'Pack de Gremio (Cotización)', badge: 'Manual', clp: null, usd: null, featured: false, accent: 'violet', summary: 'Paquete personalizado de claims contiguos, canales de Discord VIP y perks para grupos.', includes: ['Cotización en base al número de integrantes', 'Entrevista inicial obligatoria con el Staff', 'No se aprueba contenido pay-to-win', 'Coordinación directa para la entrega'] }
   ]
-}
 };
 
 async function loadVisits() {

@@ -417,30 +417,87 @@ function setupStoreExperience() {
         `).join('');
     };
 
+    // Modal de detalle
+    let modalProduct = null;
+    const modal = document.getElementById('product-modal');
+    const modalOverlay = document.getElementById('modal-overlay');
+
+    const openModal = (product) => {
+        modalProduct = product;
+        const inGameOnly = product.category === 'economy-kits';
+        const isSelected = state.selected.has(product.id);
+        document.getElementById('modal-badge').textContent = product.badge;
+        document.getElementById('modal-badge').className = `rank-badge ${product.featured ? 'monthly' : 'permanent'}`;
+        document.getElementById('modal-name').textContent = product.name;
+        document.getElementById('modal-summary').textContent = product.summary;
+        document.getElementById('modal-price').innerHTML = money(product.clp, product)
+            + (Number.isFinite(product.usd) ? `<span>/ USD ${product.usd}</span>` : '');
+        document.getElementById('modal-includes').innerHTML = (product.includes || [])
+            .map(i => `<li>${escapeHtml(i)}</li>`).join('');
+        const btn = document.getElementById('modal-add-btn');
+        if (inGameOnly) {
+            btn.textContent = 'Disponible In-Game';
+            btn.disabled = true;
+            btn.className = 'btn-store btn-store--disabled';
+        } else {
+            btn.disabled = false;
+            btn.className = `btn-store${isSelected ? ' selected' : ''}`;
+            btn.textContent = isSelected ? '✓ Seleccionado' : 'Agregar a solicitud';
+            btn.onclick = () => {
+                if (state.selected.has(product.id)) state.selected.delete(product.id);
+                else state.selected.add(product.id);
+                renderAll();
+                openModal(product);
+            };
+        }
+        modal.hidden = false;
+        document.body.classList.add('modal-open');
+    };
+
+    const closeModal = () => {
+        modal.hidden = true;
+        document.body.classList.remove('modal-open');
+        modalProduct = null;
+    };
+
+    if (modalOverlay) modalOverlay.addEventListener('click', closeModal);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+    document.getElementById('modal-close')?.addEventListener('click', closeModal);
+
     const renderProducts = () => {
         const products = state.catalog.products.filter((product) => product.category === state.category);
-        grid.innerHTML = products.map((product) => `
-            <article class="store-card store-card--modern ${product.featured ? 'featured' : ''} accent-${product.accent}">
-                <div class="card-header">
-                    <div class="rank-badge ${product.featured ? 'monthly' : 'permanent'}">${escapeHtml(product.badge)}</div>
-                    <h3>${escapeHtml(product.name)}</h3>
-                    <p class="store-card-subtitle">${escapeHtml(product.summary)}</p>
-                    <div class="price">${money(product.clp, product)}${Number.isFinite(product.usd) ? `<span>/ USD ${product.usd}</span>` : ''}</div>
+        grid.innerHTML = products.map((product) => {
+            const isSelected = state.selected.has(product.id);
+            const inGameOnly = product.category === 'economy-kits';
+            const priceHtml = money(product.clp, product);
+            const usdHtml = Number.isFinite(product.usd) ? `<span class="card-usd">USD ${product.usd}</span>` : '';
+            return `
+            <article class="store-card store-card--compact ${product.featured ? 'featured' : ''} accent-${product.accent} ${isSelected ? 'is-selected' : ''}">
+                <div class="card-top">
+                    <span class="rank-badge ${product.featured ? 'monthly' : 'permanent'}">${escapeHtml(product.badge)}</span>
+                    ${product.featured ? '<span class="card-star">★</span>' : ''}
                 </div>
-                <ul class="benefits-list">
-                    ${product.includes.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}
-                </ul>
-                ${product.category === 'economy-kits' ? `
-                    <button type="button" class="btn-store btn-store--disabled" disabled style="background:rgba(255,255,255,0.05);border-color:rgba(255,255,255,0.1);color:var(--text-muted);cursor:not-allowed;width:100%;">
-                        Disponible In-Game
-                    </button>
-                ` : `
-                    <button type="button" class="btn-store ${state.selected.has(product.id) ? 'selected' : ''}" data-product-id="${product.id}">
-                        ${state.selected.has(product.id) ? 'Seleccionado' : 'Agregar a solicitud'}
-                    </button>
-                `}
-            </article>
-        `).join('');
+                <h3 class="card-name">${escapeHtml(product.name)}</h3>
+                <p class="card-summary">${escapeHtml(product.summary)}</p>
+                <div class="card-price">${priceHtml}${usdHtml}</div>
+                <div class="card-actions">
+                    <button type="button" class="btn-detail" data-detail-id="${product.id}">Ver detalles</button>
+                    ${inGameOnly
+                        ? `<button type="button" class="btn-store btn-store--disabled" disabled>In-Game</button>`
+                        : `<button type="button" class="btn-store btn-add ${isSelected ? 'selected' : ''}" data-product-id="${product.id}">
+                            ${isSelected ? '✓' : '+'}
+                           </button>`
+                    }
+                </div>
+            </article>`;
+        }).join('');
+
+        grid.querySelectorAll('[data-detail-id]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const p = state.catalog.products.find(x => x.id === btn.dataset.detailId);
+                if (p) openModal(p);
+            });
+        });
     };
 
     const renderQuote = () => {

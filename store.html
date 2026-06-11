@@ -186,6 +186,22 @@
         </div>
     </footer>
 
+
+    <!-- Modal detalle de producto -->
+    <div id="modal-overlay" class="modal-overlay" aria-hidden="true"></div>
+    <div id="product-modal" class="product-modal" hidden role="dialog" aria-modal="true" aria-labelledby="modal-name">
+        <button id="modal-close" class="modal-close" aria-label="Cerrar">✕</button>
+        <div class="modal-inner">
+            <div class="modal-header">
+                <span id="modal-badge" class="rank-badge monthly"></span>
+                <h2 id="modal-name" class="modal-name"></h2>
+                <p id="modal-summary" class="modal-summary"></p>
+                <div id="modal-price" class="modal-price"></div>
+            </div>
+            <ul id="modal-includes" class="benefits-list modal-benefits"></ul>
+            <button id="modal-add-btn" type="button" class="btn-store" style="width:100%;margin-top:auto"></button>
+        </div>
+    </div>
     <button type="button" id="sound-toggle" class="sound-toggle-btn muted" aria-label="Activar ambientación sonora">♪</button>
     <script src="script-3-3.js"></script>
 </body>

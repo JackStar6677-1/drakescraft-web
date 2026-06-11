@@ -40,14 +40,14 @@ const storeCatalog = {
     { id: 'hefesto', category: 'monthly', tier: 4, name: 'Hefesto', badge: 'Técnico', clp: 15990, usd: 15.99, featured: false, accent: 'ember', summary: 'El rango predilecto para los creadores de granjas, mineros técnicos y entusiastas del metal.', includes: ['8 homes y comando /feed', '/anvil, /grindstone, /loom, /stonecutter, /smithingtable virtuales', 'Comando /condense para compactar recursos', '5 regiones de protección de 177x177', '/wild (RTP) sin cooldown', 'Kit (24h): Primer kit con NETHERITA completa', 'Armadura Netherita Protec XVI, Irromp VIII', 'Espada Netherita Sharpness XVIII, Saqueo VIII, Knockback I', 'Pico Netherita Eficiencia XIV, Fortuna X', '1 Beacon, 1 Shulker, 14 gapples, 1 notch apple, 4 Tótems', '$175,000 ₯ al reclamar. Hereda anteriores'] },
     { id: 'artemisa', category: 'monthly', tier: 5, name: 'Artemisa', badge: 'Exploración', clp: 22990, usd: 22.99, featured: false, accent: 'cyan', summary: 'Equipamiento mítico y verticalidad. Conquista los cielos y los abismos marinos sin temor a la muerte.', includes: ['12 warps de jugador (/pw) y comando /jump', 'Conserva tu XP al morir (keepxp)', '5 regiones de protección de 241x241', 'Kit (24h): Tridente Impaling XII, Loyalty VIII, Channeling I', 'Armadura Netherita Protec XVIII, Irromp IX, Feather Falling XIV', 'Espada Netherita Sharpness XX, Saqueo IX', 'Herramientas Netherita Eficiencia XVI, Fortuna XII', '1 Beacon, 1 Shulker, 18 gapples, 2 notch apples, 6 Tótems', '$300,000 ₯ al reclamar. Hereda anteriores'] },
     { id: 'afrodita', category: 'monthly', tier: 6, name: 'Afrodita', badge: 'Economía', clp: 31990, usd: 31.99, featured: false, accent: 'pink', summary: 'Domina la economía del servidor. Repara tus armas gratis, vende al instante y abre tiendas sin pagar tarifas.', includes: ['12 homes y 15 warps de jugador (/pw)', 'Comando /repair gratis para reparar en mano', 'Comando /sell para vender al server', 'Abre ChestShop sin pagar fee inicial ($100 ₯)', '6 regiones de protección de 353x353', 'Kit (24h): Elytra mítica Unbreaking V, Mending IV', 'Armadura Netherita Protec XXII, Irromp X, Espinas VII', 'Espada Netherita Sharpness XXIV, Saqueo X', 'Herramientas Netherita Eficiencia XVIII, Fortuna XIV', '2 Beacons, 2 Shulkers, 24 gapples, 3 notch apples, 8 Tótems', '$500,000 ₯ al reclamar. Hereda anteriores'] },
-    { id: 'zeus', category: 'monthly', tier: 7, name: 'Zeus', badge: 'Rango top', clp: 44990, usd: 44.99, featured: true, accent: 'gold', summary: 'El rango insignia de DrakesCraft. El poder total del Olimpo bajo tu control.', includes: ['20 homes, 25 warps de jugador (/pw)', '/repair all y /heal al instante', '/near y conserva inventario al morir (keepinv)', 'Exención de impuestos en transacciones ChestShop', '7 regiones de protección de 481x481', 'Kit (24h): Netherita definitiva Protec XXX, Irromp XII, Espinas X', 'Espada del Olimpo Sharpness XXX, Saqueo XII, Fire Aspect V, Knockback III', 'Pico Efic XX + Fortune XVI y Pico Efic XX + Silk Touch', 'Arco del Olimpo Poder XX, Infinidad y Elytra Unbreaking V + Mending IV', '3 Beacons, 3 Shulkers, 32 gapples, 8 notch apples, 12 Tótems', '$1,000,000 ₯ al reclamar. Hereda anteriores'] },
+    { id: 'zeus', category: 'monthly', tier: 7, name: 'Zeus', badge: 'Rango top', clp: 44990, usd: 44.99, featured: true, accent: 'gold', summary: 'El rango insignia de DrakesCraft. El poder total del Olimpo bajo tu control.', includes: ['20 homes, 25 warps de jugador (/pw)', '/repair all y /heal al instante', '/near y conserva inventario al morir (keepinv)', 'Exención de impuestos en transacciones ChestShop', '7 regiones de protección de 481x481', 'Kit (24h): Netherita definitiva Protec XXX, Irromp XII, Espinas X', 'Espada del Olimpo Sharpness XXX, Saqueo XII, Fire Aspect V, Knockback III', 'Pico Efic XX + Fortune XVI y Pico Efic XX + Silk Touch', 'Arco del Olimpo Poder XX, Infinidad y Elytra Unbreaking V + Mending IV', '3 Beacons, 3 Shulkers, 32 gapples, 8 notch apples, 12 Tótems', '$1,000,000 ₯ al reclamar el kit'] },
     
-    { id: 'minero', category: 'roles', tier: 3, name: 'Rol: Minero', badge: 'Subrango', clp: 2990, usd: 2.99, featured: false, accent: 'bronze', summary: 'El devorador de minas. Ideal para recolectores masivos. Agrega prefijo secundario en el chat.', includes: ['Prefijo [⛏ MINERO] secundario en el chat', 'Kit (24h): Pico Explosivo Élite (3x3 Slimefun) Eficiencia X + Irrompibilidad X (Irrompible)', 'Poción de Prisa Minera II (Haste II) de larga duración', 'Poción de Visión Nocturna', 'Materiales: 64 Hierros crudos, 64 Carbones, 32 Oros crudos, 8 Diamantes'] },
-    { id: 'cazador', category: 'roles', tier: 3, name: 'Rol: Cazador', badge: 'Subrango', clp: 2990, usd: 2.99, featured: false, accent: 'rose', summary: 'El azote de los monstruos. Ideal para granjas de mobs y caza.', includes: ['Prefijo [⚔ CAZADOR] secundario en el chat', 'Kit (24h): 2 Atrapamobs Místicos de Slimefun', 'Espada del Cazador de Diamante Sharpness VII, Saqueo V', 'Arco con Poder VII y Retroceso II (Punch II)', 'Poción de Fuerza II y 128 Flechas'] },
-    { id: 'constructor', category: 'roles', tier: 3, name: 'Rol: Constructor', badge: 'Subrango', clp: 2990, usd: 2.99, featured: false, accent: 'violet', summary: 'Diseñado para arquitectos de imperios y constructores.', includes: ['Prefijo [⚒ CONSTRUCTOR] secundario en el chat', 'Kit (24h): 1 Varita del Constructor de Slimefun', 'Materiales: 128 Hormigón Blanco, 128 Cristales, 128 Ladrillos de Piedra y madera variada'] },
-    { id: 'lenador', category: 'roles', tier: 3, name: 'Rol: Leñador', badge: 'Subrango', clp: 2990, usd: 2.99, featured: false, accent: 'ember', summary: 'El destructor de bosques. Talarás madera en segundos.', includes: ['Prefijo [🪓 LEÑADOR] secundario en el chat', 'Kit (24h): Hacha del Leñador Loco de netherita con Eficiencia X, Irrompibilidad X y Sharpness VIII', '1 Grifo de Árbol (Tree Tap) de Slimefun para extraer savias', 'Materiales: 128 Troncos de roble y 128 de abeto'] },
-    { id: 'alquimista', category: 'roles', tier: 3, name: 'Rol: Alquimista', badge: 'Subrango', clp: 2990, usd: 2.99, featured: false, accent: 'cyan', summary: 'El maestro de las pócimas y brebajes.', includes: ['Prefijo [🧪 ALQUIMISTA] secundario en el chat', 'Kit (24h): 1 Alambique y 64 botellas de vidrio', 'Reactivos: 32 Blaze Powder, 32 Nether Wart, 32 Glowstone', '32 Redstone, 16 Gunpowder y 4 Aliento de Dragón', 'Pociones de Velocidad II, Regeneración II y Fuerza II'] },
-    { id: 'nomada', category: 'roles', tier: 3, name: 'Rol: Nómada', badge: 'Subrango', clp: 2990, usd: 2.99, featured: false, accent: 'pink', summary: 'El jinete errante. Ideal para explorar y viajar a caballo.', includes: ['Prefijo [⛺ NÓMADA] secundario en el chat', 'Kit (24h): Montura de caballo, armadura dorada para caballo, rienda y catalejo', '48 zanahorias doradas para tu montura', 'Armadura del Nómada de cuero con Protección VIII, Irrompibilidad X y Feather Falling X'] },
+    { id: 'minero', category: 'roles', tier: 3, name: 'Rol: Minero', badge: 'Mensual', clp: 2990, usd: 2.99, featured: false, accent: 'bronze', summary: 'El devorador de minas. Ideal para recolectores masivos. Agrega prefijo secundario en el chat.', includes: ['Prefijo [⛏ MINERO] secundario en el chat', 'Kit (24h): Pico Explosivo Élite (3x3 Slimefun) Eficiencia X + Irrompibilidad X (Irrompible)', 'Poción de Prisa Minera II (Haste II) de larga duración', 'Poción de Visión Nocturna', 'Materiales: 64 Hierros crudos, 64 Carbones, 32 Oros crudos, 8 Diamantes'] },
+    { id: 'cazador', category: 'roles', tier: 3, name: 'Rol: Cazador', badge: 'Mensual', clp: 2990, usd: 2.99, featured: false, accent: 'rose', summary: 'El azote de los monstruos. Ideal para granjas de mobs y caza.', includes: ['Prefijo [⚔ CAZADOR] secundario en el chat', 'Kit (24h): 2 Atrapamobs Místicos de Slimefun', 'Espada del Cazador de Diamante Sharpness VII, Saqueo V', 'Arco con Poder VII y Retroceso II (Punch II)', 'Poción de Fuerza II y 128 Flechas'] },
+    { id: 'constructor', category: 'roles', tier: 3, name: 'Rol: Constructor', badge: 'Mensual', clp: 2990, usd: 2.99, featured: false, accent: 'violet', summary: 'Diseñado para arquitectos de imperios y constructores.', includes: ['Prefijo [⚒ CONSTRUCTOR] secundario en el chat', 'Kit (24h): 1 Varita del Constructor de Slimefun', 'Materiales: 128 Hormigón Blanco, 128 Cristales, 128 Ladrillos de Piedra y madera variada'] },
+    { id: 'lenador', category: 'roles', tier: 3, name: 'Rol: Leñador', badge: 'Mensual', clp: 2990, usd: 2.99, featured: false, accent: 'ember', summary: 'El destructor de bosques. Talarás madera en segundos.', includes: ['Prefijo [🪓 LEÑADOR] secundario en el chat', 'Kit (24h): Hacha del Leñador Loco de netherita con Eficiencia X, Irrompibilidad X y Sharpness VIII', '1 Grifo de Árbol (Tree Tap) de Slimefun para extraer savias', 'Materiales: 128 Troncos de roble y 128 de abeto'] },
+    { id: 'alquimista', category: 'roles', tier: 3, name: 'Rol: Alquimista', badge: 'Mensual', clp: 2990, usd: 2.99, featured: false, accent: 'cyan', summary: 'El maestro de las pócimas y brebajes.', includes: ['Prefijo [🧪 ALQUIMISTA] secundario en el chat', 'Kit (24h): 1 Alambique y 64 botellas de vidrio', 'Reactivos: 32 Blaze Powder, 32 Nether Wart, 32 Glowstone', '32 Redstone, 16 Gunpowder y 4 Aliento de Dragón', 'Pociones de Velocidad II, Regeneración II y Fuerza II'] },
+    { id: 'nomada', category: 'roles', tier: 3, name: 'Rol: Nómada', badge: 'Mensual', clp: 2990, usd: 2.99, featured: false, accent: 'pink', summary: 'El jinete errante. Ideal para explorar y viajar a caballo.', includes: ['Prefijo [⛺ NÓMADA] secundario en el chat', 'Kit (24h): Montura de caballo, armadura dorada para caballo, rienda y catalejo', '48 zanahorias doradas para tu montura', 'Armadura del Nómada de cuero con Protección VIII, Irrompibilidad X y Feather Falling X'] },
 
     { id: 'kit-hermes', category: 'kits', tier: 3, name: 'Kit Hermes', badge: 'Movilidad', clp: 5990, usd: 5.99, featured: true, accent: 'violet', summary: 'Equipo de diamante premium bendecido por Hermes, enfocado en viajar.', includes: ['Botas con Feather Falling X y Soul Speed IV', 'Pico Eficiencia XII + Fortune VIII', 'Arco Power XII + Infinity', 'Shulker, cohetes, totems y comida premium'] },
     { id: 'kit-zeus', category: 'kits', tier: 7, name: 'Kit Zeus', badge: 'Mítico', clp: 14990, usd: 14.99, featured: true, accent: 'gold', summary: 'Netherita del Olimpo con herramientas extremas de línea alta.', includes: ['Protección XXX y Espinas X', 'Sharpness XXX + Looting XII', 'Doble pico Eficiencia XX', 'Beacons, shulkers, totems y recursos premium'] },
@@ -314,6 +314,129 @@ async function getPaypalAccessToken() {
   return data.access_token;
 }
 
+const subscriptionsFile = path.join(dataDir, 'subscriptions.json');
+const paypalPlansFile = path.join(dataDir, 'paypal-plans.json');
+
+async function loadSubscriptions() {
+  try {
+    const data = await fs.readFile(subscriptionsFile, 'utf8');
+    return JSON.parse(data);
+  } catch (error) {
+    if (error.code !== 'ENOENT') app.log.warn(error, 'No se pudo leer las suscripciones');
+    return [];
+  }
+}
+
+async function saveSubscriptions(list) {
+  try {
+    await fs.mkdir(dataDir, { recursive: true });
+    await fs.writeFile(subscriptionsFile, JSON.stringify(list, null, 2), 'utf8');
+  } catch (error) {
+    app.log.error(error, 'No se pudo guardar las suscripciones');
+  }
+}
+
+async function loadPaypalPlans() {
+  try {
+    const data = await fs.readFile(paypalPlansFile, 'utf8');
+    return JSON.parse(data);
+  } catch (error) {
+    if (error.code !== 'ENOENT') app.log.warn(error, 'No se pudo leer los planes de PayPal');
+    return {};
+  }
+}
+
+async function savePaypalPlans(plans) {
+  try {
+    await fs.mkdir(dataDir, { recursive: true });
+    await fs.writeFile(paypalPlansFile, JSON.stringify(plans, null, 2), 'utf8');
+  } catch (error) {
+    app.log.error(error, 'No se pudo guardar los planes de PayPal');
+  }
+}
+
+async function getOrCreatePaypalPlan(productId, productName, usdPrice) {
+  const plans = await loadPaypalPlans();
+  if (plans[productId]) {
+    return plans[productId];
+  }
+
+  const accessToken = await getPaypalAccessToken();
+
+  // 1. Ensure we have a Product ID stored
+  let paypalProductId = plans._productId;
+  if (!paypalProductId) {
+    const pResponse = await fetch(`${paypalBaseUrl}/v1/catalogs/products`, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: "DrakesCraft Suscripciones",
+        description: "Suscripción a rangos y roles mensuales en DrakesCraft",
+        type: "DIGITAL",
+        category: "SOFTWARE"
+      })
+    });
+    if (!pResponse.ok) {
+      const errText = await pResponse.text();
+      throw new Error(`Error al crear producto en PayPal: ${errText}`);
+    }
+    const productData = await pResponse.json();
+    paypalProductId = productData.id;
+    plans._productId = paypalProductId;
+  }
+
+  // 2. Create the Billing Plan
+  const planResponse = await fetch(`${paypalBaseUrl}/v1/billing/plans`, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+      'Content-Type': 'application/json',
+      'Prefer': 'return=representation'
+    },
+    body: JSON.stringify({
+      product_id: paypalProductId,
+      name: `Suscripción ${productName}`,
+      description: `Débito mensual automático para ${productName}`,
+      status: "ACTIVE",
+      billing_cycles: [
+        {
+          frequency: {
+            interval_unit: "MONTH",
+            interval_count: 1
+          },
+          tenure_type: "REGULAR",
+          sequence: 1,
+          total_cycles: 0,
+          pricing_scheme: {
+            fixed_price: {
+              value: usdPrice.toFixed(2),
+              currency_code: "USD"
+            }
+          }
+        }
+      ],
+      payment_preferences: {
+        auto_bill_outstanding: true,
+        setup_fee_failure_action: "CANCEL",
+        payment_failure_threshold: 1
+      }
+    })
+  });
+
+  if (!planResponse.ok) {
+    const errText = await planResponse.text();
+    throw new Error(`Error al crear plan de facturación en PayPal para ${productId}: ${errText}`);
+  }
+
+  const planData = await planResponse.json();
+  plans[productId] = planData.id;
+  await savePaypalPlans(plans);
+  return planData.id;
+}
+
 async function notifyPaymentDiscord({ platform, paymentId, status, items, nick, contact, amount, currency }) {
   const webhook = process.env.DISCORD_PAYMENTS_WEBHOOK;
   if (!webhook) return;
@@ -369,12 +492,92 @@ app.post('/api/store/checkout', async (request, reply) => {
   const nick = String(body.nick || '').trim().slice(0, 40);
   const contact = String(body.contact || '').trim().slice(0, 80);
   const notes = String(body.notes || '').trim().slice(0, 500);
+  const autoRenew = !!body.autoRenew;
 
   if (body.website) return reply.code(204).send();
   if (!items.length) return reply.code(400).send({ error: 'Selecciona al menos un producto con precio.' });
   if (!mp) return reply.code(503).send({ error: 'Pagos locales con Mercado Pago no configurados.' });
 
   const quoteId = `dq-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 7)}`;
+
+  if (autoRenew) {
+    if (items.length !== 1) {
+      return reply.code(400).send({ error: 'Para activar la renovación automática, debes seleccionar exactamente un Rango VIP o Rol a la vez.' });
+    }
+    const targetItem = items[0];
+    if (targetItem.category !== 'monthly' && targetItem.category !== 'roles') {
+      return reply.code(400).send({ error: 'La renovación automática solo está disponible para Rangos VIP y Roles de Juego.' });
+    }
+    if (!contact || !contact.includes('@')) {
+      return reply.code(400).send({ error: 'Para activar la renovación automática, debes ingresar un correo electrónico válido en el campo de contacto para registrar tu suscripción.' });
+    }
+
+    try {
+      const response = await fetch('https://api.mercadopago.com/v1/preapproval', {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${mpAccessToken}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          payer_email: contact.trim(),
+          back_url: 'https://web.drakescraft.cl/store.html?payment=mp-sub-success',
+          reason: `Suscripción Mensual — ${targetItem.name}`,
+          external_reference: quoteId,
+          auto_recurring: {
+            frequency: 1,
+            frequency_type: 'months',
+            transaction_amount: targetItem.clp,
+            currency_id: 'CLP'
+          },
+          status: 'pending'
+        })
+      });
+
+      if (!response.ok) {
+        const errText = await response.text();
+        app.log.warn({ errText }, 'Error al crear preaprobación de Mercado Pago');
+        return reply.code(500).send({ error: 'Error al generar la suscripción en la pasarela de Mercado Pago.' });
+      }
+
+      const preapproval = await response.json();
+      const initPoint = preapproval.init_point;
+
+      // Registrar suscripción localmente
+      const subscriptions = await loadSubscriptions();
+      subscriptions.push({
+        id: preapproval.id,
+        platform: 'Mercado Pago',
+        nick,
+        contact,
+        productId: targetItem.id,
+        productName: targetItem.name,
+        createdAt: new Date().toISOString()
+      });
+      await saveSubscriptions(subscriptions);
+
+      const quote = { id: quoteId, createdAt: new Date().toISOString(), nick, contact, items: [targetItem.id], notes, mpPreapprovalId: preapproval.id };
+      await fs.mkdir(dataDir, { recursive: true });
+      await fs.appendFile(quoteFile, `${JSON.stringify(quote)}\n`, 'utf8');
+
+      // Notificar a Discord la intención de suscripción
+      await notifyQuoteDiscord({
+        type: 'Nueva Intención de Suscripción (Mercado Pago)',
+        quoteId,
+        items,
+        nick,
+        contact,
+        notes,
+        total: targetItem.clp,
+        currency: 'CLP'
+      });
+
+      return { ok: true, quoteId, init_point: initPoint, preapprovalId: preapproval.id };
+    } catch (err) {
+      app.log.error(err, 'mp preapproval creation error');
+      return reply.code(500).send({ error: 'Error interno de Mercado Pago al procesar suscripción.' });
+    }
+  }
   
   try {
     const pref = new Preference(mp);
@@ -437,14 +640,35 @@ app.post('/api/mp/webhook', async (request, reply) => {
 
     if (payment.status === 'approved' || payment.status === 'in_process') {
       const meta = payment.metadata || {};
-      const nick = meta.nick || payment.external_reference || '';
-      const contact = meta.contact || '';
-      const itemIds = Array.isArray(payment.additional_info?.items)
-        ? payment.additional_info.items.map(i => i.id)
-        : [];
+      let nick = meta.nick || payment.external_reference || '';
+      let contact = meta.contact || '';
+      
+      // Mapeo si viene de una suscripción/preaprobación
+      let itemIds = [];
+      const preapprovalId = payment.preapproval_id;
+      let isSubscription = false;
+
+      if (preapprovalId) {
+        const subscriptions = await loadSubscriptions();
+        const subRecord = subscriptions.find(s => s.id === preapprovalId);
+        if (subRecord) {
+          nick = subRecord.nick;
+          contact = subRecord.contact;
+          itemIds = [subRecord.productId];
+          isSubscription = true;
+        }
+      }
+
+      if (itemIds.length === 0) {
+        itemIds = Array.isArray(payment.additional_info?.items)
+          ? payment.additional_info.items.map(i => i.id)
+          : [];
+      }
+
       const items = storeCatalog.products.filter(p => itemIds.includes(p.id));
+
       await notifyPaymentDiscord({
-        platform: 'Mercado Pago',
+        platform: isSubscription ? 'Mercado Pago (Suscripción)' : 'Mercado Pago',
         paymentId: payment.id,
         status: payment.status,
         items,
@@ -458,7 +682,7 @@ app.post('/api/mp/webhook', async (request, reply) => {
       if (payment.status === 'approved') {
         const pending = await loadPendingPurchases();
         for (const item of items) {
-          const txnId = `mp_${payment.id}_${item.id}`;
+          const txnId = isSubscription ? `mp_sub_payment_${payment.id}_${item.id}` : `mp_${payment.id}_${item.id}`;
           if (!pending.some(p => p.id === txnId)) {
             pending.push({
               id: txnId,
@@ -486,6 +710,7 @@ app.post('/api/store/paypal/checkout', async (request, reply) => {
   const nick = String(body.nick || '').trim().slice(0, 40);
   const contact = String(body.contact || '').trim().slice(0, 80);
   const notes = String(body.notes || '').trim().slice(0, 500);
+  const autoRenew = !!body.autoRenew;
 
   if (body.website) return reply.code(204).send();
   if (!items.length) return reply.code(400).send({ error: 'Selecciona al menos un producto con precio en USD.' });
@@ -493,8 +718,86 @@ app.post('/api/store/paypal/checkout', async (request, reply) => {
     return reply.code(503).send({ error: 'Pagos internacionales con PayPal no configurados.' });
   }
 
-  const totalUsd = items.reduce((sum, p) => sum + p.usd, 0);
   const quoteId = `dq-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 7)}`;
+
+  if (autoRenew) {
+    if (items.length !== 1) {
+      return reply.code(400).send({ error: 'Para activar la renovación automática, debes seleccionar exactamente un Rango VIP o Rol a la vez.' });
+    }
+    const targetItem = items[0];
+    if (targetItem.category !== 'monthly' && targetItem.category !== 'roles') {
+      return reply.code(400).send({ error: 'La renovación automática solo está disponible para Rangos VIP y Roles de Juego.' });
+    }
+
+    try {
+      const planId = await getOrCreatePaypalPlan(targetItem.id, targetItem.name, targetItem.usd);
+      const accessToken = await getPaypalAccessToken();
+
+      const subResponse = await fetch(`${paypalBaseUrl}/v1/billing/subscriptions`, {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          plan_id: planId,
+          custom_id: JSON.stringify({ nick, contact, notes, quoteId }),
+          application_context: {
+            brand_name: "DrakesCraft",
+            locale: "es-ES",
+            user_action: "SUBSCRIBE_NOW",
+            return_url: "https://web.drakescraft.cl/store.html?payment=paypal-sub-success",
+            cancel_url: "https://web.drakescraft.cl/store.html?payment=paypal-sub-cancel"
+          }
+        })
+      });
+
+      if (!subResponse.ok) {
+        const errText = await subResponse.text();
+        app.log.warn({ errText }, 'Error al crear suscripción de PayPal');
+        return reply.code(500).send({ error: 'Error al generar la suscripción en la pasarela de PayPal.' });
+      }
+
+      const subscription = await subResponse.json();
+      const approveLink = subscription.links.find(l => l.rel === 'approve')?.href;
+
+      // Registrar suscripción localmente
+      const subscriptions = await loadSubscriptions();
+      subscriptions.push({
+        id: subscription.id,
+        platform: 'PayPal',
+        nick,
+        contact,
+        productId: targetItem.id,
+        productName: targetItem.name,
+        createdAt: new Date().toISOString()
+      });
+      await saveSubscriptions(subscriptions);
+
+      const quote = { id: quoteId, createdAt: new Date().toISOString(), nick, contact, items: [targetItem.id], notes, paypalSubscriptionId: subscription.id };
+      await fs.mkdir(dataDir, { recursive: true });
+      await fs.appendFile(quoteFile, `${JSON.stringify(quote)}\n`, 'utf8');
+
+      // Notificar a Discord la intención de suscripción
+      await notifyQuoteDiscord({
+        type: 'Nueva Intención de Suscripción (PayPal)',
+        quoteId,
+        items,
+        nick,
+        contact,
+        notes,
+        total: targetItem.usd,
+        currency: 'USD'
+      });
+
+      return { ok: true, quoteId, init_point: approveLink, subscriptionId: subscription.id };
+    } catch (err) {
+      app.log.error(err, 'paypal subscription creation error');
+      return reply.code(500).send({ error: err.message || 'Error interno de PayPal al procesar suscripción.' });
+    }
+  }
+
+  const totalUsd = items.reduce((sum, p) => sum + p.usd, 0);
 
   try {
     const accessToken = await getPaypalAccessToken();
@@ -660,6 +963,154 @@ app.post('/api/store/paypal/capture', async (request, reply) => {
   } catch (err) {
     app.log.error(err, 'paypal capture error');
     return reply.code(500).send({ error: 'Error interno al capturar pago de PayPal.' });
+  }
+});
+
+// POST /api/store/paypal/capture-subscription — valida una suscripción aprobada
+app.post('/api/store/paypal/capture-subscription', async (request, reply) => {
+  const body = request.body || {};
+  const subscriptionId = body.subscriptionId;
+  if (!subscriptionId) return reply.code(400).send({ error: 'Falta subscriptionId' });
+
+  try {
+    const accessToken = await getPaypalAccessToken();
+    const response = await fetch(`${paypalBaseUrl}/v1/billing/subscriptions/${subscriptionId}`, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        'Content-Type': 'application/json'
+      }
+    });
+
+    if (!response.ok) {
+      const errText = await response.text();
+      app.log.warn({ errText }, 'Error al consultar suscripción de PayPal');
+      return reply.code(500).send({ error: 'No se pudo consultar el estado de la suscripción en PayPal.' });
+    }
+
+    const subscription = await response.json();
+    const status = subscription.status;
+
+    if (status === 'ACTIVE' || status === 'APPROVED') {
+      const subscriptions = await loadSubscriptions();
+      const subRecord = subscriptions.find(s => s.id === subscriptionId);
+
+      let nick = '';
+      let contact = '';
+      let productId = '';
+      let productName = '';
+
+      if (subRecord) {
+        nick = subRecord.nick;
+        contact = subRecord.contact;
+        productId = subRecord.productId;
+        productName = subRecord.productName;
+      } else {
+        try {
+          const custom = JSON.parse(subscription.custom_id);
+          nick = custom.nick;
+          contact = custom.contact;
+        } catch (_) {}
+      }
+
+      if (!productId) {
+        return reply.code(400).send({ error: 'No se pudo asociar la suscripción con un producto válido.' });
+      }
+
+      const pending = await loadPendingPurchases();
+      const txnId = `pp_sub_${subscriptionId}_init`;
+      if (!pending.some(p => p.id === txnId)) {
+        pending.push({
+          id: txnId,
+          nick,
+          productId,
+          productName,
+          timestamp: new Date().toISOString()
+        });
+        await savePendingPurchases(pending);
+      }
+
+      await notifyPaymentDiscord({
+        platform: 'PayPal (Suscripción)',
+        paymentId: subscriptionId,
+        status: `Suscripción Activa (${status})`,
+        items: [{ id: productId, name: productName }],
+        nick,
+        contact,
+        amount: parseFloat(subscription.billing_info?.last_payment?.amount?.value || 0),
+        currency: 'USD'
+      });
+
+      return { ok: true, status, subscriptionId };
+    }
+
+    return { ok: false, status };
+  } catch (err) {
+    app.log.error(err, 'paypal subscription capture error');
+    return reply.code(500).send({ error: 'Error interno al verificar la suscripción de PayPal.' });
+  }
+});
+
+// POST /api/paypal/webhook — recibe notificaciones de PayPal (suscripciones recurrentes)
+app.post('/api/paypal/webhook', async (request, reply) => {
+  reply.code(200).send('ok'); // responder rápido a PayPal
+  const body = request.body || {};
+  const eventType = body.event_type;
+
+  if (eventType !== 'PAYMENT.SALE.COMPLETED') {
+    return;
+  }
+
+  const resource = body.resource || {};
+  const billingAgreementId = resource.billing_agreement_id;
+
+  if (!billingAgreementId) {
+    return;
+  }
+
+  try {
+    const subscriptions = await loadSubscriptions();
+    const subRecord = subscriptions.find(s => s.id === billingAgreementId);
+
+    if (!subRecord) {
+      app.log.warn({ billingAgreementId }, 'Webhook de pago recibido para suscripción no registrada localmente.');
+      return;
+    }
+
+    const nick = subRecord.nick;
+    const contact = subRecord.contact;
+    const productId = subRecord.productId;
+    const productName = subRecord.productName;
+    const saleId = resource.id;
+    const amount = parseFloat(resource.amount?.total || 0);
+
+    const pending = await loadPendingPurchases();
+    const txnId = `pp_sale_${saleId}`;
+
+    if (!pending.some(p => p.id === txnId)) {
+      pending.push({
+        id: txnId,
+        nick,
+        productId,
+        productName,
+        timestamp: new Date().toISOString()
+      });
+      await savePendingPurchases(pending);
+
+      await notifyPaymentDiscord({
+        platform: 'PayPal (Renovación Automática)',
+        paymentId: saleId,
+        status: 'COMPLETED',
+        items: [{ id: productId, name: productName }],
+        nick,
+        contact,
+        amount,
+        currency: 'USD'
+      });
+
+      app.log.info({ saleId, billingAgreementId, nick }, 'Renovación automática de PayPal procesada y encolada.');
+    }
+  } catch (err) {
+    app.log.error(err, 'Error procesando webhook de pago de PayPal');
   }
 });
 

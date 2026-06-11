@@ -460,6 +460,16 @@ function setupStoreExperience() {
                 <button type="button" data-remove-product="${product.id}" aria-label="Quitar ${escapeHtml(product.name)}">×</button>
             </div>
         `).join('');
+
+        const autoRenewContainer = document.getElementById('auto-renew-container');
+        if (autoRenewContainer) {
+            const hasOnlyMonthlyOrRoles = selected.length > 0 && selected.every(p => p.category === 'monthly' || p.category === 'roles');
+            autoRenewContainer.style.display = hasOnlyMonthlyOrRoles ? 'flex' : 'none';
+            if (!hasOnlyMonthlyOrRoles) {
+                const checkbox = document.getElementById('auto-renew-checkbox');
+                if (checkbox) checkbox.checked = false;
+            }
+        }
     };
 
     const renderAll = () => {
@@ -499,12 +509,16 @@ function setupStoreExperience() {
             return;
         }
         const formData = new FormData(quoteForm);
+        const autoRenewCheckbox = document.getElementById('auto-renew-checkbox');
+        const autoRenew = autoRenewCheckbox ? autoRenewCheckbox.checked : false;
+
         const payload = {
             nick: formData.get('nick'),
             contact: formData.get('contact'),
             notes: formData.get('notes'),
             website: formData.get('website'),
-            items: Array.from(state.selected)
+            items: Array.from(state.selected),
+            autoRenew
         };
 
         const selectedProducts = state.catalog?.products?.filter(p => Array.from(state.selected).includes(p.id)) || [];
@@ -607,9 +621,13 @@ function setupStoreExperience() {
             const urlParams = new URLSearchParams(window.location.search);
             const paymentStatus = urlParams.get('payment');
             const paypalToken = urlParams.get('token');
+            const paypalSubId = urlParams.get('subscription_id');
 
             if (paymentStatus === 'success') {
                 showToast('¡Pago de MercadoPago recibido con éxito! El staff procesará tu entrega.');
+                window.history.replaceState({}, document.title, window.location.pathname);
+            } else if (paymentStatus === 'mp-sub-success') {
+                showToast('¡Suscripción de Mercado Pago autorizada con éxito! Tu rango se activará en breve.');
                 window.history.replaceState({}, document.title, window.location.pathname);
             } else if (paymentStatus === 'failure') {
                 showToast('El pago de MercadoPago fue cancelado o rechazado.');
@@ -635,8 +653,29 @@ function setupStoreExperience() {
                 .finally(() => {
                     window.history.replaceState({}, document.title, window.location.pathname);
                 });
-            } else if (paymentStatus === 'paypal-cancel') {
-                showToast('El pago de PayPal fue cancelado.');
+            } else if (paymentStatus === 'paypal-sub-success' && paypalSubId) {
+                showToast('Confirmando tu suscripción de PayPal...');
+                fetch('/api/store/paypal/capture-subscription', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ subscriptionId: paypalSubId })
+                })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.ok && (data.status === 'ACTIVE' || data.status === 'APPROVED')) {
+                        showToast('¡Suscripción de PayPal activada con éxito! Rangos entregándose en el servidor.');
+                    } else {
+                        showToast('No se pudo confirmar la suscripción de PayPal.');
+                    }
+                })
+                .catch(() => {
+                    showToast('Error al confirmar suscripción de PayPal.');
+                })
+                .finally(() => {
+                    window.history.replaceState({}, document.title, window.location.pathname);
+                });
+            } else if (paymentStatus === 'paypal-sub-cancel') {
+                showToast('La suscripción de PayPal fue cancelada.');
                 window.history.replaceState({}, document.title, window.location.pathname);
             }
         })

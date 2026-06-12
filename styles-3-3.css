@@ -127,7 +127,7 @@ img {
 
 .site-hero__inner {
     position: relative;
-    z-index: 1;
+    z-index: 2;
     max-width: 640px;
 }
 
@@ -706,7 +706,7 @@ img {
 }
 
 .site-hero > #particles-canvas {
-    z-index: 0;
+    z-index: 1;
 }
 
 /* Promoción de tienda: la ilustración ya incluye su propia marca y texto. */
@@ -2098,9 +2098,8 @@ img {
 .site-hero {
     min-height: 100vh;
     background:
-        linear-gradient(90deg, rgba(5, 3, 14, 0.6), rgba(5, 3, 14, 0.25) 48%, rgba(5, 3, 14, 0.6)),
-        linear-gradient(180deg, rgba(5, 3, 14, 0.1), rgba(5, 3, 14, 0.75)),
-        url('assets/portal-background-v1.png') center / cover no-repeat;
+        linear-gradient(90deg, rgba(5, 3, 14, 0.45), rgba(5, 3, 14, 0.1) 48%, rgba(5, 3, 14, 0.45)),
+        linear-gradient(180deg, rgba(5, 3, 14, 0.05), rgba(5, 3, 14, 0.55));
     padding-top: 9rem;
 }
 

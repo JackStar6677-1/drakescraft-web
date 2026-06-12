@@ -196,10 +196,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Luces — dorado + morado para coincidir con la paleta del sitio
-    scene.add(new THREE.AmbientLight(0x8b5cf6, 0.5));
-    const gold  = new THREE.PointLight(0xf59e0b, 3, 60); gold.position.set(12, 6, 12);
-    const purp  = new THREE.PointLight(0x7c3aed, 2, 60); purp.position.set(-12, -4, 8);
-    const cyan  = new THREE.PointLight(0x06b6d4, 1, 40); cyan.position.set(0, 15, 5);
+    scene.add(new THREE.AmbientLight(0xffffff, 1.2));
+    const gold  = new THREE.PointLight(0xf59e0b, 6, 80); gold.position.set(12, 6, 20);
+    const purp  = new THREE.PointLight(0x8b5cf6, 5, 80); purp.position.set(-12, -4, 16);
+    const cyan  = new THREE.PointLight(0x06b6d4, 3, 60); cyan.position.set(0, 15, 18);
     scene.add(gold, purp, cyan);
 
     // ── B: Partículas 3D (Points) ─────────────────────────────────────────

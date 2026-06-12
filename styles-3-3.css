@@ -43,10 +43,7 @@
 
 body {
     font-family: var(--font-body);
-    background-color: var(--bg-dark);
-    background-image:
-        radial-gradient(ellipse 120% 80% at 50% -20%, rgba(124, 58, 237, 0.22), transparent 55%),
-        radial-gradient(ellipse 80% 50% at 100% 50%, rgba(201, 162, 39, 0.06), transparent 50%);
+    background-color: transparent; /* #background-layers provee el fondo */
     color: var(--text-main);
     line-height: 1.6;
     overflow-x: hidden;
@@ -2008,10 +2005,9 @@ img {
 
 .site-hero {
     min-height: 100vh;
-    isolation: isolate;
     background:
-        linear-gradient(90deg, rgba(5, 3, 14, 0.96), rgba(5, 3, 14, 0.8) 48%, rgba(5, 3, 14, 0.96)),
-        linear-gradient(180deg, rgba(5, 3, 14, 0.35), rgba(5, 3, 14, 0.95)),
+        linear-gradient(90deg, rgba(5, 3, 14, 0.6), rgba(5, 3, 14, 0.25) 48%, rgba(5, 3, 14, 0.6)),
+        linear-gradient(180deg, rgba(5, 3, 14, 0.1), rgba(5, 3, 14, 0.75)),
         url('assets/portal-background-v1.png') center / cover no-repeat;
     padding-top: 9rem;
 }

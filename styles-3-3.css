@@ -705,6 +705,10 @@ img {
     pointer-events: none;
 }
 
+.site-hero > #particles-canvas {
+    z-index: 0;
+}
+
 /* ── Estado del servidor Minecraft ────────────────────────────────────── */
 .mc-status-banner {
     display: flex;

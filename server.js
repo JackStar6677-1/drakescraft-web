@@ -1215,6 +1215,11 @@ await app.register(fastifyStatic, {
   index: ['index.html'],
   maxAge: '1h',
   immutable: false,
+  setHeaders: (response, filePath) => {
+    if (filePath.endsWith('.html')) {
+      response.setHeader('Cache-Control', 'no-cache, max-age=0, must-revalidate');
+    }
+  },
   allowedPath: (pathname) => {
     const publicFiles = new Set([
       'index.html',

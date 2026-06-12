@@ -1235,6 +1235,55 @@ await app.register(fastifyStatic, {
   }
 });
 
+// ── /api/mcstatus — estado del servidor Minecraft ────────────────────────
+let mcStatusCache = null;
+let mcStatusCacheAt = 0;
+const MC_CACHE_TTL = 60_000;
+
+async function fetchMcStatus() {
+  const now = Date.now();
+  if (mcStatusCache && now - mcStatusCacheAt < MC_CACHE_TTL) return mcStatusCache;
+
+  const [javaRes, bedrockRes] = await Promise.allSettled([
+    fetch('https://api.mcsrvstat.us/3/mc.drakescraft.cl'),
+    fetch('https://api.mcsrvstat.us/bedrock/3/play.drakescraft.cl')
+  ]);
+
+  const parseRes = async (r) => {
+    if (r.status !== 'fulfilled' || !r.value.ok) return { online: false };
+    try { return await r.value.json(); } catch { return { online: false }; }
+  };
+
+  const [java, bedrock] = await Promise.all([parseRes(javaRes), parseRes(bedrockRes)]);
+
+  mcStatusCache = {
+    java: {
+      online: java.online ?? false,
+      motd: java.motd?.clean?.join(' ') ?? '',
+      players: { online: java.players?.online ?? 0, max: java.players?.max ?? 0 },
+      version: java.version ?? '',
+      icon: java.icon ?? null
+    },
+    bedrock: {
+      online: bedrock.online ?? false,
+      players: { online: bedrock.players?.online ?? 0, max: bedrock.players?.max ?? 0 },
+      version: bedrock.version ?? ''
+    }
+  };
+  mcStatusCacheAt = now;
+  return mcStatusCache;
+}
+
+app.get('/api/mcstatus', async (_request, reply) => {
+  try {
+    return await fetchMcStatus();
+  } catch (err) {
+    app.log.warn(err, 'mcstatus fetch error');
+    reply.code(503);
+    return { java: { online: false }, bedrock: { online: false } };
+  }
+});
+
 app.setNotFoundHandler((request, reply) => {
   if (request.raw.url?.startsWith('/api/')) return reply.code(404).send({ error: 'Ruta no encontrada' });
   const requestedPath = request.raw.url?.split('?')[0] || '';

@@ -15,7 +15,7 @@
         href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
         rel="stylesheet">
 
-    <link rel="stylesheet" href="styles-3-3.css?v=20260612b">
+    <link rel="stylesheet" href="styles-3-3.css?v=20260612e">
 </head>
 
 <body>
@@ -86,12 +86,22 @@
         <div class="container">
             <h2 class="section-title">Conectar</h2>
             <p class="section-desc">El mismo mundo: Java en PC y Bedrock en consola o móvil gracias a Geyser.</p>
+            <!-- Banner de estado del servidor -->
+            <div class="mc-status-banner" id="mc-status-banner" aria-live="polite">
+                <span class="mc-status-dot" id="mc-status-dot"></span>
+                <span id="mc-status-label">Consultando servidor...</span>
+                <span class="mc-status-motd" id="mc-status-motd"></span>
+                <span class="mc-status-players" id="mc-status-players"></span>
+                <span class="mc-status-version" id="mc-status-version"></span>
+            </div>
+
             <div class="connect-grid">
                 <article class="connect-card">
                     <h3>Java (PC)</h3>
                     <p class="connect-card__meta">Dirección recomendada</p>
                     <code class="ip-block">mc.drakescraft.cl</code>
                     <button type="button" class="btn-copy" onclick="copyIp('mc.drakescraft.cl')">Copiar IP</button>
+                    <p class="connect-card__hint java-status-hint" id="java-status-hint"></p>
                 </article>
                 <article class="connect-card">
                     <h3>Bedrock / consola</h3>
@@ -100,6 +110,7 @@
                     <button type="button" class="btn-copy" onclick="copyIp('play.drakescraft.cl:19132')">Copiar</button>
                     <p class="connect-card__hint">Si tu cliente solo pide el host, usa <strong>play.drakescraft.cl</strong>
                         y el puerto <strong>19132</strong>.</p>
+                    <p class="connect-card__hint bedrock-status-hint" id="bedrock-status-hint"></p>
                 </article>
                 <article class="connect-card connect-card--discord">
                     <h3>Comunidad</h3>
@@ -259,7 +270,7 @@
 
     <button type="button" id="sound-toggle" class="sound-toggle-btn muted" aria-label="Activar ambientación sonora">♪</button>
     <script src="three.min.js"></script>
-    <script src="script-3-3.js?v=20260612d"></script>
+    <script src="script-3-3.js?v=20260612e"></script>
 </body>
 
 </html>

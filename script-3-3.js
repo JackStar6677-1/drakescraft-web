@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setupStoreExperience();
     setupPortalEffects();
     setupAmbientSound();
+    setupMcStatus();
 
     const navToggle = document.getElementById('nav-toggle');
     const navMenu = document.getElementById('nav-menu');
@@ -351,6 +352,55 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     animate3d();
 });
+
+function setupMcStatus() {
+    const dot      = document.getElementById('mc-status-dot');
+    const label    = document.getElementById('mc-status-label');
+    const motdEl   = document.getElementById('mc-status-motd');
+    const playersEl= document.getElementById('mc-status-players');
+    const verEl    = document.getElementById('mc-status-version');
+    const javaHint = document.getElementById('java-status-hint');
+    const bedHint  = document.getElementById('bedrock-status-hint');
+    if (!dot) return;
+
+    const update = async () => {
+        try {
+            const res = await fetch('/api/mcstatus');
+            if (!res.ok) throw new Error('status error');
+            const d = await res.json();
+            const j = d.java || {};
+            const b = d.bedrock || {};
+
+            if (j.online) {
+                dot.className = 'mc-status-dot online';
+                label.textContent = 'Servidor EN LÍNEA';
+                motdEl.textContent = j.motd ? `"${j.motd}"` : '';
+                playersEl.textContent = `${j.players.online} / ${j.players.max} jugadores`;
+                verEl.textContent = j.version ? `Java ${j.version}` : '';
+                if (javaHint) javaHint.innerHTML = `<span class="live-pulse" style="margin-right:4px;"></span>En línea — ${j.players.online} jugadores conectados`;
+            } else {
+                dot.className = 'mc-status-dot offline';
+                label.textContent = 'Servidor FUERA DE LÍNEA';
+                motdEl.textContent = '';
+                playersEl.textContent = '';
+                verEl.textContent = '';
+                if (javaHint) javaHint.textContent = 'El servidor no responde en este momento';
+            }
+
+            if (bedHint) {
+                bedHint.textContent = b.online
+                    ? `Bedrock activo — ${b.players.online} jugadores`
+                    : 'Bedrock no responde (Geyser puede estar iniciando)';
+            }
+        } catch {
+            dot.className = 'mc-status-dot';
+            label.textContent = 'Estado no disponible';
+        }
+    };
+
+    update();
+    setInterval(update, 60_000);
+}
 
 function copyIp(ip) {
     navigator.clipboard.writeText(ip).then(() => {

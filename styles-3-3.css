@@ -708,6 +708,42 @@ img {
     pointer-events: none;
 }
 
+/* ── Estado del servidor Minecraft ────────────────────────────────────── */
+.mc-status-banner {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 10px;
+    padding: 10px 16px;
+    margin-bottom: 24px;
+    font-size: 0.875rem;
+    color: var(--text-muted);
+}
+
+.mc-status-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #6b7280;
+    flex-shrink: 0;
+    transition: background 0.3s;
+}
+.mc-status-dot.online  { background: #10b981; box-shadow: 0 0 6px #10b98166; animation: pulse-dot 2s infinite; }
+.mc-status-dot.offline { background: #ef4444; box-shadow: none; }
+
+@keyframes pulse-dot {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.5; }
+}
+
+#mc-status-label { font-weight: 600; color: var(--text); }
+.mc-status-motd  { font-style: italic; opacity: 0.75; }
+.mc-status-players { color: var(--secondary); font-weight: 600; margin-left: auto; }
+.mc-status-version { opacity: 0.55; font-size: 0.8rem; }
+
 /* Simulated graphical element (Dragon/Galaxy Aura) */
 .hero-bg::after {
     content: '';

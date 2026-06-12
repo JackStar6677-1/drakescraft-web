@@ -15,7 +15,7 @@
         href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
         rel="stylesheet">
 
-    <link rel="stylesheet" href="styles-3-3.css?v=20260612g">
+    <link rel="stylesheet" href="styles-3-3.css?v=20260612h">
 </head>
 
 <body>
@@ -199,16 +199,19 @@
         </div>
     </section>
 
-    <section class="section section-store-cta" style="background: linear-gradient(180deg, rgba(5,3,14,0.35), rgba(139,92,246,0.06)), url('bannerdrakes.jpg') center/cover no-repeat; padding: 80px 0; text-align: center; position: relative; border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05);">
-        <div class="container" style="max-width: 800px; position: relative; z-index: 2;">
-            <p class="badge-status" style="display: inline-block; margin-bottom: 1rem;"><span class="live-pulse"></span> COMERCIO DEL OLIMPO</p>
-            <h2 class="section-title" style="font-size: 2.5rem; margin-bottom: 1rem; font-family: var(--font-heading);">Tienda de la Odisea</h2>
-            <p class="section-desc" style="font-size: 1.15rem; max-width: 600px; margin: 0 auto 2rem; color: var(--text-muted);">
-                Adquiere rangos mensuales VIP, paquetes de Dragmas locales, protecciones de terreno consagradas para tu acrópolis y encargos mecánicos de Slimefun. Soporte y entrega directa.
-            </p>
-            <a href="store.html" class="btn-primary" style="display: inline-block; padding: 15px 40px; font-size: 1.1rem; font-weight: 700; background: var(--secondary); color: #000; border-color: var(--secondary); text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 0 25px var(--secondary-glow); border-radius: 30px; transition: 0.3s; text-decoration: none;">
-                🛒 Ingresar a la Tienda
+    <section class="section-store-promo" aria-labelledby="store-promo-title">
+        <div class="container store-promo">
+            <a href="store.html" class="store-promo__art" aria-label="Abrir la Tienda de la Odisea">
+                <img src="bannerdrakes.jpg" alt="DrakesCraft Survival y Slimefun Magic" loading="lazy">
             </a>
+            <div class="store-promo__action">
+                <div>
+                    <p class="store-promo__eyebrow"><span class="live-pulse"></span> Comercio del Olimpo</p>
+                    <h2 id="store-promo-title">Tienda de la Odisea</h2>
+                    <p>Rangos, Dragmas, protecciones y encargos de Slimefun con entrega y soporte directo.</p>
+                </div>
+                <a href="store.html" class="btn-primary store-promo__button">Ingresar a la tienda</a>
+            </div>
         </div>
     </section>
 

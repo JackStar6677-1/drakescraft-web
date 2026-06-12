@@ -709,6 +709,94 @@ img {
     z-index: 0;
 }
 
+/* Promoción de tienda: la ilustración ya incluye su propia marca y texto. */
+.section-store-promo {
+    padding: clamp(48px, 7vw, 88px) 0;
+    border-block: 1px solid rgba(255, 255, 255, 0.07);
+    background:
+        radial-gradient(circle at 50% 0%, rgba(124, 58, 237, 0.16), transparent 55%),
+        #080611;
+}
+
+.store-promo {
+    overflow: hidden;
+    padding: 0;
+    border: 1px solid rgba(250, 204, 21, 0.22);
+    border-radius: 22px;
+    background: rgba(11, 8, 24, 0.96);
+    box-shadow: 0 28px 80px rgba(0, 0, 0, 0.42);
+}
+
+.store-promo__art {
+    display: block;
+    overflow: hidden;
+    background: #100b24;
+}
+
+.store-promo__art img {
+    width: 100%;
+    aspect-ratio: 3 / 1;
+    object-fit: cover;
+}
+
+.store-promo__action {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 28px clamp(24px, 4vw, 48px);
+}
+
+.store-promo__eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    margin-bottom: 0.45rem;
+    color: #a5f3fc;
+    font-size: 0.74rem;
+    font-weight: 800;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+}
+
+.store-promo__action h2 {
+    margin-bottom: 0.35rem;
+    font-family: var(--font-heading);
+    font-size: clamp(1.65rem, 3vw, 2.35rem);
+    color: #fff;
+}
+
+.store-promo__action p:last-child {
+    max-width: 680px;
+    color: var(--text-muted);
+}
+
+.store-promo__button {
+    flex: 0 0 auto;
+    min-width: 220px;
+    text-align: center;
+}
+
+@media (max-width: 760px) {
+    .store-promo {
+        margin-inline: 16px;
+    }
+
+    .store-promo__art img {
+        aspect-ratio: 2 / 1;
+    }
+
+    .store-promo__action {
+        align-items: stretch;
+        flex-direction: column;
+        gap: 1.25rem;
+    }
+
+    .store-promo__button {
+        width: 100%;
+    }
+}
+
 /* ── Estado del servidor Minecraft ────────────────────────────────────── */
 .mc-status-banner {
     display: flex;

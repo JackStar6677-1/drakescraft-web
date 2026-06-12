@@ -1228,7 +1228,8 @@ await app.register(fastifyStatic, {
       'dragon_fly.png',
       'logodrakescraft.png',
       'previewdiscord1.png',
-      'previewdiscord2.png'
+      'previewdiscord2.png',
+      'three.min.js'
     ]);
     const normalized = pathname.replace(/^[/\\]+/, '').replaceAll('\\', '/');
     return publicFiles.has(normalized) || normalized.startsWith('assets/');

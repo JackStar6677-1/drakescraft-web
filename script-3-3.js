@@ -852,38 +852,9 @@ function setupStoreExperience() {
                     } catch (_) {}
                 }
 
-                if (hasUsd) {
-                    try {
-                        const ppRes = await fetch('/api/store/paypal/checkout', {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify(payload)
-                        });
-                        if (ppRes.ok) {
-                            const ppData = await ppRes.json();
-                            if (ppData.init_point) {
-                                paypalButton = `<a class="btn-paypal" href="${escapeHtml(ppData.init_point)}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;width:100%;margin-bottom:8px;">
-                                    <img src="assets/paypal-logo.svg" alt="" width="20" height="20" style="vertical-align:middle;margin-right:8px;border-radius:4px;">
-                                    Pagar con PayPal (USD$${ppData.total_usd || ''})
-                                </a>`;
-                            }
-                        }
-                    } catch (_) {
-                        // fallback manual si la API falla
-                        const usdTotal = selectedProducts.filter(p => Number.isFinite(p.usd)).reduce((s, p) => s + p.usd, 0);
-                        const ppUrl = `https://www.paypal.com/paypalme/jackstar6677${usdTotal > 0 ? '/' + usdTotal.toFixed(2) : ''}`;
-                        paypalButton = `<a class="btn-paypal" href="${escapeHtml(ppUrl)}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;width:100%;margin-bottom:8px;">
-                            <img src="assets/paypal-logo.svg" alt="" width="20" height="20" style="vertical-align:middle;margin-right:8px;border-radius:4px;">
-                            Pagar con PayPal (manual)
-                        </a>
-                        <p style="font-size:0.78rem;opacity:0.65;margin:0 0 4px;text-align:center;">Envía el pago y abre ticket en Discord con captura.</p>`;
-                    }
-                }
-
-                if (mpButton || paypalButton) {
+                if (mpButton) {
                     paymentButtons = `<div class="store-payment-options" style="display:flex;flex-direction:column;gap:8px;margin:1.25rem 0 0.75rem 0;">
                         ${mpButton}
-                        ${paypalButton}
                     </div>`;
                 }
             }
@@ -923,8 +894,6 @@ function setupStoreExperience() {
             // Detección de retorno de pago en la URL
             const urlParams = new URLSearchParams(window.location.search);
             const paymentStatus = urlParams.get('payment');
-            const paypalToken = urlParams.get('token');
-            const paypalSubId = urlParams.get('subscription_id');
 
             if (paymentStatus === 'success') {
                 showToast('¡Pago de MercadoPago recibido con éxito! El staff procesará tu entrega.');
@@ -934,51 +903,6 @@ function setupStoreExperience() {
                 window.history.replaceState({}, document.title, window.location.pathname);
             } else if (paymentStatus === 'failure') {
                 showToast('El pago de MercadoPago fue cancelado o rechazado.');
-                window.history.replaceState({}, document.title, window.location.pathname);
-            } else if (paymentStatus === 'paypal-success' && paypalToken) {
-                showToast('Procesando confirmación de PayPal...');
-                fetch('/api/store/paypal/capture', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ orderId: paypalToken })
-                })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.ok && data.status === 'COMPLETED') {
-                        showToast('¡Pago de PayPal aprobado con éxito! Rangos en proceso de entrega.');
-                    } else {
-                        showToast('No se pudo confirmar el estado del pago de PayPal.');
-                    }
-                })
-                .catch(() => {
-                    showToast('Error de conexión al capturar el pago de PayPal.');
-                })
-                .finally(() => {
-                    window.history.replaceState({}, document.title, window.location.pathname);
-                });
-            } else if (paymentStatus === 'paypal-sub-success' && paypalSubId) {
-                showToast('Confirmando tu suscripción de PayPal...');
-                fetch('/api/store/paypal/capture-subscription', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ subscriptionId: paypalSubId })
-                })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.ok && (data.status === 'ACTIVE' || data.status === 'APPROVED')) {
-                        showToast('¡Suscripción de PayPal activada! El rango se entregará al confirmarse el primer cobro.');
-                    } else {
-                        showToast('No se pudo confirmar la suscripción de PayPal.');
-                    }
-                })
-                .catch(() => {
-                    showToast('Error al confirmar suscripción de PayPal.');
-                })
-                .finally(() => {
-                    window.history.replaceState({}, document.title, window.location.pathname);
-                });
-            } else if (paymentStatus === 'paypal-sub-cancel') {
-                showToast('La suscripción de PayPal fue cancelada.');
                 window.history.replaceState({}, document.title, window.location.pathname);
             }
         })
